@@ -1,0 +1,306 @@
+1、新写一个sql语句，在finderImpl中写方法，然后build service，然后在localServiceImpl中写方法，然后build service。
+    然后在localServiceUtil中调用方法。
+
+
+2、新建表，在service_xml 里面
+    <entity local-service="true" name="ProgramInvitationHistory" remote-service="false" table="hsf_program_programinvitationhistory">
+    <column name="pkId" type="long" primary="true" id-type="sequence" id-param="hsf_programinvitation_sq"></column>
+    <column name="userId" type="long"></column>
+    <column name="emailAddress" type="String"/>
+    <column name="programId" type="long"></column>
+    <column name="emailTemplateId" type="long"></column>
+    <column name="invitationStatus" type="String"/>
+    <column name="createdTime" type="Date"/>
+    <column name="createdBy" type="long"></column>
+  </entity>
+然后build service，
+然后修改portlet-model-hints.xml
+    <field name="emailContent" type="String">
+        <hint name="max-length">20000</hint>
+    </field>
+然后在indexes.sql中建索引
+    create index IX_FE9520F9 on hsf_program_programinvitationhistory (programId);
+再build service。
+
+
+
+3、 build service 出现问题
+sudo vi /etc/profile
+添加代码
+export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=512m"
+
+4、customField remove某个属性
+    prototype: {
+                         getHTML: function() {
+                             return TPL_LINK_TO_PAGE;
++                        },
++                        getPropertyModel: function() {
++                            var instance = this;
++                            var model = originalFormBuilderTextFieldGetPropertyModel.call(instance);
++                            var needHiddenIndex = 0;
++                            model.forEach(function(item, index) {
++                                if (item.attributeName == "predefinedValue") {
++                                    needHiddenIndex = index;
++                                }
++                            })
++                            model.splice(needHiddenIndex, 1);
++                            return model;
+                         }
+                     }
+                 }
+
+5、部署dev的ext
+    （1）打包 HSF Plugins
+    （2）将ext的war包和hook的war包放置桌面
+    （3）将war包复制到dev上
+        scp -l 10000 -i ~/.ssh/augmentem_dev_rsa /home/user/Desktop/hsf-plugins-shared-ext-ext-1.0.0.war augumentdev@52.77.171.75:/home/augumentdev
+        scp -l 10000 -i ~/.ssh/augmentem_dev_rsa /home/user/Desktop/hsf-plugins-shared-hook-1.0.0.war augumentdev@52.77.171.75:/home/augumentdev
+    （4）连接dev
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@52.77.171.75
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT/WEB-INF/
+        删除 ext-hsf-plugins-shared-ext.xml
+            sudo rm ext-hsf-plugins-shared-ext.xml
+        查看是否删除成功
+            ls
+    （5）浏览器进入52.77.171.75 
+            test@liferay.com 
+            Dev4Hsf1!
+        卸载app里面的ext和hook
+        部署 ext 和 hook
+            ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@52.77.171.75   这个目录下
+            sudo cp hsf-plugins-shared-ext-ext-1.0.0.war /opt/liferay-portal-6.2-ce-ga6/deploy/
+            sudo cp hsf-plugins-shared-hook-1.0.0.war /opt/liferay-portal-6.2-ce-ga6/deploy/
+    （6）关闭dev，开启两个窗口
+            cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/
+            tail -f catalina.out
+            
+            cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin
+            sudo ./shutdown.sh
+        看一下是否真的关闭了tomcat
+            ps -ef | grep tomcat 
+    （7）重启dev，重启之前执行 
+            sudo sh -c "ulimit -n 65535 && exec su augumentdev"
+            cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin
+            sudo ./startup.sh
+        关闭dev
+            cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin
+            sudo ./shutdown.sh
+        看一下是否真的关闭了tomcat
+            ps -ef | grep tomcat 
+    （8）重启dev，重启之前执行 
+            sudo sh -c "ulimit -n 65535 && exec su augumentdev"
+            cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin
+            sudo ./startup.sh
+
+    //connect dev server代码
+    ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@52.77.171.75
+    chmod 600
+    cd /opt/liferay-portal-6.2-ce-ga6
+
+    //scp war to dev
+    scp -l 10000 -i ~/.ssh/augmentem_dev_rsa /home/user/Desktop/hsf-plugins-shared-portlet-1.0.0.war augumentdev@52.77.171.75:/home/augumentdev
+
+    // check log
+    cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/
+    tail -f catalina.out
+
+    // Remove ext-hsf-plugins-shared-ext.xml
+    sudo rm ext-hsf-plugins-shared-ext.xml
+
+    uninstall 52.77.171.75 apps
+
+    // Deploy ext and hook
+    sudo cp hsf-plugins-shared-ext-ext-1.0.0.war /opt/liferay-portal-6.2-ce-ga6/deploy/
+    sudo cp hsf-plugins-shared-hook-1.0.0.war /opt/liferay-portal-6.2-ce-ga6/deploy/
+
+    //重启之前执行 
+    sudo sh -c "ulimit -n 65535 && exec su augumentdev"
+
+    (sh)  /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin
+    ./shutdown.sh ./startup.sh
+
+
+6、 怎么成为一个recommender？
+    注册一个非学生帐号
+    配置某一个profgram_ddl，某一个（Application）stage的form是recommendation，并且process是recommendation，还要配一个recommendation的stage
+    学生申请program，填写form。
+    非学生登陆即可。
+
+    recommender要填的form在Recommender_Type_Form_DDL里面配置。
+
+
+7、 怎么成为一个reader？
+    注册一个非学生帐号 supporter
+    admin进入reader-management，右边小齿轮设置的program的reader stage决定了是否开启了reader的申请。
+    如果想要改program，那么先把当前设置的program设为inactive，然后才可以修改program。
+    reader进行cetification，填写的form在ddl里面，
+    在DDL里面找到DataSource_Reader_Certification_Form_DDL，
+    在dd里面找到配置的form，里面有答案，必须100%答对才可以。
+
+    admin在reader-history里面可以看见reader填写的form。
+    admin在reader-management里面点击Reader Assignment-->Available，可以Assign Reader
+
+    reader申请分为application，certification，evaluation三个stage。
+
+    reader要填的form在
+        DataSource_Reader_Application_Set_DDL 
+        DataSource_Reader_Certification_Set_DDL 
+        DataSource_Reader_Evaluation_Set_DDL
+    里面配置。
+    
+
+8、 怎么成为一个interviewer？
+
+    interviewer申请分为application，certification，evaluation三个stage。
+
+    interviewer要填的form在Interviewer_Setting_DDL里面配置。
+
+
+9、 怎么成为一个counselor？
+    注册一个非学生帐号
+    配置某一个profgram_ddl，某一个（Application）stage的form是Counselor，并且process是counselor，还要配一个counselor的stage
+    学生申请program，填写form。
+    非学生登陆即可。
+
+    counselor要填的form在Counselor_Survey_Form_Set_DDL里面配置。
+
+10、配置页面
+    点击site pages，选中hidden pages，Add Child Page，填写Name，例如Admin Essay Evaluation Review，那么url就是/admin-essay-evaluation-review。
+    选中HSF Private Message Center Layout，
+    打开这个页面，点击Add，按照dev上面的配置添加对应的portlet
+
+11、在program的form里面添加form：
+    创建DD，
+    创建该DD对应的DDL，那么填写了form之后的数据都保存在这个DDL里面，
+    修改这个DDL的permission，student的add update view，
+    在Program_Form_DDL里面添加刚刚创建的DD，那么在编辑Program的时候就可以添加这个form了。
+
+12、申请mentor和mentee：
+    在Mentor_Setting_DDL里面配置角色volunteer，以及时间，填写的form，
+    在Mentee_Setting_DDL里面配置角色scholar，以及时间，填写的form，
+    申请一个帐号，admin添加volunteer角色，
+
+13、看mobile的API
+        http://localhost:8080/hsf-plugins-shared-api-portlet/swagger-ui.html#/
+    用户登录mobile端的条件：在web content里面配置，Mobile Configuration配置了哪些role可以登录mobile。
+                         并且在user management里面Enable Access Mobile。
+    在web content里面，配置了Mobile Profile Configuration，里面有mobile user的profile（hometown、major、college、cohort_Year）。
+    信息存在Mobile_Profile_DDL里面。
+
+14、theme
+
+$ yum install ruby
+$ gem install sass compass bourbon
+
+*
+
+sass _sass/custom.scss:_sass-custom.css
+
+
+15、部署beta
+    （1）打包 HSF Plugins
+    （2）将portlet的war包放置桌面
+    （3）将war包复制到两台server上
+        liferay.portal.beta.hsf3.server1 54.149.215.249
+        liferay.portal.beta.hsf3.server2 34.209.65.166
+        scp -l 2000 -i ~/.ssh/augmentem_dev_rsa /home/user/Desktop/hsf-plugins-shared-portlet-1.0.0.war augumentdev@54.149.215.249:/home/augumentdev
+        scp -l 2000 -i ~/.ssh/augmentem_dev_rsa /home/user/Desktop/hsf-plugins-shared-portlet-1.0.0.war augumentdev@34.209.65.166:/home/augumentdev
+    （4）连接server1
+        修改/tomcat-7.0.62/webapps/ROOT目录下面favicon.ico的名称，等待一分钟
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@54.149.215.249
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT
+        mv favicon.ico favicon.ico1
+
+    （5）开启两个窗口，看log
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@54.149.215.249
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/
+        tail -f catalina.2019-07-11.out
+    （6）部署portlet
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@54.149.215.249   这个目录下
+        sudo cp hsf-plugins-shared-portlet-1.0.0.war /opt/liferay-portal-6.2-ce-ga6/deploy/
+    （7）修改/tomcat-7.0.62/webapps/ROOT目录下面favicon.ico的名称，等待一分钟
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@54.149.215.249
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT
+        mv favicon.ico1 favicon.ico
+    （8）连接server2
+        修改/tomcat-7.0.62/webapps/ROOT目录下面favicon.ico的名称，等待一分钟
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.65.166
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT
+        mv favicon.ico favicon.ico1
+    （9）开启两个窗口，看log
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.65.166
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/
+        tail -f catalina.2019-07-11.out
+    （10）部署portlet
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.65.166   这个目录下
+        sudo cp hsf-plugins-shared-portlet-1.0.0.war /opt/liferay-portal-6.2-ce-ga6/deploy/
+    （11）修改/tomcat-7.0.62/webapps/ROOT目录下面favicon.ico的名称，等待一分钟
+        ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.65.166
+        cd /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT
+        mv favicon.ico1 favicon.ico
+
+
+
+16、  DDM的id是ddmstructure表里面的：structureid，是ddlrecordset表里面的：ddmstructureid
+      DDL的id是ddlrecordset表里面的：recordsetid，是ddlrecord表里面的recordsetid
+      ddlrecord表里面的ddmstorageid是ddmcontent表里面的contentid
+      存储user的form信息在ddmcontent表里面： contentid，里面的xml存储form
+根据DDL的id找到所有的记录
+    select c.xml from ddmcontent c 
+        inner join ddlrecord r on c.contentid = r.ddmstorageid
+        inner join ddlrecordset rs on r.recordsetid = rs.recordsetid
+        where rs.recordsetid = 448512
+
+根据DDM的id找到所有的记录
+    select c.xml from ddmcontent c 
+        inner join ddlrecord r on c.contentid = r.ddmstorageid
+        inner join ddlrecordset rs on r.recordsetid = rs.recordsetid
+        inner join ddmstructure m on m.structureid = rs.ddmstructureid
+        where m.structureid = 448510
+
+17、 Dashboard的名字配置：在page的dashboard的那里配。
+
+18、 清除server的缓存
+    进入master --> Control Panel --> Server Administration, 
+    然后清除Clear the database cache.  Clear the direct servlet cache.
+
+19、 document bank的program配置
+    Document Bank Configuration、DataSource_Scholarship_DDL、DataSource_Program_DDL
+
+     
+postgres一种unnset的写法
+    select * from unnest(cast(Array[39804,28827534,82961861]as bigint[]),cast(Array['2018-2019 Academic Year','2018-2019 Academic Year','2019-2020 Academic Year'] as text[])) as programStartYear(programId,programStartYear)
+
+
+阻止事件冒泡：
+/ Cancel the bubbling event of click /
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                // works on IE
+                event.cancelBubble = true;
+            }
+
+
+在liferay-portal-6.2-ce-ga6/tomcat-7.0.62/conf/web.xml添加以下配置：
+<servlet>
+    <servlet-name>jsp</servlet-name>
+    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+    <init-param>
+        <param-name>fork</param-name>
+        <param-value>false</param-value>
+    </init-param>
+    <init-param>
+        <param-name>xpoweredBy</param-name>
+        <param-value>false</param-value>
+    </init-param>
+    <init-param>
+        <param-name>mappedfile</param-name>
+        <param-value>false</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+</servlet>
+
+
+du -h --max-depth=1 ./
+找出大文件夹

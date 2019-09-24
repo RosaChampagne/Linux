@@ -1,0 +1,84 @@
+[user@localhost git]$ git clone git@git.augmentum.com.cn:HSF_Internal_Group/hsf-training.git
+Cloning into 'hsf-training'...
+remote: Counting objects: 35, done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 35 (delta 8), reused 31 (delta 7)
+Receiving objects: 100% (35/35), 6.03 MiB | 4.03 MiB/s, done.
+Resolving deltas: 100% (8/8), done.
+[user@localhost git]$ git branch
+fatal: Not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[user@localhost git]$ git checkout CynthiaZhu_HSF_Training
+fatal: Not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[user@localhost git]$ ls
+hsf-training
+[user@localhost git]$ cd hsf-training/
+[user@localhost hsf-training]$ git branch
+* master
+[user@localhost hsf-training]$ git checkout CynthiaZhu_HSF_Training
+error: pathspec 'CynthiaZhu_HSF_Training' did not match any file(s) known to git.
+[user@localhost hsf-training]$ git branch CynthiaZhu_HSF_Training
+[user@localhost hsf-training]$ git branch
+  CynthiaZhu_HSF_Training
+* master
+[user@localhost hsf-training]$ git checkout CynthiaZhu_HSF_Training
+Switched to branch 'CynthiaZhu_HSF_Training'
+[user@localhost hsf-training]$ git add .
+[user@localhost hsf-training]$ git commit -m "test"
+# On branch CynthiaZhu_HSF_Training
+nothing to commit, working directory clean
+[user@localhost hsf-training]$ git push origin CynthiaZhu_HSF_Training 
+Total 0 (delta 0), reused 0 (delta 0)
+remote: 
+remote: To create a merge request for CynthiaZhu_HSF_Training, visit:
+remote:   http://git.augmentum.com.cn/HSF_Internal_Group/hsf-training/merge_requests/new?merge_request%5Bsource_branch%5D=CynthiaZhu_HSF_Training
+remote: 
+To git@git.augmentum.com.cn:HSF_Internal_Group/hsf-training.git
+ * [new branch]      CynthiaZhu_HSF_Training -> CynthiaZhu_HSF_Training
+[user@localhost hsf-training]$ ls
+Document  java  README.md
+[user@localhost hsf-training]$ git add .
+[user@localhost hsf-training]$ git commit -m "test"
+[CynthiaZhu_HSF_Training 02a9881] test
+ 27 files changed, 711 insertions(+)
+ create mode 100644 java/demo-hook-one/.classpath
+ create mode 100644 java/demo-hook-one/.project
+ create mode 100644 java/demo-hook-one/.settings/.jsdtscope
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.core.resources.prefs
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.jdt.core.prefs
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.m2e.core.prefs
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.wst.common.component
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.wst.common.project.facet.core.xml
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.wst.jsdt.ui.superType.container
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.wst.jsdt.ui.superType.name
+ create mode 100644 java/demo-hook-one/.settings/org.eclipse.wst.validation.prefs
+ create mode 100644 java/demo-hook-one/pom.xml
+ create mode 100644 java/demo-hook-one/src/main/webapp/META-INF/custom_jsps/html/portlet/login/login.jsp
+ create mode 100644 java/demo-hook-one/src/main/webapp/WEB-INF/liferay-hook.xml
+ create mode 100644 java/demo-hook-one/src/main/webapp/WEB-INF/liferay-plugin-package.properties
+ create mode 100644 java/demo-hook-one/src/main/webapp/WEB-INF/web.xml
+ create mode 100644 java/demo-hook-one/src/main/webapp/login.css
+ create mode 100644 java/demo-hook-one/target/demo-hook-one-1.0.0-SNAPSHOT.war
+ create mode 100644 java/demo-hook-one/target/demo-hook-one-1.0.0-SNAPSHOT/META-INF/custom_jsps/html/portlet/login/login.jsp
+ create mode 100644 java/demo-hook-one/target/demo-hook-one-1.0.0-SNAPSHOT/WEB-INF/liferay-hook.xml
+ create mode 100644 java/demo-hook-one/target/demo-hook-one-1.0.0-SNAPSHOT/WEB-INF/liferay-plugin-package.properties
+ create mode 100644 java/demo-hook-one/target/demo-hook-one-1.0.0-SNAPSHOT/WEB-INF/web.xml
+ create mode 100644 java/demo-hook-one/target/demo-hook-one-1.0.0-SNAPSHOT/login.css
+ create mode 100644 java/demo-hook-one/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+ create mode 100644 java/demo-hook-one/target/m2e-wtp/web-resources/META-INF/maven/com.example.plugins/demo-hook-one/pom.properties
+ create mode 100644 java/demo-hook-one/target/m2e-wtp/web-resources/META-INF/maven/com.example.plugins/demo-hook-one/pom.xml
+ create mode 100644 java/demo-hook-one/target/maven-archiver/pom.properties
+[user@localhost hsf-training]$ git push origin CynthiaZhu_HSF_Training 
+Counting objects: 51, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (30/30), done.
+Writing objects: 100% (50/50), 10.86 KiB | 0 bytes/s, done.
+Total 50 (delta 2), reused 0 (delta 0)
+remote: 
+remote: To create a merge request for CynthiaZhu_HSF_Training, visit:
+remote:   http://git.augmentum.com.cn/HSF_Internal_Group/hsf-training/merge_requests/new?merge_request%5Bsource_branch%5D=CynthiaZhu_HSF_Training
+remote: 
+To git@git.augmentum.com.cn:HSF_Internal_Group/hsf-training.git
+   cc05f53..02a9881  CynthiaZhu_HSF_Training -> CynthiaZhu_HSF_Training
+[user@localhost hsf-training]$ 

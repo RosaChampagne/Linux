@@ -1,0 +1,353 @@
+
+git status
+git pull
+git log
+git checkout -b HSF3-7891_UponInitialProgramRequestPage origin/develop 
+git branch
+
+
+
+git status
+git log
+git add -A
+git commit -m "Task HSF3-7891 #comment update program request page initial rending"
+git fetch --all
+git rebase origin/develop 
+git log
+git branch 
+git push origin HSF3-7891_UponInitialProgramRequestPage 
+
+
+1. 本地分支重命名
+
+Git branch -m oldbranchname newbranchname
+
+2.远程分支重命名
+
+.如果修改远程分支，只需要将本地分支重命名为新分支名称，然后删除远程分支，再把本地分支上传就可以了
+
+//删除本地分支
+git branch -D xxxx
+
+
+git stash save "save message"  : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别
+
+git stash list  ：查看stash了哪些存储
+
+git stash drop stash@{$num} ：丢弃stash@{$num}存储，从列表中删除这个存储
+
+git stash clear ：删除所有缓存的stash
+
+git stash apply : 应用你刚刚实施的储藏
+
+git stash apply stash@{2}: 应用更早的储藏
+
+
+git checkout -b HSF3-8650_AutoCompleteFieldShowDuplicateProgramsInProgramInvitationPageHotFix origin/HotFix_Prod_S81_2
+git cherry-pick 8a2f42ab9133b4dac321a1e4ed68f50d234cf734
+解决冲突
+git status
+git commit
+git add -A  
+git commit --amend
+git log
+
+
+Task HSF3-5207 #comment Create a time custom field having date, time and timezone
+
+
+
+git rebase origin/HSF3-AddTimeToProgramDDL 
+git rebase --continue
+git add -A
+git rebase --continue
+git log
+git push origin HSF3-7980_UpdateParseApplicationStageTimeInProgramDDL -f
+
+
+
+
+[user@localhost hsf3]$ code .
+[user@localhost hsf3]$ git status
+# On branch develop
+# Your branch is behind 'origin/develop' by 4 commits, and can be fast-forwarded.
+#   (use "git pull" to update your local branch)
+#
+nothing to commit, working directory clean
+[user@localhost hsf3]$ git pull
+Updating d3e3d31..9c9017a
+Fast-forward
+ src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/community/controller/CommunityListPortlet.java |  6 ++++--
+ src/shared/hsf-plugins-shared-portlet/src/main/webapp/js/announcement/announcement.js                              | 20 +++++---------------
+ 2 files changed, 9 insertions(+), 17 deletions(-)
+[user@localhost hsf3]$ git log
+commit 9c9017a24a4194b35016a9752d1713894b61e62f
+Merge: 9803dc4 742b206
+Author: Luke Chen <hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 09:28:52 2019 +0000
+
+    Merged in HSF3-7742_FixIssueOfValidationInCreateAnnouncement (pull request #3655)
+    
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement page
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit 742b2069a6f8f20563a3e5035a5d10cd50f1ab5e
+Author: Luke Chen <Hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 17:25:14 2019 +0800
+
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement page
+
+commit 9803dc4b4f297f5726e9eb502d018afce11f7bd4
+Merge: d3e3d31 b1ef057
+Author: Anders Hu <hsf3.anders.hu@augmentum.com>
+Date:   Wed Apr 3 09:15:36 2019 +0000
+
+    Merged in HSF3-7878_CommunitiesDisplayViewMoreButton (pull request #3654)
+    
+    Task HSF3-7878 #comment Communities list display View More button
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit b1ef05777ee4fe8529dd13b936b9184ca500839b
+Author: Anders Hu <Hsf3.anders.hu@augmentum.com>
+Date:   Wed Apr 3 16:20:11 2019 +0800
+
+    Task HSF3-7878 #comment Communities list display View More button
+
+[user@localhost hsf3]$ git checkout -b HSF3-7891_UponInitialProgramRequestPage origin/develop 
+Branch HSF3-7891_UponInitialProgramRequestPage set up to track remote branch develop from origin.
+Switched to a new branch 'HSF3-7891_UponInitialProgramRequestPage'
+[user@localhost hsf3]$ git branch
+* HSF3-7891_UponInitialProgramRequestPage
+  develop
+  master
+[user@localhost hsf3]$ 
+
+
+
+
+
+
+
+
+
+
+[user@localhost hsf3]$ git status
+# On branch HSF3-7891_UponInitialProgramRequestPage
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/program/constants/Constants.java
+#	modified:   src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/program/content/Language.properties
+#	modified:   src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/program/controller/ProgramRequestPortlet.java
+#	modified:   src/shared/hsf-plugins-shared-portlet/src/main/webapp/html/programrequest/snippet/request_list.jsp
+#	modified:   src/shared/hsf-plugins-shared-portlet/src/main/webapp/js/program/program-request.js
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[user@localhost hsf3]$ git log
+commit 9c9017a24a4194b35016a9752d1713894b61e62f
+Merge: 9803dc4 742b206
+Author: Luke Chen <hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 09:28:52 2019 +0000
+
+    Merged in HSF3-7742_FixIssueOfValidationInCreateAnnouncement (pull request #
+    
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement pa
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit 742b2069a6f8f20563a3e5035a5d10cd50f1ab5e
+Author: Luke Chen <Hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 17:25:14 2019 +0800
+
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement pa
+
+commit 9803dc4b4f297f5726e9eb502d018afce11f7bd4
+Merge: d3e3d31 b1ef057
+Author: Anders Hu <hsf3.anders.hu@augmentum.com>
+Date:   Wed Apr 3 09:15:36 2019 +0000
+
+    Merged in HSF3-7878_CommunitiesDisplayViewMoreButton (pull request #3654)
+    
+[user@localhost hsf3]$ git add -A
+[user@localhost hsf3]$ git commit -m "Task HSF3-7891 #comment update program request page initial rending"
+[HSF3-7891_UponInitialProgramRequestPage 0a76fd7] Task HSF3-7891 #comment update program request page initial rending
+ 5 files changed, 64 insertions(+), 28 deletions(-)
+[user@localhost hsf3]$ git log
+commit 0a76fd7f8c04a5d38c8e36f4c091df92ac317c3a
+Author: Cynthia Zhu <hsf3.cynthia.zhu@augmentum.com>
+Date:   Tue Apr 9 09:16:04 2019 +0800
+
+    Task HSF3-7891 #comment update program request page initial rending
+
+commit 9c9017a24a4194b35016a9752d1713894b61e62f
+Merge: 9803dc4 742b206
+Author: Luke Chen <hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 09:28:52 2019 +0000
+
+    Merged in HSF3-7742_FixIssueOfValidationInCreateAnnouncement (pull request #
+    
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement pa
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit 742b2069a6f8f20563a3e5035a5d10cd50f1ab5e
+Author: Luke Chen <Hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 17:25:14 2019 +0800
+
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement pa
+
+[user@localhost hsf3]$ git fetch --all
+Fetching origin
+[user@localhost hsf3]$ git rebase origin/develop 
+First, rewinding head to replay your work on top of it...
+Applying: Task HSF3-7891 #comment update program request page initial rending
+[user@localhost hsf3]$ git log
+commit 4860989aee1d3b96c7c40ea802553abe8a66fe86
+Author: Cynthia Zhu <hsf3.cynthia.zhu@augmentum.com>
+Date:   Tue Apr 9 09:16:04 2019 +0800
+
+    Task HSF3-7891 #comment update program request page initial rending
+
+commit d2a37cc8a1f8ab78ae683fabb2dec4d196299e89
+Merge: 9c9017a 4546bd8
+Author: Anders Hu <hsf3.anders.hu@augmentum.com>
+Date:   Mon Apr 8 05:19:08 2019 +0000
+
+    Merged in HSF3-7853_FixContactTypeIsChangedIssue (pull request #3659)
+    
+    Bug HSF3-7853 #comment Fix Contact type is chenged issue
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit 4546bd8185a23bce8a9cb497243c5792cd24bb02
+Author: Anders Hu <Hsf3.anders.hu@augmentum.com>
+Date:   Mon Apr 8 09:12:03 2019 +0800
+
+    Bug HSF3-7853 #comment Fix Contact type is chenged issue
+
+[user@localhost hsf3]$ git branch 
+* HSF3-7891_UponInitialProgramRequestPage
+  develop
+  master
+[user@localhost hsf3]$ git push origin HSF3-7891_UponInitialProgramRequestPage 
+Counting objects: 51, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (26/26), 2.48 KiB | 0 bytes/s, done.
+Total 26 (delta 16), reused 0 (delta 0)
+remote: 
+remote: Create pull request for HSF3-7891_UponInitialProgramRequestPage:
+remote:   https://bitbucket.org/hsf30/hsf3/pull-requests/new?source=HSF3-7891_UponInitialProgramRequestPage&t=1
+remote: 
+To git@bitbucket.org:hsf30/hsf3.git
+ * [new branch]      HSF3-7891_UponInitialProgramRequestPage -> HSF3-7891_UponInitialProgramRequestPage
+Everything up-to-date
+[user@localhost hsf3]$ git config user.email "hsf3.anders.hu@augmentum.com"
+[user@localhost hsf3]$ git config user.name "Anders Hu"
+[user@localhost hsf3]$ git push origin HSF3-7891_UponInitialProgramRequestPage 
+Everything up-to-date
+Everything up-to-date
+[user@localhost hsf3]$ git log
+commit 4860989aee1d3b96c7c40ea802553abe8a66fe86
+Author: Cynthia Zhu <hsf3.cynthia.zhu@augmentum.com>
+Date:   Tue Apr 9 09:16:04 2019 +0800
+
+    Task HSF3-7891 #comment update program request page initial rending
+
+commit d2a37cc8a1f8ab78ae683fabb2dec4d196299e89
+Merge: 9c9017a 4546bd8
+Author: Anders Hu <hsf3.anders.hu@augmentum.com>
+Date:   Mon Apr 8 05:19:08 2019 +0000
+
+    Merged in HSF3-7853_FixContactTypeIsChangedIssue (pull request #3659)
+    
+    Bug HSF3-7853 #comment Fix Contact type is chenged issue
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit 4546bd8185a23bce8a9cb497243c5792cd24bb02
+Author: Anders Hu <Hsf3.anders.hu@augmentum.com>
+Date:   Mon Apr 8 09:12:03 2019 +0800
+
+    Bug HSF3-7853 #comment Fix Contact type is chenged issue
+
+[user@localhost hsf3]$ git reset d2a37cc8a1f8ab78ae683fabb2dec4d196299e89
+Unstaged changes after reset:
+M	src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/program/constants/Constants.java
+M	src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/program/content/Language.properties
+M	src/shared/hsf-plugins-shared-portlet/src/main/java/net/hsf3/plugin/program/controller/ProgramRequestPortlet.java
+M	src/shared/hsf-plugins-shared-portlet/src/main/webapp/html/programrequest/snippet/request_list.jsp
+M	src/shared/hsf-plugins-shared-portlet/src/main/webapp/js/program/program-request.js
+[user@localhost hsf3]$ git add -A
+[user@localhost hsf3]$ git commit -m "Task HSF3-7891 #comment update program request page initial rending"
+[HSF3-7891_UponInitialProgramRequestPage 438215e] Task HSF3-7891 #comment update program request page initial rending
+ 5 files changed, 64 insertions(+), 28 deletions(-)
+[user@localhost hsf3]$ git log
+commit 438215ec780b8e97a20756cd52f63649f4fe633d
+Author: Anders Hu <hsf3.anders.hu@augmentum.com>
+Date:   Tue Apr 9 09:24:01 2019 +0800
+
+    Task HSF3-7891 #comment update program request page initial rending
+
+commit d2a37cc8a1f8ab78ae683fabb2dec4d196299e89
+Merge: 9c9017a 4546bd8
+Author: Anders Hu <hsf3.anders.hu@augmentum.com>
+Date:   Mon Apr 8 05:19:08 2019 +0000
+
+    Merged in HSF3-7853_FixContactTypeIsChangedIssue (pull request #3659)
+    
+    Bug HSF3-7853 #comment Fix Contact type is chenged issue
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+commit 4546bd8185a23bce8a9cb497243c5792cd24bb02
+Author: Anders Hu <Hsf3.anders.hu@augmentum.com>
+Date:   Mon Apr 8 09:12:03 2019 +0800
+
+    Bug HSF3-7853 #comment Fix Contact type is chenged issue
+
+commit 9c9017a24a4194b35016a9752d1713894b61e62f
+Merge: 9803dc4 742b206
+Author: Luke Chen <hsf3.luke.chen@augmentum.com>
+Date:   Wed Apr 3 09:28:52 2019 +0000
+
+    Merged in HSF3-7742_FixIssueOfValidationInCreateAnnouncement (pull request #3655)
+    
+    Bug HSF3-7742 Fix issue of expired date validation in create announcement page
+    
+    Approved-by: Luke Chen <hsf3.luke.chen@augmentum.com>
+
+[user@localhost hsf3]$ 
+[user@localhost hsf3]$ git push origin HSF3-7891_UponInitialProgramRequestPage 
+To git@bitbucket.org:hsf30/hsf3.git
+ ! [rejected]        HSF3-7891_UponInitialProgramRequestPage -> HSF3-7891_UponInitialProgramRequestPage (non-fast-forward)
+error: failed to push some refs to 'git@bitbucket.org:hsf30/hsf3.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+To git@bitbucket.org:hsf30/hsf3.git
+ ! [rejected]        HSF3-7891_UponInitialProgramRequestPage -> HSF3-7891_UponInitialProgramRequestPage (non-fast-forward)
+error: failed to push some refs to 'git@bitbucket.org:hsf30/hsf3.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[user@localhost hsf3]$ git push origin HSF3-7891_UponInitialProgramRequestPage -f
+Counting objects: 51, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (26/26), 2.47 KiB | 0 bytes/s, done.
+Total 26 (delta 16), reused 0 (delta 0)
+remote: 
+remote: Create pull request for HSF3-7891_UponInitialProgramRequestPage:
+remote:   https://bitbucket.org/hsf30/hsf3/pull-requests/new?source=HSF3-7891_UponInitialProgramRequestPage&t=1
+remote: 
+To git@bitbucket.org:hsf30/hsf3.git
+ + 4860989...438215e HSF3-7891_UponInitialProgramRequestPage -> HSF3-7891_UponInitialProgramRequestPage (forced update)
+Everything up-to-date
+[user@localhost hsf3]$ 

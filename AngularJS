@@ -1,0 +1,930 @@
+AngularJS 是由 Google 的员工 Miško Hevery 从 2009 年开始着手开发。
+这是一个非常好的构想，该项目目前已由 Google 正式支持，有一个全职的开发团队继续开发和维护这个库。
+
+AngularJS 是一个 JavaScript 框架。它可通过 <script> 标签添加到 HTML 页面。
+AngularJS 通过 指令 扩展了 HTML，且通过 表达式 绑定数据到 HTML。
+
+
+AngularJS 通过 ng-directives 扩展了 HTML。
+AngularJS 指令是以 ng 作为前缀的 HTML 属性。
+ng-app 指令定义一个 AngularJS 应用程序。
+ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+ng-bind 指令把应用程序数据绑定到 HTML 视图。
+ng-init 指令初始化 AngularJS 应用程序变量。
+ng-repeat 指令会重复一个 HTML 元素。
+
+AngularJS 把应用程序数据绑定到 HTML 元素。
+AngularJS 可以克隆和重复 HTML 元素。
+AngularJS 可以隐藏和显示 HTML 元素。
+AngularJS 可以在 HTML 元素"背后"添加代码。
+AngularJS 支持输入验证。
+
+ngularJS 表达式写在双大括号内：{{ expression }}。
+AngularJS 表达式把数据绑定到 HTML，这与 ng-bind 指令有异曲同工之妙。
+AngularJS 将在表达式书写的位置"输出"数据。
+AngularJS 表达式 很像 JavaScript 表达式：它们可以包含文字、运算符和变量。
+实例 {{ 5 + 5 }} 或 {{ firstName + " " + lastName }}
+
+AngularJS 模块（Module） 定义了 AngularJS 应用。
+AngularJS 控制器（Controller） 用于控制 AngularJS 应用。
+ng-app指令指明了应用, ng-controller 指明了控制器。
+
+AngularJS 模块定义应用:
+AngularJS 模块
+var app = angular.module('myApp', []);
+AngularJS 控制器控制应用:
+
+AngularJS 控制器
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+});
+
+通过添加 restrict 属性,并设置值为 "A", 来设置指令只能通过属性的方式来调用:  
+var app = angular.module("myApp", []);
+app.directive("runoobDirective", function() {
+    return {
+        restrict : "A",
+        template : "<h1>自定义指令!</h1>"
+    };
+});
+restrict 值可以是以下几种:
+E 作为元素名使用    <runoob-directive></runoob-directive>
+A 作为属性使用      <div runoob-directive></div>
+C 作为类名使用      <div class="runoob-directive"></div>
+M 作为注释使用      <!-- directive: runoob-directive -->
+restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。
+
+双向绑定，在修改输入域的值时， AngularJS 属性的值也将修改：
+<div ng-app="myApp" ng-controller="myCtrl">
+    名字: <input ng-model="name">
+    <h1>你输入了: {{name}}</h1>
+</div>
+
+验证用户输入, 提示信息会在 ng-show 属性返回 true 的情况下显示。
+<form ng-app="" name="myForm">
+    Email:
+    <input type="email" name="myAddress" ng-model="text">
+    <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+</form>
+
+<form ng-app="" name="myForm" ng-init="myText = 'test@runoob.com'">
+    Email:
+    <input type="email" name="myAddress" ng-model="myText" required>
+    <p>编辑邮箱地址，查看状态的改变。</p>
+    <h1>状态</h1>
+    <p>Valid: {{myForm.myAddress.$valid}} (如果输入的值是合法的则为 true)。</p>
+    <p>Dirty: {{myForm.myAddress.$dirty}} (如果值改变则为 true)。</p>
+    <p>Touched: {{myForm.myAddress.$touched}} (如果通过触屏点击则为 true)。</p>
+</form>
+
+ng-model 指令基于它们的状态为 HTML 元素提供了 CSS 类：
+<style>
+input.ng-invalid {
+    background-color: lightblue;
+}
+</style>
+<body>
+<form ng-app="" name="myForm">
+    输入你的名字:
+    <input name="myAddress" ng-model="text" required>
+</form>
+
+ng-model 指令根据表单域的状态添加/移除以下类：
+ng-empty
+ng-not-empty
+ng-touched
+ng-untouched
+ng-valid
+ng-invalid
+ng-dirty
+ng-pending
+ng-pristine
+
+Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。
+Scope 是一个对象，有可用的方法和属性。
+Scope 可应用在视图和控制器上。
+当在控制器中添加 $scope 对象时，视图 (HTML) 可以获取了这些属性。
+视图中，你不需要添加 $scope 前缀, 只需要添加属性名即可，如： {{carname}}。
+<div ng-app="myApp" ng-controller="myCtrl">
+<h1>{{carname}}</h1>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.carname = "Volvo";
+});
+</script>
+
+如果你修改了视图，模型和控制器也会相应更新：
+<div ng-app="myApp" ng-controller="myCtrl">
+    <input ng-model="name">
+    <h1>{{greeting}}</h1>
+    <button ng-click='sayHello()'>点我</button>    
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "Runoob";
+    $scope.sayHello = function() {
+        $scope.greeting = 'Hello ' + $scope.name + '!';
+    };
+});
+</script>
+
+所有的应用都有一个 $rootScope，它可以作用在 ng-app 指令包含的所有 HTML 元素中。
+$rootScope 可作用于整个应用中。是各个 controller 中 scope 的桥梁。用 rootscope 定义的值，可以在各个 controller 中使用。
+创建控制器时，将 $rootScope 作为参数传递，可在应用中使用：
+<div ng-app="myApp" ng-controller="myCtrl">
+<h1>{{lastname}} 家族成员:</h1>
+<ul>
+    <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+</ul>
+</div>
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope, $rootScope) {
+    $scope.names = ["Emil", "Tobias", "Linus"];
+    $rootScope.lastname = "Refsnes";
+});
+</script>
+
+AngularJS 应用程序被控制器控制。
+ng-controller 指令定义了应用程序控制器。
+控制器是 JavaScript 对象，由标准的 JavaScript 对象的构造函数 创建。
+
+过滤器可以使用一个管道字符（|）添加到表达式和指令中。
+ 过滤器	            描述
+currency	格式化数字为货币格式。
+filter  	从数组项中选择一个子集。
+lowercase	格式化字符串为小写。
+orderBy	    根据某个表达式排列数组。
+uppercase	格式化字符串为大写。
+
+<div ng-app="myApp" ng-controller="personCtrl">
+    <p>姓名为 {{ lastName | uppercase }}</p>
+    <p>姓名为 {{ lastName | lowercase }}</p>
+</div>
+
+<div ng-app="myApp" ng-controller="costCtrl">
+数量: <input type="number" ng-model="quantity">
+价格: <input type="number" ng-model="price">
+<p>总价 = {{ (quantity * price) | currency }}</p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('costCtrl', function($scope) {
+    $scope.quantity = 1;
+    $scope.price = 9.99;
+});
+</script>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+<ul>
+  <li ng-repeat="x in names | orderBy:'country'">
+    {{ x.name + ', ' + x.country }}
+  </li>
+</ul>
+</div>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+<p><input type="text" ng-model="test"></p>
+<ul>
+  <li ng-repeat="x in names | filter:test | orderBy:'country'">
+    {{ (x.name | uppercase) + ', ' + x.country }}
+  </li>
+</ul>
+</div>
+
+reverse
+<div ng-app="myApp" ng-controller="myCtrl">
+姓名: {{ msg | reverse }}
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.msg = "Runoob";
+});
+app.filter('reverse', function() { //可以注入依赖
+    return function(text) {
+        return text.split("").reverse().join("");
+    }
+});
+</script>
+
+
+在 AngularJS 中，服务是一个函数或对象，可在你的 AngularJS 应用中使用。
+AngularJS 内建了30 多个服务。
+有个 $location 服务，它可以返回当前页面的 URL 地址。
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $location) {
+    $scope.myUrl = $location.absUrl();
+});
+
+$http 是 AngularJS 应用中最常用的服务。 服务向服务器发送请求，应用响应服务器传送过来的数据。
+<div ng-app="myApp" ng-controller="myCtrl"> 
+    <p>欢迎信息:</p>
+    <h1>{{myWelcome}}</h1>
+</div>
+<p> $http 服务向服务器请求信息，返回的值放入变量 "myWelcome" 中。</p>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("welcome.htm").then(function (response) {
+      $scope.myWelcome = response.data;
+  });
+});
+</script>
+
+AngularJS $timeout 服务对应了 JS window.setTimeout 函数。   
+<div ng-app="myApp" ng-controller="myCtrl"> 
+    <p>两秒后显示信息:</p>
+    <h1>{{myHeader}}</h1>
+</div>
+<p>$timeout 访问在规定的毫秒数后执行指定函数。</p>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $timeout) {
+  $scope.myHeader = "Hello World!";
+  $timeout(function () {
+      $scope.myHeader = "How are you today?";
+  }, 2000);
+});
+</script>
+
+AngularJS $interval 服务对应了 JS window.setInterval 函数。
+<div ng-app="myApp" ng-controller="myCtrl"> 
+<p>现在时间是:</p>
+<h1>{{theTime}}</h1>
+</div>
+<p>$interval 访问在指定的周期(以毫秒计)来调用函数或计算表达式。</p>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $interval) {
+  $scope.theTime = new Date().toLocaleTimeString();
+  $interval(function () {
+      $scope.theTime = new Date().toLocaleTimeString();
+  }, 1000);
+});
+</script>
+
+自定义服务
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>255 的16进制是:</p>
+<h1>{{hex}}</h1>
+</div>
+<p>自定义服务，用于转换16进制数：</p>
+<script>
+var app = angular.module('myApp', []);
+app.service('hexafy', function() {
+	this.myFunc = function (x) {
+        return x.toString(16);
+    }
+});
+app.controller('myCtrl', function($scope, hexafy) {
+  $scope.hex = hexafy.myFunc(255);
+});
+</script>
+
+<div ng-app="myApp">
+在过滤器中使用服务:
+<h1>{{255 | myFormat}}</h1>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.service('hexafy', function() {
+	this.myFunc = function (x) {
+        return x.toString(16);
+    }
+});
+app.filter('myFormat',['hexafy', function(hexafy) {
+    return function(x) {
+        return hexafy.myFunc(x);
+    };
+}]);
+</script>
+
+
+$http 是 AngularJS 中的一个核心服务，用于读取远程服务器的数据。
+// 简单的 GET 请求，可以改为 POST
+$http({
+    method: 'GET',
+    url: '/someUrl'
+}).then(function successCallback(response) {
+        // 请求成功执行代码
+    }, function errorCallback(response) {
+        // 请求失败执行代码
+});
+
+$http.get('/someUrl', config).then(successCallback, errorCallback);
+$http.post('/someUrl', data, config).then(successCallback, errorCallback);
+
+AngularJS1.5 以上版本 - 实例
+<div ng-app="myApp" ng-controller="siteCtrl"> 
+<ul>
+  <li ng-repeat="x in names">
+    {{ x.Name + ', ' + x.Country }}
+  </li>
+</ul>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('siteCtrl', function($scope, $http) {
+  $http.get("http://www.runoob.com/try/angularjs/data/sites.php")
+  .then(function (response) {$scope.names = response.data.sites;});
+});
+</script>
+
+AngularJS 应用通过 ng-app 定义。应用在 <div> 中执行。
+ng-controller 指令设置了 controller 对象 名。
+函数 customersController 是一个标准的 JavaScript 对象构造器。
+控制器对象有一个属性: $scope.names。
+$http.get() 从web服务器上读取静态 JSON 数据。
+
+
+在 AngularJS 中我们可以使用 ng-option 指令来创建一个下拉列表，列表项通过对象和数组循环输出，如下实例:
+<div ng-app="myApp" ng-controller="myCtrl">
+<select ng-init="selectedName = names[0]" ng-model="selectedName" ng-options="x for x in names">
+</select>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Google", "Runoob", "Taobao"];
+});
+</script>
+<p>该实例演示了 ng-options 指令的使用。</p>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>选择一辆车:</p>
+<select ng-model="selectedCar" ng-options="x for (x, y) in cars">
+</select>
+<h1>你选择的是: {{selectedCar.brand}}</h1>
+<h2>模型: {{selectedCar.model}}</h2>
+<h3>颜色: {{selectedCar.color}}</h3>
+<p>注意选中的值是一个对象。</p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.cars = {
+        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+        car02 : {brand : "Fiat", model : "500", color : "white"},
+        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+    }
+});
+</script>
+
+
+表格
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ $index + 1 }}</td>
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+<table>
+  <tr ng-repeat="x in names">
+    <td ng-if="$odd" style="background-color:#f1f1f1">
+    {{ x.Name }}</td>
+    <td ng-if="$even">
+    {{ x.Name }}</td>
+    <td ng-if="$odd" style="background-color:#f1f1f1">
+    {{ x.Country }}</td>
+    <td ng-if="$even">
+    {{ x.Country }}</td>
+  </tr>
+</table>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("/try/angularjs/data/Customers_JSON.php")
+    .then(function (result) {
+        $scope.names = result.data.records;
+    });
+});
+</script>
+
+
+ng-disabled 指令直接绑定应用程序数据到 HTML 的 disabled 属性。
+<div ng-app="" ng-init="mySwitch=true">
+<p>
+<button ng-disabled="mySwitch">点我!</button>
+</p>
+<p>
+<input type="checkbox" ng-model="mySwitch">按钮
+</p>
+<p>
+{{ mySwitch }}
+</p>
+</div>
+
+ng-show 指令隐藏或显示一个 HTML 元素。  
+<div ng-app="">
+    <p ng-show="true">我是可见的。</p>
+    <p ng-show="false">我是不可见的。</p>
+</div>
+
+ng-hide 指令用于隐藏或显示 HTML 元素。
+<div ng-app="">
+    <p ng-hide="true">我是不可见的。</p>
+    <p ng-hide="false">我是可见的。</p>
+</div>
+
+ng-click 指令定义了 AngularJS 点击事件。
+<div ng-app="myApp" ng-controller="myCtrl">
+<button ng-click="count = count + 1">点我！</button>
+<p>{{ count }}</p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.count = 0;
+});
+</script>
+
+
+模块定义了一个应用程序。
+模块是应用程序中不同部分的容器。
+模块是应用控制器的容器。
+控制器通常属于一个模块。
+JavaScript 中应避免使用全局函数。因为他们很容易被其他脚本文件覆盖。
+AngularJS 模块让所有函数的作用域在该模块下，避免了该问题。
+
+复选框选中后显示 h1 标签内容：
+<form>
+    Check to show a header:
+    <input type="checkbox" ng-model="myVar">
+</form>
+<h1 ng-show="myVar">My Header</h1>
+
+我们可以使用 ng-model 来绑定单选按钮到你的应用中。
+单选框使用同一个 ng-model ，可以有不同的值，但只有被选中的单选按钮的值会被使用
+<body ng-app="">
+<form>
+  选择一个选项:
+  <input type="radio" ng-model="myVar" value="dogs">Dogs
+  <input type="radio" ng-model="myVar" value="tuts">Tutorials
+  <input type="radio" ng-model="myVar" value="cars">Cars
+</form>
+<div ng-switch="myVar">
+  <div ng-switch-when="dogs">
+     <h1>Dogs</h1>
+     <p>Welcome to a world of dogs.</p>
+  </div>
+  <div ng-switch-when="tuts">
+     <h1>Tutorials</h1>
+     <p>Learn from examples.</p>
+  </div>
+  <div ng-switch-when="cars">
+     <h1>Cars</h1>
+     <p>Read about cars.</p>
+  </div>
+</div>
+<p>ng-switch 指令根据单选按钮的选择结果显示或隐藏 HTML 区域。</p>
+
+<body ng-app="">
+<form>
+  选择一个选项:
+  <select ng-model="myVar">
+    <option value="">
+    <option value="dogs">Dogs
+    <option value="tuts">Tutorials
+    <option value="cars">Cars
+  </select>
+</form>
+<div ng-switch="myVar">
+  <div ng-switch-when="dogs">
+     <h1>Dogs</h1>
+     <p>Welcome to a world of dogs.</p>
+  </div>
+  <div ng-switch-when="tuts">
+     <h1>Tutorials</h1>
+     <p>Learn from examples.</p>
+  </div>
+  <div ng-switch-when="cars">
+     <h1>Cars</h1>
+     <p>Read about cars.</p>
+  </div>
+</div>
+
+
+ng-app 指令定义了 AngularJS 应用。
+ng-controller 指令定义了应用控制器。
+ng-model 指令绑定了两个 input 元素到模型的 user 对象。
+formCtrl 函数设置了 master 对象的初始值，并定义了 reset() 方法。
+reset() 方法设置了 user 对象等于 master 对象。
+ng-click 指令调用了 reset() 方法，且在点击按钮时调用。
+novalidate 属性在应用中不是必须的，但是你需要在 AngularJS 表单中使用，用于重写标准的 HTML5 验证。
+<div ng-app="myApp" ng-controller="formCtrl">
+  <form novalidate>
+    First Name:<br>
+    <input type="text" ng-model="user.firstName"><br>
+    Last Name:<br>
+    <input type="text" ng-model="user.lastName">
+    <br><br>
+    <button ng-click="reset()">RESET</button>
+  </form>
+  <p>form = {{user}}</p>
+  <p>master = {{master}}</p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {firstName: "John", lastName: "Doe"};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</script>
+
+
+表单验证
+<form ng-app="myApp" ng-controller="validateCtrl" 
+name="myForm" novalidate>
+    <p>用户名:<br>
+        <input type="text" name="user" ng-model="user" required>
+        <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+        <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+        </span>
+    </p>
+    <p>邮箱:<br>
+        <input type="email" name="email" ng-model="email" required>
+        <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+        <span ng-show="myForm.email.$error.required">邮箱是必须的。</span>
+        <span ng-show="myForm.email.$error.email">非法的邮箱地址。</span>
+        </span>
+    </p>
+    <p>
+        <input type="submit"
+        ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
+        myForm.email.$dirty && myForm.email.$invalid">
+    </p>
+</form>
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.user = 'John Doe';
+    $scope.email = 'john.doe@gmail.com';
+});
+</script>
+$dirty	表单有填写记录
+$valid	字段内容合法的
+$invalid	字段内容是非法的
+$pristine	表单没有填写记录
+
+
+        API	                                描述
+angular.lowercase (<angular1.7）
+angular.$$lowercase()（angular1.7+）	 转换字符串为小写
+angular.uppercase() (<angular1.7）
+angular.$$uppercase()（angular1.7+）	 转换字符串为大写
+angular.isString()	                    判断给定的对象是否为字符串，如果是返回 true。
+angular.isNumber()	                    判断给定的对象是否为数字，如果是返回 true。
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>{{ x1 }}</p>
+<p>{{ x2 }}</p>
+<p>{{ x3 }}</p>
+<p>{{ x4 }}</p>
+<p>{{ x5 }}</p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.x1 = "RUNOOB";
+    $scope.x2 = angular.$$lowercase($scope.x1);
+    $scope.x3 = angular.$$uppercase($scope.x1);
+    $scope.x4 = angular.isString($scope.x1);
+    $scope.x5 = angular.isNumber($scope.x1);
+});
+</script>
+
+<html ng-app	为 <html> 元素定义一个应用(未命名)
+<body ng-controller	为 <body> 元素定义一个控制器
+<tr ng-repeat	循环 users 对象数组，每个 user 对象放在 <tr> 元素中。
+<button ng-click	当点击 <button> 元素时调用函数 editUser()
+<h3 ng-show	如果 edit = true 显示 <h3> 元素
+<h3 ng-hide	如果 edit = true 隐藏 <h3> 元素
+<input ng-model	为应用程序绑定 <input> 元素
+<button ng-disabled	如果发生错误或者 incomplete = true 禁用 <button> 元素
+
+$scope.$watch('passw1',function() {$scope.test();});
+$scope.watch	监控模型变量
+$scope.test	验证模型变量的错误和完整性
+
+使用 AngularJS, 你可以使用 ng-include 指令来包含 HTML 内容:
+<body ng-app="">
+<div ng-include="'runoob.htm'"></div>
+</body>
+
+默认情况下， ng-include 指令不允许包含其他域名的文件。
+如果你需要包含其他域名的文件，你需要设置域名访问白名单：
+<body ng-app="myApp">
+<div ng-include="'https://c.runoob.com/runoobtest/angular_include.php'"></div> 
+<script>
+var app = angular.module('myApp', [])
+app.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'https://c.runoob.com/runoobtest/**'
+    ]);
+});
+</script>
+<p>你需要设置服务端允许跨域访问，设置方法可参考 <a target="_blank" href="/w3cnote/php-ajax-cross-border.html">PHP Ajax 跨域问题最佳解决方案</a>。
+</body>
+
+
+
+AngularJS 使用动画需要引入 angular-animate.min.js 库。
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular-animate.min.js"></script>
+<style>
+div {
+  transition: all linear 0.5s;
+  background-color: lightblue;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.ng-hide {
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top:-200px;
+  left: 200px;
+}
+</style>
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular-animate.min.js"></script>
+</head>
+<body ng-app="ngAnimate">
+<h1>隐藏 DIV: <input type="checkbox" ng-model="myCheck"></h1>
+<div ng-hide="myCheck"></div>
+</body>
+
+如果我们应用已经设置了应用名，可以把 ngAnimate 直接添加在模型中：
+<body ng-app="myApp">
+<h1>隐藏 DIV: <input type="checkbox" ng-model="myCheck"></h1>
+<div ng-hide="myCheck"></div>
+<script>
+var app = angular.module('myApp', ['ngAnimate']);
+</script>
+
+
+ngAnimate 模型可以添加或移除 class 。
+ngAnimate 模型并不能使 HTML 元素产生动画，但是 ngAnimate 会监测事件，类似隐藏显示 HTML 元素 ，如果事件发生 ngAnimate 就会使用预定义的 class 来设置 HTML 元素的动画。
+AngularJS 添加/移除 class 的指令:
+ng-show
+ng-hide
+ng-class
+ng-view
+ng-include
+ng-repeat
+ng-if
+ng-switch
+ng-show 和 ng-hide 指令用于添加或移除 ng-hide class 的值。
+其他指令会在进入 DOM 会添加 ng-enter 类，移除 DOM 会添加 ng-leave 属性。
+当 HTML 元素位置改变时，ng-repeat 指令同样可以添加 ng-move 类 。
+此外， 在动画完成后，HTML 元素的类集合将被移除。例如： ng-hide 指令会添加以下类：
+ng-animate
+ng-hide-animate
+ng-hide-add (如果元素将被隐藏)
+ng-hide-remove (如果元素将显示)
+ng-hide-add-active (如果元素将隐藏)
+ng-hide-remove-active (如果元素将显示)
+
+
+什么是依赖注入
+wiki 上的解释是：依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。
+该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖
+一句话 --- 没事你不要来找我，有事我会去找你。
+AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：
+value
+factory
+service
+provider
+constant
+
+value
+Value 是一个简单的 javascript 对象，用于向控制器传递值（配置阶段）：
+// 定义一个模块
+var mainApp = angular.module("mainApp", []);
+// 创建 value 对象 "defaultInput" 并传递数据
+mainApp.value("defaultInput", 5);
+...
+// 将 "defaultInput" 注入到控制器
+mainApp.controller('CalcController', function($scope, CalcService, defaultInput) {
+   $scope.number = defaultInput;
+   $scope.result = CalcService.square($scope.number);
+   
+   $scope.square = function() {
+      $scope.result = CalcService.square($scope.number);
+   }
+});
+
+factory
+factory 是一个函数用于返回值。在 service 和 controller 需要时创建。
+通常我们使用 factory 函数来计算或返回值。
+// 定义一个模块
+var mainApp = angular.module("mainApp", []);
+// 创建 factory "MathService" 用于两数的乘积 provides a method multiply to return multiplication of two numbers
+mainApp.factory('MathService', function() {
+   var factory = {};
+   
+   factory.multiply = function(a, b) {
+      return a * b
+   }
+   return factory;
+}); 
+// 在 service 中注入 factory "MathService"
+mainApp.service('CalcService', function(MathService){
+   this.square = function(a) {
+      return MathService.multiply(a,a);
+   }
+});
+...
+
+provider
+AngularJS 中通过 provider 创建一个 service、factory等(配置阶段)。
+Provider 中提供了一个 factory 方法 get()，它用于返回 value/service/factory。
+// 定义一个模块
+var mainApp = angular.module("mainApp", []);
+...
+// 使用 provider 创建 service 定义一个方法用于计算两数乘积
+mainApp.config(function($provide) {
+   $provide.provider('MathService', function() {
+      this.$get = function() {
+         var factory = {};  
+         factory.multiply = function(a, b) {
+            return a * b; 
+         }
+         return factory;
+      };
+   });
+});
+
+constant
+constant(常量)用来在配置阶段传递数值，注意这个常量在配置阶段是不可用的。
+mainApp.constant("configParam", "constant value");
+
+
+AngularJS 模块的 config 函数用于配置路由规则。通过使用 configAPI，我们请求把$routeProvider注入到我们的配置函数并且使用$routeProvider.whenAPI来定义我们的路由规则。
+$routeProvider 为我们提供了 when(path,object) & otherwise(object) 函数按顺序定义所有路由，函数包含两个参数:
+第一个参数是 URL 或者 URL 正则规则。
+第二个参数是路由配置对象。
+<script src="https://cdn.bootcss.com/angular.js/1.7.0/angular.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.7.0/angular-route.min.js"></script>
+</head>
+<body ng-app='routingDemoApp'>
+    <h2>AngularJS 路由应用</h2>
+    <ul>
+        <li><a href="#!/">首页</a></li>
+        <li><a href="#!/computers">电脑</a></li>
+        <li><a href="#!/printers">打印机</a></li>
+        <li><a href="#!/blabla">其他</a></li>
+    </ul>
+    <div ng-view></div>
+    <script>
+        angular.module('routingDemoApp',['ngRoute'])
+        .config(['$routeProvider', function($routeProvider){
+            $routeProvider
+            .when('/',{template:'这是首页页面'})
+            .when('/computers',{template:'这是电脑分类页面'})
+            .when('/printers',{template:'这是打印机页面'})
+            .otherwise({redirectTo:'/'});
+        }]);
+    </script>
+</body>
+</html>
+
+
+
+ 指令	                    描述
+ng-app	            定义应用程序的根元素。
+ng-bind	            绑定 HTML 元素到应用程序数据
+ng-bind-html	    绑定 HTML 元素的 innerHTML 到应用程序数据，并移除 HTML 字符串中危险字符
+ng-bind-template	规定要使用模板替换的文本内容
+ng-blur	            规定 blur 事件的行为
+ng-change	        规定在内容改变时要执行的表达式
+ng-checked	        规定元素是否被选中
+ng-class	        指定 HTML 元素使用的 CSS 类
+ng-class-even	    类似 ng-class，但只在偶数行起作用
+ng-class-odd	    类似 ng-class，但只在奇数行起作用
+ng-click	        定义元素被点击时的行为
+ng-cloak	        在应用正要加载时防止其闪烁
+ng-controller	    定义应用的控制器对象
+ng-copy	            规定拷贝事件的行为
+ng-csp	            修改内容的安全策略
+ng-cut          	规定剪切事件的行为
+ng-dblclick	        规定双击事件的行为
+ng-disabled	        规定一个元素是否被禁用
+ng-focus	        规定聚焦事件的行为
+ng-form	            指定 HTML 表单继承控制器表单
+ng-hide	            隐藏或显示 HTML 元素
+ng-href	            为 the <a> 元素指定链接
+ng-if	            如果条件为 false 移除 HTML 元素
+ng-include	        在应用中包含 HTML 文件
+ng-init	            定义应用的初始化值
+ng-jq	            定义应用必须使用到的库，如：jQuery
+ng-keydown	        规定按下按键事件的行为
+ng-keypress	        规定按下按键事件的行为
+ng-keyup	        规定松开按键事件的行为
+ng-list	            将文本转换为列表 (数组)
+ng-model	        绑定 HTML 控制器的值到应用数据
+ng-model-options	规定如何更新模型
+ng-mousedown	    规定按下鼠标按键时的行为
+ng-mouseenter	    规定鼠标指针穿过元素时的行为
+ng-mouseleave	    规定鼠标指针离开元素时的行为
+ng-mousemove	    规定鼠标指针在指定的元素中移动时的行为
+ng-mouseover	    规定鼠标指针位于元素上方时的行为
+ng-mouseup	        规定当在元素上松开鼠标按钮时的行为
+ng-non-bindable	    规定元素或子元素不能绑定数据
+ng-open	            指定元素的 open 属性
+ng-options	        在 <select> 列表中指定 <options>
+ng-paste	        规定粘贴事件的行为
+ng-pluralize	    根据本地化规则显示信息
+ng-readonly	        指定元素的 readonly 属性
+ng-repeat	        定义集合中每项数据的模板
+ng-selected	        指定元素的 selected 属性
+ng-show	            显示或隐藏 HTML 元素
+ng-src	            指定 <img> 元素的 src 属性
+ng-srcset	        指定 <img> 元素的 srcset 属性
+ng-style	        指定元素的 style 属性
+ng-submit	        规定 onsubmit 事件发生时执行的表达式
+ng-switch	        规定显示或隐藏子元素的条件
+ng-transclude	    规定填充的目标位置
+ng-value	        规定 input 元素的值
+
+AngularJS 事件
+AngularJS 支持以下事件:
+ng-click
+ng-dbl-click
+ng-mousedown
+ng-mouseenter
+ng-mouseleave
+ng-mousemove
+ng-keydown
+ng-keyup
+ng-keypress
+ng-change
+
+AngularJS 验证属性
+$dirty
+$invalid
+$error
+
+AngularJS 全局 API
+
+转换
+        API	                 描述
+angular.lowercase()	    将字符串转换为小写
+angular.uppercase()	    将字符串转换为大写
+angular.copy()	        数组或对象深度拷贝
+angular.forEach()	    对象或数组的迭代函数
+
+比较
+        API	                    描述
+angular.isArray()	    如果引用的是数组返回 true
+angular.isDate()	    如果引用的是日期返回 true
+angular.isDefined()	    如果引用的已定义返回 true
+angular.isElement()	    如果引用的是 DOM 元素返回 true
+angular.isFunction()	如果引用的是函数返回 true
+angular.isNumber()  	如果引用的是数字返回 true
+angular.isObject()  	如果引用的是对象返回 true
+angular.isString()	    如果引用的是字符串返回 true
+angular.isUndefined()	如果引用的未定义返回 true
+angular.equals()	    如果两个对象相等返回 true
+
+JSON
+        API	                描述
+angular.fromJson()	反序列化 JSON 字符串
+angular.toJson()	序列化 JSON 字符串
+
+基础
+     API	                描述
+angular.bootstrap()	手动启动 AngularJS
+angular.element()	包裹着一部分DOM element或者是HTML字符串，把它作为一个jQuery元素来处理。
+angular.module()	创建，注册或检索 AngularJS 模块
+
+$emit只能向parent controller传递event与data
+$broadcast只能向child controller传递event与data
+$on用于接收event与data
+
+在angular中使用ng-repeat时数组中有重复元素
+当我们在循环的数组中存在有重复的元素时候，angular的ng-repeat就会报错，那是因为其不允许collection有相同的id（相同的元素会形成相同的id）出现。而基本的数据类型它的id就是它自身的值。
+我们要避免这种情况通常会使用track by $index 来让其生成自己不同的id，这样是最常用的直接通过索引来生成id。我们也可以通过自己设置业务上的id，然后用其进行遍历track by item.id.
+总结一下，解决重复问题的方法就是item in items track by $index
+使用$index会出现的问题。
+我们使用$index不仅仅是为了避免重复元素的问题，有时候会被使用$index的索引来进行一部分操作，这里有一个坑需要注意。
+当我们使用$index的时候，下列情况会出现$index跟原序列不匹配的情况
+当我们改变列表的顺序的时候
+当我们在列表中插入或者删除的时候
+由于$index会跟随item上移下移，或者随之被删除。（例如你把列表第二条和第一条位置互换，这时候列表现在第一条的$index依旧为2，第二条还是原来的1）这时候你再使用$index传值就不在是新数组的索引了，不再匹配。
+所以使用$index的时候要特别注意这些问题

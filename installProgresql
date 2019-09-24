@@ -1,0 +1,73 @@
+
+How to install Postgresql in Linux
+
+    Go to page https://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/
+    URL may find by https://yum.postgresql.org/version, like https://yum.postgresql.org/9.4/
+    Find rpm url about 
+    postgresql94-libs-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    postgresql94-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    postgresql94-contrib-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    postgresql94-server-9.4.7-1PGDG.rhel7.x86_64.rpm
+    
+    wget http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/postgresql94-libs-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    wget http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/postgresql94-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    wget http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/postgresql94-contrib-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    wget http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/postgresql94-server-9.4.7-1PGDG.rhel7.x86_64.rpm
+    
+    yum install -y postgresql94-libs-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    yum install -y postgresql94-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    yum install -y postgresql94-contrib-9.4.7-1PGDG.rhel7.x86_64.rpm 
+    yum install -y postgresql94-server-9.4.7-1PGDG.rhel7.x86_64.rpm
+    
+    service postgresql-9.4 initdb
+    service postgresql-9.4 start
+  
+  
+  
+  142  ssh user@172.20.49.199
+  143  scp PostgreSQL95.tar.gz user@172.20.49.199:/home/user/Desktop/
+  144  ssh user@172.20.49.199
+  145  cd Desktop/
+  146  ls
+  147  cd software/
+  148  scp user@172.20.49.199:/home/user/Desktop/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip
+  149  sudo scp user@172.20.49.199:/home/user/Desktop/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip
+  150  scp user@172.20.49.199:/home/user/Desktop/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip ~/Desktop/
+  151  scp user@172.20.49.199:/home/user/Desktop/liferay-ide-eclipse-linux-x64-2.2.4-ga5-201507230603.tar.gz ~/Desktop/
+  152  ssh user@172.20.49.199
+  153  scp Desktop/PostgreSQL95.tar.gz user@172.20.49.199:/home/user/software
+  154  ls
+  155  cd Desktop/
+  156  ls
+  157  cd PostgreSQL95/
+  158  ls
+  159  cd ..
+  160  ls
+  161  cd PostgreSQL95/
+  162  ls
+  163  yum install -y postgresql95-libs-9.5.15-1PGDG.rhel6.x86_64.rpm
+  164  sudo yum install -y postgresql95-libs-9.5.15-1PGDG.rhel6.x86_64.rpm
+  165  ls
+  166  sudo yum install -y postgresql95-9.5.15-1PGDG.rhel6.x86_64.rpm
+  167  ls
+  168  sudo yum install postgresql95-contrib-9.5.15-1PGDG.rhel6.x86_64.rpm
+  169  ls
+  170  sudo yum install postgresql95-server-9.5.15-1PGDG.rhel6.x86_64.rpm
+  171  execute service postgresql95-9.5 initdb
+  172  service postgresql95-9.5 initdb
+  173  service postgresql95-9.5 start
+  174  ls
+  175  cd /usr/
+  176  ls
+  177  cd pgsql-9.5/
+  178  ls
+  179  service postgresql-9.5 start
+  180  systemctl status postgresql-9.5.service
+  181  systemctl start postgresql-9.5.service
+  182  journalctl -xe
+  183  systemctl status postgresql-9.5.service
+  184  service postgresql-9.5 initdb
+  185  sudo service postgresql-9.5 initdb
+  186  service postgresql-9.5 start
+  187  psql -U postgres
+  188  sudo su postgres

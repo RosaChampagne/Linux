@@ -1,0 +1,68 @@
+更改git配置信息：
+        git config remote.origin.url git@bitbucket.org:hsf30/hsf3.git
+	git config user.email "hsf3.jimmy.wang@augmentum.com"
+	git config user.name "Jimmy Wang"
+	ssh-keygen -t rsa -C "hsf3.simon.pan@augmentum.com"
+	git config --global push.default simple
+	git config --global core.autocrlf false
+
+	git config --global http.proxy 'socks5://172.20.49.28:1080'
+
+	git config --global https.proxy 'socks5://172.20.49.28:1080'
+
+查看配置信息：git config -l
+创建一个分支: git checkout -b branchName origin/develop (创建》切换》拉取develop的代码)
+删除本地分支: git branch -D branchName
+
+
+
+查看当前分支：git branch
+git add -A(所有改变)/-u（不包括新建的文件）/.(不包括删除的文件)
+ git commit -m "message"
+ git commit --amend "追加commit" (包括上次改变)
+git log (最上面一条是自己的提交日志，commit code 可用于回滚)
+git cherry-pick target-commit-id
+
+获取最新代码： git fetch --all
+将本地改变加到最新代码中：git rebase origin/develop
+git push origin HSF3-7854_FixIssueAboutQueryScholarInforsToRefundByFristNameAndLastName 
+git push origin HSF3-7854_FixIssueAboutQueryScholarInforsToRefundByFristNameAndLastName -f(强制push)
+HSF3-ChangeDateOfRecommenderStage
+
+回滚提交：git reset commitId
+
+工作区 缓冲区  
+submit to hotFix:
+
+ git checkout -b HSF3-7813_SetRankingDefaultValueWhenEmpty_HotFix origin/HotFix_Prod_S76_1
+ git cherry-pick ab4c9c122258d69cadb44534829b0b25d4499641
+ git log
+ git push origin HSF3-7813_SetRankingDefaultValueWhenEmpty_HotFix	
+ git push的一般形式为 git push <远程主机名> <本地分支名> <远程分支名> 
+
+
+更改分支名字：
+  本地：git branch -m oldName newName
+  远程：
+    a. 重命名远程分支对应的本地分支
+       git branch -m oldName newName
+    b. 删除远程分支
+       git push --delete origin oldName
+    c. 上传新命名的本地分支
+       git push origin newName
+    d.把修改后的本地分支与远程分支关联
+       git branch --set-upstream-to origin/newName
+
+合并commit:
+   git rebase -i HEAD~7 
+
+
+储藏：
+   git stash
+   git stash list
+   git stash apply
+
+
+
+
+

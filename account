@@ -1,0 +1,80 @@
+http://hsf.hsf3-dev.net/sign-in
+https://hsf.hsf3-dev.net/c/portal/login?login=test@hsf3-dev.net&password=test
+test@hsf3-dev.net/test
+
+http://localhost:8080/c/portal/login?login=test@liferay.com&password=test
+8：30 / 11：30 /  15: 30 每天的这三个时间会自动部署dev环境，大概半个小时就会部署好
+软件路径：smb://172.20.2.9/project/HSF/DEV/HSF%20References/DevEnvironment/Software(CentOS)
+
+
+localhost data
+cynthia@test.com  student                   190401
+willliam@test.com  event volunteer          190429  
+test001@test.com student scholar            190649
+test002@test.com student volunteer Mentor   190716
+test003@test.com counselor recommender      211714  
+test004@test.com Educator  Recommenders     227505
+test005@test.com student                    231003
+test006@test.com Supporter                  240601
+test007@test.com student                    244101
+
+reader04@augmentum.com  reader
+mentor01@augmentum.com  mentor
+app01@augmentum.com     student  填了recommender的form
+rec08@augmentum.com     recommender
+rec09@augmentum.com     recommender
+app14@augmentum.com     mentee
+coun02@augmentum.com    counselor
+interv01@augmentum.com  interviewer   完成了application、certification
+interv02@augmentum.com  interviewer
+
+用来测试program time
+reader05@augmentum.com  reader  
+reader06@augmentum.com  reader   完成了application
+reader07@augmentum.com  reader   完成了application、certification
+reader08@augmentum.com  reader   完成了application 
+
+Disbursement
+
+
+https://bitbucket.org/hsf30/hsf3/pull-requests/3684/bug-hsf3-3146-comment-fix-program-request/diff
+
+dev
+testrec1@test.com           student
+testrec@test.com            educator  recommender
+testReader@test.com         Supporter
+testReader2@test.com
+Dev4Hsf1!
+
+gates
+test@hsf3-beta.net   Dev4Hsf1!
+gates001@test.com    student
+gates002@test.com    recommender
+hsf3-recommender12@augmentum.com
+
+Recommender_Test   hsf3-applicant111@augmentum.com/Dev4Hsf1! 
+Test Program   hsfaugmentum+applicant620@gmail.com/Dev4Hsf1!
+hsfaugmentum+recommender601@gmail.com/Dev4Hsf1!
+
+all production
+tina.deng@augmentum.com     Abcd1234_
+
+
+
+
+HSF-DEV数据库
+postgres-hsf3-dev.ccim3zvi3nz1.ap-southeast-1.rds.amazonaws.com user/pwd: augmentdev/AugDev4Hsf1!
+psql -U augmentdev -d postgres -h postgres-hsf3-dev.ccim3zvi3nz1.ap-southeast-1.rds.amazonaws.com
+lportal_tenant_1    
+
+
+all 以下是Dev 最新的帐号分配：
+hsf3.luke.chen@augmentum.com --Anders Hu
+hsf.susanna.shi@augmentum.com  --Barry Jin
+hsf3.anders.hu@augmentum.com  --Melody Shi
+hsf3.jesson.liu@augmentum.com --Marty Ji
+hsf3.steven.xiao@augmentum.com --Clark Yang
+hsf3.rudolf.luo@augmentum.com -- Giles Xu
+hsf3.jimmy.wang@augmentum.com --Cythina Zhu
+hsf3.simon.pan@augmentum.com --Aiden Zuo
+hsf3.pearl.zhou@augmentum.com --Pearl Zhou

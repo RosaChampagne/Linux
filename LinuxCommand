@@ -1,0 +1,6 @@
+linux 中解压jar
+unzip XXX.jar -d app
+
+
+打jar 进入到解压目录里面（app）
+jar cvfm0 MR-XDR-JMR-NEW.jar META-INF/MANIFEST.MF .

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+    <input type="checkbox" id="checkbox" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $("#checkbox").mouseup(function() {
+            console.log("click");
+        });
+        $("#checkbox").change(function() {
+            console.log("change");
+        });
+        console.log(typeof(document.body.style.maxHeight));
+        if (!$.support.leadingWhitespace) {
+            console.log("test");
+        }
+
+        //if (window.navigator.userAgent.indexOf('Trident') >= 0) {
+        $(function() {
+            // Pointer events in IE10, IE11 can be handled as mousedown.
+            $(document).on('mousedown', 'input', function() {
+                // Only fire the change event if the input is indeterminate.
+                if (this.indeterminate) {
+                    console.log("cynthia");
+                    $(this).trigger('change');
+                }
+            });
+        });
+        //}
+    </script>
+</body>
+
+</html>

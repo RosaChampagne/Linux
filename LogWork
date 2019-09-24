@@ -1,0 +1,28 @@
+1、登录jira，进入：
+    https://hsftechnologyservices.atlassian.net/projects/HSF3?selectedItem=com.atlassian.jira.jira-projects-plugin:report-page
+
+2、选择最下面的Workload Pie Chart Report
+
+3、点击Change Filter or Project...，选择对应的sprint
+    如果没有对应的sprint就点击jira左边的search图标，点击Advanced search for issues
+    点击Advanced，输入：project = HSF3 AND fixVersion = 1.0.84 AND component in ("SOW#2", "SOW#3", "SOW#5")
+    点击save as 修改fixVersion名称为当前sprint名称
+
+4、Statistic Type -> 选择Assignee
+       Time field to report on -> 选择Time Spent
+
+5、点击next查看report
+
+
+把所有的时间加起来，看一下和总的时间比较还差多长时间
+
+查看logwork的脚本:
+var count =0;jQuery('#singlefieldpie-report-datatable tbody tr').each(function(i,item){var td=jQuery(item).find('td:eq(0)');count+=(parseInt(td.text())?parseInt(td.text()):0)});console.log(count);
+
+13 deployer
+ 13 * 8 = 104
+
+sprint84
+    8+8+8+8.5+8+8+8+8+8+8+8+4+2=94.5
+
+    上个sprint拖下来29.5h

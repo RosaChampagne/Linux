@@ -1,0 +1,7 @@
+Sass::SyntaxError: File to import not found or unreadable: compass.
+
+    删除tmp目录下面的liferay，替换掉bundle中的webapp/root/html文件。
+
+进入interviewer-management页面报错
+    Web Content里面的Interviewer Configuration缺少了配置
+    先修改Interviewer Configuration，再添加配置

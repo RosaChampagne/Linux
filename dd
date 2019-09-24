@@ -1,0 +1,21 @@
+http://hsf.hsf3-dev.net/c/portal/login?login=test@hsf3-dev.net&password=test
+
+
+    http://localhost:8080/c/portal/login?login=test@liferay.com&password=test
+    
+    /dynamic_data_lists
+    /edit_record
+    
+    
+    
+    
+        /*DDMXML ddmxml = DDMXMLUtil.getDDMXML();
+        System.out.println(ddmxml.getXML(fields));
+        PortletSession session = request.getPortletSession();
+        User user = (User) session.getAttribute(Constants.USER);*/
+
+        /*String name =  fields.get(Constants.NAME).getValue().toString();
+        String gender =  fields.get(Constants.GENDER).getValue().toString();
+        String age =  fields.get(Constants.AGE).getValue().toString();
+        String birthDate =  fields.get(Constants.BIRTH_DATE).getValue().toString();
+        String hobby =  fields.get(Constants.HOBBY).getValue().toString();*/

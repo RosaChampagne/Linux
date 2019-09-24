@@ -1,0 +1,481 @@
+1、看客户要求，登录对应site，核对programId是否正确，
+
+2、修改doSingleInterviewerApplication.sh里面的：
+    targetdbname="rpt_tgs"
+
+    originalschemaname="cohort2_tgsstories_questionnaire"
+
+    #true/false
+    isDumpNormalstage="true"
+    programid="132959125"
+    stageid="4"
+
+    #If no dependentstageid, dependentstageid set 0
+    dependentstageid="0"
+    #running/done
+    status="''"
+    childstagename="''"
+    childstatus="''"
+
+    formsList="TGS_Stories_Confirm_Info_Cohort_2_DDL TGS_Stories_Questionnaire_Cohort_2_DDL TGS_Stories_Confirm_Family_Cohort_2_DDL"
+        如果DDL的名字有空格，用英文的逗号代替
+
+    scriptname="doSingleTGSCohort2TgsstoriesQuestionnaire.sh"
+3、    ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.191.191
+ip变了：ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.212.123.46
+    第一次连接服务器需要密钥augmentem_dev_rsa，放在/home/user/.ssh/augmentem_dev_rsa目录下，
+    修改权限  chmod 600 augmentem_dev_rsa
+
+    scp -l 2000 -i ~/.ssh/augmentem_dev_rsa /home/user/Desktop/MainDumpTest.jar augumentdev@34.212.123.46:/home/augumentdev
+
+4、修改task_for_gates_cohort2_teambuilding_survey.sh里面的：
+    declare -a OUTPUT_FILE=etl_applicant_gates_cohort2_teambuilding_survey.$DATETIME.log
+
+    ###Daily
+    sh ${script_path}/etl_applicant_bash/doSingleTGSCohort2TeambuildingSurvey.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+
+5、sudo su
+    cd ~/etl_applicant/
+    cd etl_applicant_bash/
+    vi doSingleTGSCohort2TgsstoriesQuestionnaire.sh
+    cd ../
+    vi task_for_gates_cohort2_tgsstories_questionnaire.sh
+    ls -l
+    chmod 755 task_for_gates_cohort2_tgsstories_questionnaire.sh
+    ls -l
+    crontab -e 添加代码
+        ###These job 20190610-20190630
+        30 3 * 6 * /root/etl_applicant/task_for_gates_cohort2_teambuilding_survey.sh > /dev/null 2>&1
+    date
+
+
+6、数据库查看
+    psql -U liferay -h prod-rpt.ce1r2osywogf.us-west-2.rds.amazonaws.com
+    密码：AugDev4Hsf1!
+
+    \l
+    \c rpt_tgs
+    \dn
+    select * from log_etl.etl_job order by pkid desc limit 5;   核对status是否为success
+    select * from log_etl.job_detail where etlid = 3010;    核对table_record_count是否正确
+    select * from log_etl.insert_detail where job_detail_id = 2440;
+    select * from log_etl.dump_detail where job_detail_id = 2440;   核对ddl_record_count是否正确
+
+prod2 wellsfargo
+
+prod1  tgs、hsf
+
+java执行etl参数
+MainDump：
+    /root/etl_applicant/etl_applicant_bash 
+    rds-prod-hsfts-hsf3-server1.ce1r2osywogf.us-west-2.rds.amazonaws.com 
+    lportal_ylc 
+    yls_student_app_2019_additional_detai 
+    prod-rpt.ce1r2osywogf.us-west-2.rds.amazonaws.com 
+    rpt_hsf 
+    log_etl 
+    liferay 
+    AugDev4Hsf1! 
+    3 
+    22245 
+    100552102 
+    true 
+    8 
+    '' 
+    12 
+    '' 
+    '' 
+    rpt_hsf 
+    2019_YLS_Student_Additional_Details_Form_DDL 2019_YLS_Student_Update_Personal_Information__DDL 2019_YLS_Student_Travel_Information_DDL 2019_YLS_Student_Health_Information_Special_Accomodations_DDL 2019_YLS_Student_Emergency_Contact_Information_DDL 2019_YLS_Student_Supplemental_Materials_DDL 2019_YLS_Student_Agreements_DDL
+
+MainProcess：
+    /root/etl_applicant/etl_applicant_bash 
+    prod-rpt.ce1r2osywogf.us-west-2.rds.amazonaws.com 
+    rpt_hsf yls_student_app_2019_additional_detai liferay 
+    AugDev4Hsf1! 
+    22245 
+    log_etl
+
+
+
+
+必须有
+#check dump view success
+dumpView=(`psql "host=${!targetserver} dbname=${targetdbname} user=${username} password=${password}" -c "select status from ${logSchemaName}.etl_job where script_name = 'dumpView.sh' order by start_time desc limit 1"`)
+dumpViewResult=${dumpView[2]}
+echo "dump view result:"${dumpViewResult}
+if [ ! "success" = "${dumpViewResult}" ]
+then
+  echo 'dump view not success'
+  exit
+fi
+
+#delete schema folder
+jobStatusResult=(`psql "host=${!targetserver} dbname=${targetdbname} user=${username} password=${password}" -c "select status from ${logSchemaName}.etl_job where rpt_db_name = '${targetdbname}' and schema_name = '${schemaname}' and script_name = '${scriptname}' order by pkid desc limit 1"`)
+echo "${jobStatusResult[2]}"
+
+if [ "${jobStatusResult[2]}" == "success" ]
+then
+    echo "delete folder ${currentfolderPath}"
+    rm -rf ${currentfolderPath}
+elif [ "${jobStatusResult[2]}" == "running" ]
+then
+    echo "This job is running"
+    exit
+fi
+
+
+
+
+
+MainDump：将数据dump到csv文件当中
+Normalstage：
+创建DumpDir
+连接hsf数据库
+创建JobDetail表：pkid、etlid、dump_start_time、dump_end_time、dump_status
+创建DumpDetail表：pkid、job_detail_id、ddl_name、start_time、end_time、ddl_record_count
+startDumpJob
+    插入数据到job_detail表：etlid, dump_start_time, dump_status（running）
+Dump user info
+    查询信息为：userid、firstname、lastname、emailaddress、birthday、createdate、lastlogindate、programid、status、startedTime、submittedTime、gpa
+    dumpUserInfoFileCount
+    startDumpJob
+        插入数据到dump_detail表：job_detail_id, ddl_name, start_time
+    dumpCustomRecordResults
+        将userInformation放到csv文件当中
+    dumpUserInfoList
+        createUserInfoFile：创建每一个user的相关ddl记录，文件名为userID
+    endDumpJob
+        更新dump_detail：ddl_record_count
+DDL Name List
+    dumpStructureFile：根据DDL名字找到对应的DD的ID
+    如果是Academic_SchoolHistory_DDL：getCsvFileFromSchoolHistoryCount
+        根据structureId在表hsf_profile_profileuserdata查询count
+    如果不是：getCsvFileCount
+        根据programId、structureId、stageStructure、status在表hsf_program_programrequest查询count
+        createDDLProcess
+    DumpCsvSplitSingleDDLTherad
+        checkDDLStart
+            startDumpJob
+                插入数据到dump_detail表：job_detail_id, ddl_name, start_time
+        如果是Academic_SchoolHistory_DDL：dumpCsvFileFromSchoolHistory
+            根据structureId在表hsf_profile_profileuserdata查询数据
+            dumpCSVRecordSetResults
+                createSingleCSVFileByUserId
+                    将DDL里面的数据存放到不同的user的目录下面
+        如果不是：dumpCsvFile
+            根据programId、structureId、stageStructure、status、stageStatus、recordSetName在表hsf_program_programrequest查询userid、recordid、recordcontent
+            dumpCSVRecordSetResults
+        checkDDLComplete
+            endDumpJob
+                更新dump_detail表：end_time、ddl_record_count
+dump custom data that depend stage status
+    dumpDependentStageStatusFile
+        根据programId在表hsf_program_programrequest查询：userid、selected、waitlisted
+        dumpDependentStageStatusFileCount
+        startDumpJob
+            插入数据到表dump_detail：job_detail_id, ddl_name, start_time
+        dumpCustomRecordResults
+            createCustomDumpResultFile
+                stage_status目录下面的csv文件（非user_information）
+        endDumpJob
+            更新dump_detail表： end_time、ddl_record_count、ddlName
+    dumpProgramInformation
+        select programid, programname, active_, hidden_, scholarsonly from hsf_program_programstatus....
+        dumpProgramInformationCount
+            select count(1) from hsf_program_programstatus
+        startDumpJob
+            插入数据到表dump_detail：job_detail_id, ddl_name, start_time
+        dumpCustomRecordResults
+            创建hsf_programinformation.csv文件
+        endDumpJob
+            更新dump_detail表： end_time、ddl_record_count、ddlName
+    如果stageID是19
+        dumpRecommenderRequestStatus
+            dumpRecommenderRequestStatusCount
+            startDumpJob
+                插入数据到表dump_detail：job_detail_id, ddl_name, start_time
+            dumpCustomRecordResults
+                创建Recommender_Request_Status.csv文件
+            endDumpJob
+                更新dump_detail表： end_time、ddl_record_count、ddlName
+        dumpAdditionalRecommenderInfo
+            dumpAdditionalRecommenderInfoCount
+            startDumpJob
+                插入数据到表dump_detail：job_detail_id, ddl_name, start_time
+            dumpCustomRecordResults
+                创建Additional_Recommender_Info.csv文件
+            endDumpJob
+                更新dump_detail表： end_time、ddl_record_count、ddlName
+更新job_detail表：dump_end_time、dump_status
+
+
+ReaderStage：
+创建DumpDir
+连接hsf数据库
+创建JobDetail表：pkid、etlid、dump_start_time、dump_end_time、dump_status
+创建DumpDetail表：pkid、job_detail_id、ddl_name、start_time、end_time、ddl_record_count
+startDumpJob
+    插入数据到job_detail表：etlid, dump_start_time, dump_status（running）
+dumpStructureFile：根据DDL名字找到对应的DD的ID
+如果childstageName是Evaluations：
+    dumpCsvFileFromReaderEvaluation
+        select reader.userid, r.recordid as recordid, d.xml recordcontent
+        getCsvFileFromReaderEvaluationCount
+        startDumpJob
+            插入数据到dump_detail表：job_detail_id, ddl_name, start_time
+        dumpCSVRecordSetResults
+            createSingleCSVFileByUserId
+        endDumpJob
+如果不是：
+    dumpCsvFileFromReaderAppOrCet
+        select r.userid, r.recordid as recordid, xml recordcontent
+    getCsvFileFromReaderAppOrCetCount
+    startDumpJob
+    dumpCSVRecordSetResults
+        createSingleCSVFileByUserId
+    endDumpJob
+dump reader info
+    dumpSpecialUserInfoFile
+        userid、firstname、lastname、emailaddress、birthday、createdate、lastlogindate、programid、status、startedTime、submittedTime、gpa
+        dumpSpecialUserInfoFileCount
+        startDumpJob
+        dumpCustomRecordResults
+            createCustomDumpResultFile
+        dumpUserInfoList
+        endDumpJob
+如果childStageName为Evaluations
+    dumpStudentInfoFileForReader
+        userid、firstname、lastname、emailaddress、birthday、createdate、lastlogindate、programid、status、startedTime、submittedTime、gpa
+        dumpStudentInfoFileForReaderCount
+        startDumpJob
+        dumpCustomRecordResults
+            createCustomDumpResultFile
+        dumpUserInfoList
+            createUserInfoFile：userID.csv
+        endDumpJob
+    dumpReaderEvaluationSatus
+        evaluation.userid as readerid, gpa.userid as studentid, evaluation.programrequestid,cumulative_recordid，highlight_recordid,quiz_form_recordid，flag_recordid，essay_recordid，evaluation.status
+        dumpReaderEvaluationSatusCount
+        startDumpJob
+        dumpCustomRecordResults
+        endDumpJob
+dumpProgramInformation
+endDumpJob
+
+
+
+RecommenderStage：
+创建DumpDir
+连接hsf数据库
+创建JobDetail表：pkid、etlid、dump_start_time、dump_end_time、dump_status
+创建DumpDetail表：pkid、job_detail_id、ddl_name、start_time、end_time、ddl_record_count
+startDumpJob
+    插入数据到job_detail表：etlid, dump_start_time, dump_status（running）
+dumpStructureFile：根据DDL名字找到对应的DD的ID
+dumpCsvFileFromRecommender
+    userid、recordid、recordcontent
+    getCsvFileFromRecommenderCount
+    startDumpJob
+    dumpCSVRecordSetResults
+        createSingleCSVFileByUserId
+    endDumpJob
+dump user(recommender) information
+    dumpSpecialUserInfoFile
+        userid、firstname、lastname、emailaddress、birthday、createdate、lastlogindate、programid、status、startedTime、submittedTime、gpa
+        dumpSpecialUserInfoFileCount
+        startDumpJob
+        dumpCustomRecordResults
+            createCustomDumpResultFile
+        dumpUserInfoList
+            createUserInfoFile
+        endDumpJob
+dump recommender status data
+    dumpRecommenderSatus
+        select recommenderid, studentid, recordid, recommendationstatus,tablename
+        dumpRecommenderSatusCount
+        startDumpJob
+        dumpCustomRecordResults
+            createCustomDumpResultFile
+        endDumpJob
+dumpProgramInformation
+endDumpJob
+
+
+InterviewStage
+创建DumpDir
+连接hsf数据库
+创建JobDetail表：pkid、etlid、dump_start_time、dump_end_time、dump_status
+创建DumpDetail表：pkid、job_detail_id、ddl_name、start_time、end_time、ddl_record_count
+startDumpJob
+    插入数据到job_detail表：etlid, dump_start_time, dump_status（running）
+dumpStructureFile：根据DDL名字找到对应的DD的ID
+如果childStageName为Application
+    dumpCsvFileFromInterviewerApplication
+        r.userid, r.recordid as recordid, xml recordcontent
+        getCsvFileFromInterviewerApplicationCount
+        startDumpJob
+        dumpCSVRecordSetResults
+            createSingleCSVFileByUserId
+        endDumpJob
+如果不是：
+    dumpCsvFileFromInterviewerEvaluation
+        r.userid, r.recordid as recordid, xml recordcontent
+        getCsvFileFromInterviewerEvaluationCount
+        startDumpJob
+        dumpCSVRecordSetResults
+        endDumpJob
+如果childStageName为Application
+    dumpSpecialUserInfoFile
+    dumpInterviewerApplicationStatus
+        hi.pkid as evaluationid, invitationid, startedtime, submittedtime, applyrequesttype，wheretocontinue, allowquiz
+        dumpInterviewerApplicationStatusCount
+        startDumpJob
+        dumpCustomRecordResults
+            createCustomDumpResultFile
+        endDumpJob
+如果不是：
+    dumpSpecialUserInfoFile
+    dumpInterviewerEvaluationStatus
+        hi.pkid as evaluationid, programrequestid, programid, applicantid, invitationid, interviewerid,interviewertype, status, startedtime, completedtime, wheretocontinue, createdby,createdtime, updatedby, updatedtime
+        dumpInterviewerEvaluationStatusCount
+        startDumpJob
+        dumpCustomRecordResults
+        endDumpJob
+    dumpInterviewerEvaluationRecord
+        evaluationid, recordid, structureid
+        dumpInterviewerEvaluationRecordCount
+        startDumpJob
+        dumpCustomRecordResults
+        endDumpJob
+dumpProgramInformation
+endDumpJob
+
+
+CounselorStage
+创建DumpDir
+连接hsf数据库
+创建JobDetail表：pkid、etlid、dump_start_time、dump_end_time、dump_status
+创建DumpDetail表：pkid、job_detail_id、ddl_name、start_time、end_time、ddl_record_count
+startDumpJob
+    插入数据到job_detail表：etlid, dump_start_time, dump_status（running）
+dumpStructureFile：根据DDL名字找到对应的DD的ID
+dumpCsvFileFromCounselor
+    request.counselorid as userid, r.recordid as recordid,xml recordcontent
+    getCsvFileFromCounselorCount
+    startDumpJob
+    dumpCSVRecordSetResults
+    endDumpJob
+dump user(counselor) information
+    dumpSpecialUserInfoFile
+        dumpSpecialUserInfoFileCount
+        startDumpJob
+        dumpCustomRecordResults
+        dumpUserInfoList
+        endDumpJob
+dump student information
+    dumpStudentInfoFileForCounselor
+        dumpStudentInfoFileForCounselorCount
+        startDumpJob
+        dumpCustomRecordResults
+        dumpUserInfoList
+        endDumpJob
+dump counselor status data
+    dumpCounselorSatus
+        select counselorid, studentid, recordid, counselorstatus, 'counselor_survey_form_1' as tablename 
+        dumpCounselorSatusCount
+        startDumpJob
+        dumpCustomRecordResults
+        endDumpJob
+dumpProgramInformation
+endDumpJob
+
+
+
+MainProcess：将csv文件的数据上传到数据库
+连接etl数据库
+getjobDetailId
+createInsertDetailTable：insert_detail
+updateTableStartInsertStatus
+    更新job_detail表：insert_start_time，insert_status = 'running'
+import data source
+    convertDataSourceData
+    createDataSourceTable
+        createTableSequence
+        createTableQuery：根据schema的名字和table的名字创建表
+    insertDataSourceTable
+        insertTableQuery：将数据插入到table当中
+import user info
+    importCustomTableData
+        convertCustomData
+        createCustomTable
+            createTableSequence
+            createTableQuery
+        insertDataToCustomTable
+    convertUserInfoData
+    createUserInfoTable
+        createTableSequence
+        createTableQuery
+    insertDataToUserInfoTable
+        insertTableQuery
+import structure data
+    importStructureInfoData
+        importRecordSetData
+            convertFieldTypesData
+            importRecordSetData
+        createFormsTable
+            formataTableName
+            createTableSequence
+            judgeReferenceRelation
+            createTableQuery
+                subColumnName
+    importRecordData
+        judgeFiles
+        convertFormData
+            convertFormDataToRecords
+        insertFormTableData
+            formataTableName
+            insertFormTableQuery
+                getSpecialColumnNames
+            splitRepeatableValuesByRecord
+        updateReferenceIdBySql
+    updateReferenceIdByFieldsDisplay
+import depentStage status
+    importCustomTableData
+        convertCustomData
+        createCustomTable
+            createTableSequence
+            createTableQuery
+        insertDataToCustomTable
+            insertTableQuery
+import recommender status
+    importCustomTableData
+import reader Evaluation Status
+    importCustomTableData‘
+import interview Evaluation status
+    importCustomTableData
+import interview Application status
+    importCustomTableData
+import interview Evaluation Record
+    importCustomTableData
+import counselor Status
+    importCustomTableData
+import program information
+    importCustomTableData
+import document information
+    importCustomTableData
+import structure field data
+    importStructureFieldProcess
+        convertCustomData
+        createCustomTable
+            createTableSequence
+            createTableQuery
+        insertDataToCustomTable
+            insertTableQuery
+import recommender request status data
+    importCustomTableData
+import additional recommender
+    importCustomTableData
+
+
+

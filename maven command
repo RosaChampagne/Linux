@@ -1,0 +1,14 @@
+page:
+
+theme:
+
+mvn
+
+clean package liferay:deploy
+
+maven install
+
+clean package install
+
+
+clean package liferay:build-service

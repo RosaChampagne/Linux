@@ -1,0 +1,71 @@
+-Dmaven.multiModuleProjectDirectory=$MAVEN_HOME -Xms512m -Xmx1024m
+
+-Xmx2G -XX:MaxPermSize=1024m
+
+
+-Dmaven.multiModuleProjectDirectory=$MAVEN_HOME -Xms1024m -Xmx1024m -XX:PermSize=1024m
+
+
+
+
+[INFO] HSF Plugins ........................................ SUCCESS [  0.159 s]
+[INFO] Shared Library ..................................... SUCCESS [  0.528 s]
+[INFO] HSF Plugins Shared Ext ............................. SUCCESS [  0.003 s]
+[INFO] HSF Plugins Shared Ext Lib Global .................. SUCCESS [  0.003 s]
+[INFO] HSF Plugins Shared Ext Lib Portal .................. SUCCESS [  0.003 s]
+[INFO] HSF Plugins Shared Ext Service ..................... SUCCESS [  0.017 s]
+[INFO] HSF Plugins Shared Ext Util Bridges ................ SUCCESS [  0.013 s]
+[INFO] HSF Plugins Shared Ext Util Java ................... SUCCESS [  0.014 s]
+[INFO] HSF Plugins Shared Ext Util Taglib ................. SUCCESS [  0.013 s]
+[INFO] HSF Plugins Shared Ext Impl ........................ SUCCESS [  0.578 s]
+[INFO] HSF Plugins Shared Ext Web ......................... SUCCESS [  0.275 s]
+[INFO] HSF Plugins Shared Ext Ext ......................... SUCCESS [  1.043 s]
+[INFO] Shared Portlet ..................................... SUCCESS [  8.051 s]
+[INFO] Shared Hook ........................................ SUCCESS [  0.638 s]
+[INFO] Shared Data ........................................ SUCCESS [  1.309 s]
+[INFO] Shared Layout ...................................... SUCCESS [  0.028 s]
+[INFO] MoblieApi Portlet .................................. SUCCESS [  1.631 s]
+[INFO] HSF Base Theme ..................................... SUCCESS [  1.374 s]
+[INFO] HSF Base Public Theme .............................. SKIPPED
+[INFO] HSF Shared Theme ................................... SKIPPED
+[INFO] HSF Universal Public Theme ......................... SKIPPED
+[INFO] HSF Gates Theme .................................... SKIPPED
+[INFO] HSF Gates Public Theme ............................. SKIPPED
+[INFO] HSF Gates Dashboard Theme .......................... SKIPPED
+[INFO] HSF HSF Theme ...................................... SKIPPED
+[INFO] HSF HSF Public Theme ............................... SKIPPED
+[INFO] HSF HSF Dashboard Theme ............................ SKIPPED
+[INFO] HSF HSF Public NoDonate Theme ...................... SKIPPED
+
+
+
+
+
+
+Error: Could not find or load main class Xmx2G
+
+
+
+[INFO] HSF Plugins Shared Ext ............................. SUCCESS [  0.003 s]
+[INFO] Shared Portlet ..................................... SUCCESS [  8.051 s]
+[INFO] Shared Hook ........................................ SUCCESS [  0.638 s]
+[INFO] Shared Layout ...................................... SUCCESS [  0.028 s]
+[INFO] MoblieApi Portlet .................................. SUCCESS [  1.631 s]
+[INFO] HSF Universal Public Theme ......................... SKIPPED
+[INFO] HSF Gates Theme .................................... SKIPPED
+[INFO] HSF Gates Public Theme ............................. SKIPPED
+[INFO] HSF Gates Dashboard Theme .......................... SKIPPED
+[INFO] HSF HSF Theme ...................................... SKIPPED
+[INFO] HSF HSF Public Theme ............................... SKIPPED
+[INFO] HSF HSF Dashboard Theme ............................ SKIPPED
+[INFO] HSF HSF Public NoDonate Theme ...................... SKIPPED
+
+
+创建数据库
+打开数据库服务
+解压一个liferay
+替换data
+加上portal-ext.properties
+修改portal-ext.properties的路径
+修改.m2里面的setting.xml里面的路径
+启动

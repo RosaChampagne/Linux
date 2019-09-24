@@ -1,0 +1,6 @@
+/*ThemeDisplay themeDisplay = (ThemeDisplay)renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
+        PortletURL renderUrl =  PortletURLFactoryUtil.create(renderRequest, themeDisplay.getPortletDisplay().getId(), themeDisplay.getPlid(), PortletRequest.RENDER_PHASE);
+        renderUrl.setWindowState(LiferayWindowState.NORMAL);
+        renderUrl.setPortletMode(LiferayPortletMode.VIEW);
+        System.out.println(themeDisplay.getPortletDisplay().getId());
+        System.out.println(themeDisplay.getPlid());*/

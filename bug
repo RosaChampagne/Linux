@@ -1,0 +1,328 @@
+Story 7890  
+        Upon initial rending of the Program Request Screen - we do not need to pull all data first -let user select criteria.
+    sub-task 7891  
+        [Dev] Upon initial rending of the Program Request Screen - we do not need to pull all data first -let user select criteria.
+
+Bug 3146  
+    Program request shows application stage apply time instead of program stage
+HSF3-AddTimeToProgramDDL
+
+Story 7975  
+        [Program] Change Start Date and End Date into Start Time and End Time of Application stage In Program_DDL
+    sub-task 7980  
+        [Dev] Parse Start Time and End Time of Application stage In Program_DDL.
+    sub-task 8011  
+        [Dev] Refine time calculation about application stage.
+Story 8043  
+        [Program] Change Start Date and End Date into Start Time and End Time of Document Bank
+    sub-task 8044  
+        [Dev] Change Start Date and End Date into Start Time and End Time of Document Bank
+
+Bug 6193  
+    HSF WFALFP Site: www.wfalfp.org - "In Progress" display bug
+
+Story 8292  
+        [Program Invitation] Tuning performance issue in Program Invitation History page
+    sub-task 8307  
+        [Dev] Design hsf_program_programinvitationhistory table and hsf_program_programinvitationhistoryemail table.	
+    sub-task 8320  
+        [Dev] Refine code about admin create program invitation.
+    sub-task 8327  
+        [Dev] Refine code about admin query program invitation history.
+Story 8299  
+        [Program Invitation] Transfer Program Invitation Data from Program_Invitation_DDL to custom table	
+        写了sql在comment里面
+    sub-task 8348  
+        [Dev] Take the data out of Program_Invitation_DDL and put it in the table.
+Story 8153  
+        [Program Invitation] Test transform SQL and relation fuction
+    sub-task 8369
+        [Dev] Test admin create and query Program Invitation.
+    sub-task 8376
+        [Dev] Test take the data out of Program_Invitation_DDL and put it in the table.
+
+Bug 6193
+
+Story 8418
+        [Program] Refine UI of Applicant Dashborad
+    sub-task 8422
+        [Dev] Refine UI of Due Date and Remaining Days in Applicant Dashborad
+
+Bug 716
+        "Width" attribute of Text Box field is not worked on recommendation page when configuring Text Box field "Width" attribute for recommendation page in Admin.
+
+
+Bug 615
+        Attribute "Multiple" of "Radio" field is save failed in Admin unexpectedly when edit this attribute value in Admin.
+
+
+Bug 761
+        "Data Source Selection" Attribute value of Checkbox Group field is not displayed as empty unexpectedly when updating "Options" attribute after add Data Source Selection on Edit Data Definition screen in Admin.
+        HOLD, 没法修
+
+Requirement 8481
+        ETL Request - TGSSI Team Building Survey
+
+Requirement 8482
+        ETL Request - #TGS Stories Questionnaire - 2019
+
+Requirement 8483
+        ETL Request - 2019 Program Entrance Survey
+
+Requirement 8484
+        ETL Request - 2019 TGSSI Pre Conference Survey
+
+
+Bug 711
+        "Width" attribute of HTML field is not worked and "(Required)" is not displayed at the end of HTML label and repeated HTML field content can not be saved on recommendation page when "Width""Required" "Repeatable"attribute of HTMLare configured in Admin.
+    612解决一半
+
+Bug 1193
+        "HTML" field value is doesn't save when enter value into "HTML" field then clicking "Save and Continue Later" button or "NEXT" button immediately on "Reader Application" screen.
+    与711一致
+
+Bug 1813
+        Customer fields label font is displayed as normal instead of bold on recommendation pages when recommender do recommendation.
+    已经解决了的，之前好像在哪见过，解决了这个问题
+    不小心点错了，导致bug reopened。
+
+Bug 727
+        "+" icon of Date field is displayed besides Date field label name instead of at the end of Date field label line on recommendation page when "Repeatable" attribute of Date is configured in Admin.
+    已经解决了的
+
+Bug 613
+        Tip icon of Date custom field is not displayed in Profile page when adding tips for Date custom field after setting Date customer field "Show Label" attribute as "No" in Admin.
+
+Bug 696
+        "Required" label of field is not displayed on "Application" screen unexpectedly when attribute "Required" is configured in Admin.
+    
+Bug 8538
+        Attribute "Predefined Value" didn't work for "Boolean" field on "Application" and "Profile" screen when this attribute is configured by admin
+        取值如果为空，自动赋值为false，导致predefined value失效
+
+Requirement 8568
+        ETL Request - NLC participant - acceptance & Document verfication stage
+        有同名的ddl
+
+Requirement 8569
+        ETL Request - WFALFPSI Conference
+
+Requirement 8570
+        ETL Request - 2019 NLC - Logistical Volunteer - Application Stage
+
+Requirement 8628
+        ETL Request - The Frank Terrazas Scholarship Application – Document Verification Stage
+
+Requirement 8629
+        ETL Request - The VAMOS Scholarship Application – Document Verification Stage
+
+Requirement 8630
+        ETL Request - Royal Prestige Scholarship Application – Document Verification Stage
+
+Requirement 8631
+        ETL Request - Greater Cincinnati Scholarship Application – Document Verification Stage
+
+Requirement 8632
+        ETL Request - Toyota-West Dallas Scholarship – Document Verification Stage
+
+Requirement 8633
+        ETL Request - The Cal State Bakersfield HSF Scholarship – Document Verification Stage
+
+sub-task 8639
+        [Dev] Test executing plan of old query and refined query.
+        
+Requirement 8634
+        ETL Request - Albino R. Pineda Scholarship Application – Document Verification Stage
+
+Requirement 8635
+        ETL Request - HSF/Pedro Urquidi Scholarship Application – Document Verification Stage
+
+Requirement 8636
+        ETL Request - YLI 2019 Pre-Conference Survey - Application Stage
+
+Bug 490
+        Field is displayed with borders unexpectedly on "Profile_Academic_School History" screen.
+        不用这个form了。
+
+Requirement 8668
+        ETL Request - YLI 2019 Post-Conference Survey - Application Stage
+
+Bug 8661
+        Cannot transfer program invitation history data by the sql script when the program name exist "-"
+        修改了sql脚本
+
+Requirement 8712
+        ETL Request - STEM 2019 Mentor - Application Stage
+
+Bug 8650
+        Duplicate programs are displayed on program invitation page when scroll down program name while "auto-complete" is used for program name field
+
+Bug 2105
+        Phone number is not auto filled completely in phone number type field when selecting school name.
+
+Requirement 8730
+        ETL Request - HSF Document Verification Stage
+
+Requirement 8749
+        ETL Request - 2019 TGSSI Post Conference Survey
+
+Story 8759
+        [ETL] Create a wiki about ETL knowledge
+    sub-task 8764
+        [ETL] Create a wiki about how to run normal stage and special stage etl.
+    sub-task 8775
+        [ETL] Update wiki about special stage how to run etl.
+
+Bug 448
+        No error message is displayed when entering non-numeric type value into number type field on "Profile" screen.	
+
+Bug 1197
+        Error message "Please enter a value greater than or equal to x." instead of "Please enter only digits." is displayed when enter characters or negative number or decimal into Integer field in Profile page.
+        reopen了
+
+Bug 1402
+        "Other" option change to not selected when review this field if clicking "NEXT" button without filled in other text box.
+        没修好
+
+Bug 2920
+        Document field is not highlighted and no prompt message when clicking 'UPLOAD' without document selected on 'Document Upload' page in Document Bank
+
+Bug 695
+        Address Selection field size is displayed too small on "Application" screen unexpectedly.
+        Radio Single的font问题还需讨论
+
+Bug 8777
+        The custom fields with options value followed by Spaces in DD cannot be saved in the program application stage unexpectedly
+
+Bug 1105
+        Bind rule fields are displayed then disappeared immediately when refresh form page every time.
+
+Bug 1739
+        Error message "Portlet is temporarily unavailable." is displayed unexpectedly when clicking "SAVE" button with required "Auto Complete Search" field no value on "Profile" screen.
+
+Bug 993
+        Field visibility is not consistent with rule when the field is bound with HTML field.
+        HOLD
+
+Story 8988
+        [Program] Rebase applicant date code to develop branch.
+    sub-task 8991
+        [Dev] Rebase applicant time code to develop branch.
+    sub-task 8992
+        [Dev] Test applicant time about application, reader, counselor, recommender.
+
+Story 8989
+        [Applicant] Bulk update applicant status from Dropped to Waitlisted/Selected
+    sub-task 8993
+        [Dev] Bulk update applicant status from Dropped to Waitlisted/Selected
+
+Story 8990
+        [Applicant] Bulk update applicant status from Selected to Waitlisted
+    sub-task 9003
+        [Dev] Bulk update applicant status from Selected to Waitlisted.
+
+Story 9006
+        [ETL] Set up a etl to dump MyTGS profile data.
+
+
+Story 9021
+        [ETL] Dump Datasource records related to DDL.
+    sub-task 9023
+        [Dev] Study how to dump datasource records related to DDL.
+    sub-task 9042
+        [Dev]Dump Datasource records related to DDL.
+
+Story 9082
+        [ETL] Refine ETL code about dump dd l related datasource.
+    sub-task 9084
+        [Dev] Refine ETL code about dump ddl related datasource.
+
+Bug 9087
+        The Start Date and End Date doesn't work after saved the exisitng program.
+
+Story 9058
+        [ETL] Add ETL function to Dump my profile data
+    sub-task 9106
+        [Dev] Add ETL function to Dump my profile data
+
+Bug 9125
+        "Time" custom field doesn't need attribute "Width"
+
+Bug 9139
+        "Please enter a valid date" is displayed for the field Time after cleared the previous Date value.
+
+Bug 9151
+        The default Date, Time and Zone are displayed on application review form unexpectedly if student submit program application form without Date, Time and Zone in "Time" custom field
+
+BUg 9152
+        Default time of "Time" custom field is displayed in program application form unexpectedly
+
+Bug 9158
+        The Date format is displayed "dd/MM/yyyy" unexpectedly on the program review page
+
+Bug 9175
+        The REMIANING time is not displayed when the remaining time is less than 1 minute.
+
+Bug 9132
+        The page is failed to save when "Required" and "Repeatbale" of Time field are set to "Yes"
+
+Bug 9181
+        The Remaining Time in Application form is inconsistent with that in the dashboard.
+
+Bug 9208
+        No "59 minutes" is displayed for the Remaining time on the dashboard and form
+
+Story 9240
+        [Program] Change the remaining days as XX days, XX hours in reader evaluation dashboard and reader application fill form.
+    sub-task 9244
+        [Dev] Change the remaining days as XX days, XX hours in reader evaluation dashbaord and reader application fill form.
+
+Story 9255
+        [Program] Create a wiki about Program Time.
+    sub-task 9256
+        [Dev] Create a wiki about Program Time.
+
+Bug 9235
+        "Time" custom field doesn't need attribute "Refer to Field" and "Predefined Value"
+
+Bug 1273
+        Scroll bar is still displayed unexpectedly when all search results are displayed completely in the result bar of 'Auto Complete Search' field.
+
+Bug 9269
+        Expand the details function disabled on scholarship dashboard unexpectedly
+
+Bug 9288
+        Reader certification stage is still open when reader certification stage start time is later than current time
+
+Bug 9278
+        The Start Time/End Time's date format of prorgam shoud be MM/DD/YY in Program_DDL list page.
+
+Story 8762
+        [Custom Field] Shared field will shared interviewer application records.
+    sub-task 9320
+        [Dev] Shared field will shared interviewer application records.
+
+Story 8718
+        The edit popup should be displayed and loading when user click the edit button in document bank.
+    sub-task 9337
+        [Dev] If user click the edit button in document bank, the edit popup should be displayed and loading immediately.
+
+Bug 9345
+        Message "The recommendation stage has been closed" is displayed and "Add Additional Recommenders" button is disabaled when the recommendation stage is not end.
+
+Bug 2224
+        I cannot make a radio button a required field on the Referral Form.
+
+Bug 5950
+        "Document Replace" window does not pop up when click "Replace" after "Upload failed, please try again!" is displayed on "Document Edit" window
+
+Bug 3591
+        The Reject and Need Review comment is not displayed with line feed on Admin Document Review notes history	
+
+Bug 9243
+        Message "Please fix this field" is displayed instead of "Time is required" when added the repeatable and required Time field without value and save directly.
+
+Story 9372
+        [ETL] Refine etl query change recordId:: text to bigint
+    sub-task 9373
+        [Dev] Refine etl query change recordId:: text to bigint.

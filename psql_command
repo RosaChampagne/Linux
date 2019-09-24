@@ -1,0 +1,72 @@
+command
+
+PostgreSQL 常用命令笔记
+
+1. postgres=#\l                   列出所有数据库
+
+2. postgres=#\q                  退出
+
+3. postgres=\c  数据库名   切换到 指定数据库
+
+4. -bash-4.2$psql -d 数据库名 -U postgres          切换到指定数据库
+
+5. xxxxx#\d                          列出数据库中所有的表
+
+6. xxxxx#\du                        列出所有用户 
+
+7. xxxxx#\conninfo             列出当前数据库和连接的信息
+
+8. -bash-4.2$psql exampledb < exampledb.sql      恢复数据库
+
+9. 执行sql脚本    xxxxx#\i /opt/data/test.sql
+
+10. 常用SQL语句：
+# 创建新表 
+CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);
+# 插入数据 
+INSERT INTO user_tbl(name, signup_date) VALUES('张三', '2013-12-22');
+# 选择记录 
+SELECT * FROM user_tbl;
+# 更新数据 
+UPDATE user_tbl set name = '李四' WHERE name = '张三';
+# 删除记录 
+DELETE FROM user_tbl WHERE name = '李四' ;
+# 添加栏位 
+ALTER TABLE user_tbl ADD email VARCHAR(40);
+# 更新结构 
+ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL;
+# 更名栏位 
+ALTER TABLE user_tbl RENAME COLUMN signup_date TO signup;
+# 删除栏位 
+ALTER TABLE user_tbl DROP COLUMN email;
+# 表格更名 
+ALTER TABLE user_tbl RENAME TO backup_tbl;
+# 删除表格 
+DROP TABLE IF EXISTS backup_tbl;
+
+
+之前在用 mysql 的时候发现，当列数特别多的时候，在 linux 命令行下，显示不太友好，
+
+然后可以通过将 sql 末尾的 “；” 改为 “\G” 来处理，
+
+后面用 postgresql 自然就会想有没有类似的功能，果然：
+
+执行 sql 之前，先输入 “\x” 即可
+
+
+
+语法：
+
+select * from persons limit  A  offset  B;
+
+解释：
+    
+A就是你需要多少行；
+
+B就是查询的起点位置。
+
+示例：
+
+select * from persons limit 5 offset 0 ;
+
+意思是，起点0开始查询，返回5条数据。

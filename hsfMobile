@@ -1,0 +1,34 @@
+1、安装python3：https://www.cnblogs.com/FZfangzheng/p/7588944.html
+2、安装nodeJS：https://blog.csdn.net/xerysherryx/article/details/78920978
+    修改nodejs文件：sudo chmod -R +777 nodejs/
+3、安装eslint：npm install -g eslint
+    sudo ln -s /usr/local/nodejs/node-v9.3.0-linux-x64/bin/eslint  /usr/bin/eslint
+    创建软链接：为了在所有目录下都可以使用eslint命令
+
+
+nginx
+
+/var/www
+/usr/www
+
+siberiancms
+
+mysql
+app/config/app.ini
+
+### php
+sudo service php-fpm start
+sudo service php-fpm reload
+
+###nginx
+sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+sudo /usr/local/nginx/sbin/nginx -s reload
+
+初始化一个新的module： ./scripts/init_module ./modules/<module>
+检查语法错误： ./scripts/lint all 
+✖ 339 problems (187 errors, 152 warnings)
+  176 errors and 112 warnings potentially fixable with the `--fix` option.
+打某一个包： ./scripts/pack <modulesname>
+打包所有： ./scripts/pack all
+
+打包成功之后，zip包在dist目录下

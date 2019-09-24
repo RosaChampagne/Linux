@@ -1,0 +1,52 @@
+<stages>
+    <stage stageId="4" status="running" completeTime="" acceptTerms="">
+        <forms/>
+        <tables/>
+    </stage>
+</stages>
+
+421 |     190649 | 2019-04-29 10:39:23.531 | 190649 |     56716 |               52 |       4 |        1 | notStart | running
+
+
+<stages>
+    <stage stageId="4" status="running" completeTime="" acceptTerms="">
+        <forms>
+            <form name="Application_Profile_Page1" structureId="41073" recordId="214806"/>
+        </forms>
+        <tables/>
+    </stage>
+</stages> 
+
+
+ pkid | programid | active_ | hidden_ | scholarsonly | createdby |       createdtime       | lastmodifiedby |    lastmodifiedtime     
+------+-----------+---------+---------+--------------+-----------+-------------------------+----------------+-------------------------
+    6 |     83002 | t       | f       | f            |     20199 | 2017-08-24 01:25:06     |          20199 | 2017-10-16 06:26:28
+    1 |     56716 | t       | f       | f            |         0 |                         |          20199 | 2017-10-17 00:42:24
+    7 |     84102 | t       | f       | f            |     20199 | 2017-08-29 06:45:39     |          20199 | 2017-10-19 03:21:27
+    8 |    115501 | t       | t       | f            |     20199 | 2017-11-22 00:47:41     |          20199 | 2019-04-11 06:37:18.706
+    9 |    194901 | t       | f       | f            |     20199 | 2019-04-16 09:08:06.192 |          20199 | 2019-04-16 09:08:27.938
+   10 |    213404 | t       | f       | f            |     20199 | 2019-04-26 05:26:42.391 |          20199 | 2019-04-26 05:26:48.26
+    2 |     60102 | t       | t       | f            |         0 | 2017-03-12 22:02:42     |          20199 | 2019-04-30 00:28:03.809
+
+
+pkid | userid | programid | programrequestid |           applicanttype           | schoolstage | gpa  | createdby |       createdtime      lastmodifiedby |    lastmodifiedtime     
+------+--------+-----------+------------------+-----------------------------------+-------------+------+-----------+-------------------------+--------
+   59 |  56728 |     56716 |                4 | High School Senior                | Freshmen    |  3.7 |     56728 | 2019-03-26 01:18:29.24  |        56728 | 2019-03-26 01:18:29.24
+
+
+pkid | stageid |                      action                       |                                 processor                                  | defaultrun | index_ 
+------+---------+---------------------------------------------------+----------------------------------------------------------------------------+----
+--------+--------
+    1 |       4 | startApplication                                  | net.hsf3.plugin.actionprocessor.StartApplicationProcessor                  | t  |      0
+    2 |       4 | continueApplication                               | net.hsf3.plugin.actionprocessor.StartApplicationProcessor                  | t  
+|      0
+    3 |       4 | saveApplicationFormData                           | net.hsf3.plugin.actionprocessor.SaveFormDataProcessor                      | t  
+|      0
+    4 |       4 | completeApplication                               | net.hsf3.plugin.actionprocessor.CompleteStageProcessor                     | t  
+|      0
+    5 |       4 | completeApplication                               | net.hsf3.plugin.actionprocessor.RecommenderProcessor                       | f  
+|      1
+    6 |       4 | completeApplication                               | net.hsf3.plugin.actionprocessor.CalculateGPAProcessor                      | f  
+|      2
+    7 |       4 | addAdditionalRecommenders                         | net.hsf3.plugin.actionprocessor.addAdditionalRecommendersProcessor         | t  
+|      0

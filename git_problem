@@ -1,0 +1,38 @@
+        Git 合并多次 commit
+1. git log 查看当前的提交历史
+2. git rebase -i HEAD~4 对最近的 4 个 commit 进行 rebase 操作；
+对于 commit 合并可以使用 squash、fixup 指令，区别是 squash 会将该 commit 的注释添加到上一个 commit 注释中，fixup 是放弃当前 commit 的注释；
+编辑后保存退出，git 会自动压缩提交历史，如果有冲突，记得解决冲突后，使用 git rebase --continue 重新回到当前的 git 压缩过程；
+3. 推送到远程仓库 git push -f
+重新查看提交提交历史，会发现这些 commit 已经合并了，整个提交历史简洁了很多：
+
+
+        git修改commit注释 已提交但并未push
+只需要修改最新的一次commit注释
+1. git log ，此次提交注释为 create new file 2 
+2. 之后执行git commit --amend, 之后便可以利用vim来进行编辑，编辑之后注释为create new file 2 after change。(vim可按i键进入编辑模式，esc退出编辑模式，ZZ保存并退出。更多操作可查阅vim相关资料) 
+3. 最后可再次执行git log查看修改结果。
+
+修改历史提交注释（修改历史多次提交注释）
+git rebase -i HEAD~X 比如我想修改最近两条commit的注释，即输入git rebase -i HEAD~2
+1. 打开后pick开头的几行注释，如下图所示
+2. pick XXXXXXXXX
+3. pick XXXXXXXXX
+上边红框是两次的注释，下边红框是常用commands。
+    将pick修改为edit 
+    修改完成之后git log 可以看到git的最后一次提交已经变成你修改为edit的那个注释了，这时再使用git commit --amend。 可参考上文（只需要修改最新的一次commit注释）一节。
+    修改完成后 git rebase --continue 
+
+
+
+
+        git rebase解决合并冲突
+1）git rebase dev 假如需要解决当前分支与dev分支的冲突
+使用
+2）查看代码，会发现冲突位置已经标明
+3）解决冲突后，执行
+                git add .
+                git rebase --continue
+4）如果还处于rebase状态，则继续解决冲突
+没有则直接push
+

@@ -1,0 +1,56 @@
+克隆代码到本地：git clone git@git.augmentum.com.cn:FreshTraining/OnlineExam.git
+创建分支：git branch cynthia.zhu
+查看分支：git branch
+进入到项目里面：cd C:\Users\WT01557\OnlineExam
+进入自己的分支：git checkout cynthia.zhu
+
+
+[user@localhost hsf3]$ git fetch 
+Warning: Permanently added the RSA host key for IP address '18.205.93.1' to the list of known hosts.
+[user@localhost hsf3]$ git checkout -b develop origin/develop 
+Branch develop set up to track remote branch develop from origin.
+Switched to a new branch 'develop'
+[user@localhost hsf3]$ git branch 
+* develop
+  master
+[user@localhost hsf3]$ 
+
+
+
+hsf3.anders.hu@augmentum.com/Dev4Hsf1! --Cynthia 
+hsf3.rudolf.luo@augmentum.com/Augmentum1! William 
+hsf3.jimmy.wang@augmentum.com/Dev4Hsf1! Jorge
+hsf3.simon.pan@augmentum.com/Dev4Hsf1! Aiden 
+
+smb://172.20.2.9/project/HSF/users/anders_hu/project
+
+
+git config remote.origin.url git@bitbucket.org:hsf30/hsf3.git
+git config user.email "hsf3.anders.hu@augmentum.com"
+git config user.name "Anders Hu"
+ssh-keygen -t rsa -C "hsf3.anders.hu@augmentum.com"
+git config --global push.default simple
+git config --global core.autocrlf false
+
+配置sshKey  https://bitbucket.org/account/user/%7Baab99713-9207-4487-ba2b-d195a39135b7%7D/ssh-keys/
+pub文件
+
+查看当前仓库配置信息            git config --local  --list
+查看全局仓库配置信息            git config --global --list
+remove掉remote.origin.url    git config --global --unset-all remote.origin.url
+git config  --list
+http://172.26.20.9
+
+https://bitbucket.org/hsf30/hsf3/wiki/Process/Bug_Process.md
+
+https://hsftechnologyservices.atlassian.net/secure/RapidBoard.jspa
+https://hsftechnologyservices.atlassian.net/browse/HSF3-6193
+
+psql -d db1 -U userA -f /pathA/xxx.sql
+
+
+
+DEV数据库
+postgres-hsf3-dev.ccim3zvi3nz1.ap-southeast-1.rds.amazonaws.com user/pwd: augmentdev/AugDev4Hsf1!
+psql -U augmentdev -d postgres -h postgres-hsf3-dev.ccim3zvi3nz1.ap-southeast-1.rds.amazonaws.com
+lportal_tenant_1

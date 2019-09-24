@@ -1,0 +1,33 @@
+
+rpm -qa | grep pgadmin   查看是否安装了pgadmin
+rpm -e wxBase-2.8.12-20.sdl7.x86_64   卸载wxBase-2.8.12-20.sdl7.x86_64
+rpm -qa | grep WXG 查看是否安装了WXG
+rpm -e wxBase-2.8.12-20.sdl7.x86_64   卸载wxBase-2.8.12-20.sdl7.x86_64   
+rpm -qa | grep wxBase  查看是否安装了wxBase
+rpm -e wxGTK-2.8.12-20.sdl7.x86_64   卸载wxGTK-2.8.12-20.sdl7.x86_64
+
+有安装包时使用的安装命令
+rpm -ivh wxBase-2.8.12-20.sdl7.x86_64.rpm
+rpm -ivh wxGTK-2.8.12-20.sdl7.x86_64.rpm
+rpm -ivh SDL-1.2.15-14.el7.i686.rpm
+
+
+配置代理
+删除google-chrome
+### error
+* yum 403
+	> vi /etc/yum.conf
+	> proxy=socks5://172.20.49.28:1080
+
+	> cd /etc/yum.repos.d/
+	> rm -rf google-chrome.repo
+
+安装pgAdmin
+9.1. pgadmin
+yum install http://springdale.math.ias.edu/data/puias/7/x86_64/os/Addons/Packages/wxBase-2.8.12-20.sdl7.x86_64.rpm
+yum install http://springdale.math.ias.edu/data/puias/7/x86_64/os/Addons/Packages/wxGTK-2.8.12-20.sdl7.x86_64.rpm
+yum install http://yum.postgresql.org/9.5/redhat/rhel-7-x86_64/pgadmin3_95-1.22.0-1.rhel7.x86_64.rpm
+## edit pg_hba.conf
+gedit /var/lib/pgsql/9.5/data/pg_hba.conf
+## change "ident" to "md5" in line 
+## "host	 all	 all	 127.0.0.1/32	 ident" and "host	 all	 all	 ::1/128	 ident"

@@ -1,0 +1,41 @@
+table program_invitation_history:
+
+pkid                long        not null,primary
+userId              long
+programId           long
+invitationStatus    text
+createdTime         Date
+createdBy           long
+
+
+table program_invitation_history_email:
+
+pkid                long        not null,primary
+emailSubject        text
+emailContent        text
+createdTime         Date
+createdBy           long
+
+
+
+
+  <entity local-service="true" name="ProgramInvitationHistory" remote-service="false" table="hsf_program_programinvitationhistory">
+    <column name="pkId" type="long" primary="true" id-type="sequence" id-param="hsf_programinvitation_sq"></column>
+    <column name="userId" type="long"></column>
+    <column name="emailAddress" type="String"/>
+    <column name="programId" type="long"></column>
+    <column name="emailTemplateId" type="long"></column>
+    <column name="invitationStatus" type="String"/>
+    <column name="createdTime" type="Date"/>
+    <column name="createdBy" type="long"></column>
+  </entity>
+
+  <entity local-service="true" name="ProgramInvitationEmailTemplate" remote-service="false" table="hsf_program_programinvitationemailtemplate">
+    <column name="pkId" type="long" primary="true" id-type="sequence" id-param="hsf_programinvitationemail_sq"></column>
+    <column name="emailSubject" type="String"/>
+    <column name="emailContent" type="String"/>
+    <column name="createdTime" type="Date"/>
+    <column name="createdBy" type="long"></column>
+  </entity>
+  
+  create index IX_FE9235F9 on hsf_program_programinvitationhistory (programId);

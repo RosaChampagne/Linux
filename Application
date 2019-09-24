@@ -1,0 +1,13 @@
+Table：
+    hsf_application_applicationgpa
+    hsf_program_actionprocessor
+    hsf_program_programrequest
+    hsf_program_programstagehistory
+    hsf_program_programstatus
+
+Application:
+    ApplicantDashboard
+        doView()
+            1.progarmIdString
+            2.configureProgramIdString
+            3.program = programService.getDefaultActiveProgram(userId);

@@ -1,0 +1,21 @@
+rpm -qa | grep jd-gui   查看是否安装了jd-gui
+sudo rpm -e jd-gui-1.6.3-0.noarch   卸载jd-gui-1.6.3-0.noarch
+
+sudo rpm -ivh /home/user/Desktop/software/jd-gui-1.6.3.rpm  安装jd-gui-1.6.3.rpm
+
+怎么运行：
+    需要jdk1.8
+    在/usr/java目录下解压 tar zxvf jdk1.8.0_151.tar.gz
+    修改profile文件：sudo vi /etc/profile
+    使修改立即生效：source /etc/profile
+    使用：java -jar jd-gui-1.6.3.jar  打开jd-gui
+
+/usr/local/share/applications
+[Desktop Entry]
+Comment=Java Decompiler JD-GUI
+Terminal=false
+Name=JD-GUI
+Exec=java -jar /opt/jd-gui/jd-gui.jar
+Type=Application
+Icon=jd-gui
+MimeType=application/java;application/java-vm;application/java-archive

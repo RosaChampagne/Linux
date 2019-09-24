@@ -1,0 +1,1319 @@
+[user@localhost ~]$ ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.191.191
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0444 for '/home/user/.ssh/augmentem_dev_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "/home/user/.ssh/augmentem_dev_rsa": bad permissions
+Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[user@localhost ~]$ ssh -i ~/.ssh/augmentem_dev_rsa augumentdev@34.209.191.191
+Last login: Sun Jun  9 21:29:13 2019 from 59.175.170.202
+[augumentdev@ip-172-31-0-65 ~]$ sudo su
+[root@ip-172-31-0-65 augumentdev]# ls
+172.31.12.147.tm2.epoch                HSFDDLDump801New.jar                         MainDump.jarError2
+2018_Questionnaire_Activities_DDL.csv  hsf-plugins-gates-dashboard-theme-1.0.0.war  MainDumpReplace.jar
+atomikos                               hsf-plugins-gates-theme-1.0.0.war            MainDumpTest.jar
+backupsql1.sql                         hsf-plugins-hsf-dashboard-theme-1.0.0.war    MainProcess801New.jar
+backupsql.sql                          hsf-plugins-hsf-theme-1.0.0.war              MainProcess.jar1
+catalina.2019-04-04.out                index.html                                   new_etl_jar_20180929.tar.gz
+cert                                   jruby-1.7.26.jar                             new_etl_jar.tar.gz
+config.sh                              jruby-complete-1.7.26.jar                    new_shell.tar.gz
+cronolog-1.6.2                         keystore.jks                                 new_task.tar.gz
+cronolog-1.6.2.tar.gz                  lib_backup                                   nlc.tar.gz
+deploy_61_1                            liferay_config                               nul
+deploy_61_1.tar.gz                     liferay_logs                                 out.log
+doSingleTGSScholarship2017_2018.sh     log.tmp                                      portal-ext.properties
+downloads                              MainDumpForCounselor.jar                     recommander_emails.txt
+dump_resources.zip                     MainDumpForReader.jar                        restoreView.sh
+dumpView.sh                            MainDump.jar1                                Scholarship2019-2020_Application_Profile_Page1_DDL.csv
+dumpView.sql                           MainDump.jar2                                server.cer
+et_gates_app_2018_backup.tar.gz        MainDump.jar3                                st.tar.gz
+etl_jar_20180828.tar.gz                MainDump.jarError                            tmlog2.log
+hs_err_pid74495.log                    MainDump.jarError1                           tmlog.lck
+[root@ip-172-31-0-65 augumentdev]# cd ~/etl_applicant/
+[root@ip-172-31-0-65 etl_applicant]# ls
+etl_applicant_bash                                              hsf_entp_summit_2019_postsurvey.sh
+etl_applicant_gates.20190607.log                                remove_temp_file.sh
+etl_applicant_gates.20190608.log                                retired_yli_2018jobs.sh
+etl_applicant_gates.20190609.log                                task_for_applicant.sh
+etl_applicant_gates_accept_counselor.20190607.log               task_for_ev.sh
+etl_applicant_gates_accept_counselor.20190608.log               task_for_gates_accept_counselor.sh
+etl_applicant_gates_accept_counselor.20190609.log               task_for_gates_cohort1.sh
+etl_applicant_gates_interviewer_eva.20190607.log                task_for_gates_confirm_interviewer.sh
+etl_applicant_gates_interviewer_eva.20190608.log                task_for_gates_interviewer_eva.sh
+etl_applicant_gates_interviewer_eva.20190609.log                task_for_gates_interviewer.sh
+etl_applicant_hsf.20190607.log                                  task_for_gates_mentor_volunteer.sh
+etl_applicant_hsf.20190608.log                                  task_for_gates.sh
+etl_applicant_hsf.20190609.log                                  task_for_gates_special_schedule.20190607.log
+etl_applicant_hsf_nlc.20190607.log                              task_for_gates_special_schedule.20190608.log
+etl_applicant_hsf_nlc.20190608.log                              task_for_gates_special_schedule.20190609.log
+etl_applicant_hsf_nlc.20190609.log                              task_for_gates_special_schedule.sh
+etl_applicant_hsf_stem_submit.20190607.log                      task_for_hsf_ent_summit_acce_and_de.20190607.log
+etl_applicant_hsf_stem_submit.20190608.log                      task_for_hsf_ent_summit_acce_and_de.20190608.log
+etl_applicant_hsf_stem_submit.20190609.log                      task_for_hsf_ent_summit_acce_and_de.20190609.log
+etl_applicant_wellsfargo.20190607.log                           task_for_hsf_ent_summit_acce_and_de.sh
+etl_applicant_wellsfargo.20190608.log                           task_for_hsf_ent_summit_presurvey.sh
+etl_applicant_wellsfargo.20190609.log                           task_for_hsf_ent_summit.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log  task_for_hsf_ent_summit_volunteer.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log  task_for_hsf_nlc_mentor_2019.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log  task_for_hsf_nlc.sh
+etl_applicant_yls.20190607.log                                  task_for_hsf_pahse2_and_reader_and_recommender.sh
+etl_applicant_yls.20190608.log                                  task_for_hsf.sh
+etl_applicant_yls.20190609.log                                  task_for_hsf_special_schedule.sh
+etl_gates_confirm_interviewer.20190607.log                      task_for_hsf_stem_submit.sh
+etl_gates_confirm_interviewer.20190608.log                      task_for_hsf_yli_yls.sh
+etl_gates_confirm_interviewer.20190609.log                      task_for_performance_new_etl.sh
+etl_gates_interviewer.20190607.log                              task_for_terrazas_application.sh
+etl_gates_interviewer.20190608.log                              task_for_test.sh
+etl_gates_interviewer.20190609.log                              task_for_tgs_spring_winter_quarter_survey.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190607.log      task_for_toyota_app.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190608.log      task_for_vamos_application.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190609.log      task_for_wellsfargo_2019_winter_spring.sh
+etl_nlc_mentor_hsf.20190607.log                                 task_for_wellsfargo.sh
+etl_nlc_mentor_hsf.20190608.log                                 task_for_ylc.sh
+etl_nlc_mentor_hsf.20190609.log                                 task_for_yli_yls.sh
+etl_yli_yls.20190607.log                                        task_for_yls.sh
+etl_yli_yls.20190608.log                                        test_2019.log
+etl_yli_yls.20190609.log
+[root@ip-172-31-0-65 etl_applicant]# cat hsf_entp_summit_2019_postsurvey.sh
+script_path="$(cd "$(dirname "$0")" && pwd)"
+declare -a DATETIME=$(date +'%Y%m%d')
+declare -a OUTPUT_FILE=etl_applicant_hsf_entp_summit_postconference_survey.$DATETIME.log
+
+touch ${script_path}/$OUTPUT_FILE
+
+startdate=`date +"%Y-%m-%d %H:%M"`
+echo 'Star time : '$startdate >> ${script_path}/$OUTPUT_FILE 2>&1
+
+###hsf shell
+###Daily
+sh ${script_path}/etl_applicant_bash/doSingleHSFEntSummitPostConferenceSurvey.sh prod hsf >> ${script_path}/$OUTPUT_FILE 2>&1
+
+#script_path="$(cd "$(dirname "$0")" && pwd)"
+#current_date="$(date +%Y)"
+#last_date="$(date -d last-year +%Y)"
+#current_day="$(date +%Y%m%d)"
+#before_one_day="$(date -d "-1 day" +%Y%m%d)"
+#before_two_day="$(date -d "-2 day" +%Y%m%d)"
+
+#for file in `cd "$(dirname "$0")" && ls ${!script_path}`
+#do
+#    if [[ (${file} == *"${current_date}"* || ${file} == *"${last_date}"*) && ${file} != *"${current_day}"* && ${file} != *"${before_one_day}"* && ${file} != *"${before_two_day}"* && ${file} != *"2018_2019"* && ${file} != *"2017_2018"* ]]; then
+#         echo "remove folder ${file}"
+#         `cd "$(dirname "$0")" && rm -rf ${file}`
+#    fi
+#done
+
+### Remove log file
+sh ${script_path}/remove_temp_file.sh >> ${script_path}/$OUTPUT_FILE 2>&1
+
+donedate=`date +"%Y-%m-%d %H:%M"`
+echo 'Done time : '$donedate >> ${script_path}/$OUTPUT_FILE 2>&1
+
+[root@ip-172-31-0-65 etl_applicant]# ls
+etl_applicant_bash                                              hsf_entp_summit_2019_postsurvey.sh
+etl_applicant_gates.20190607.log                                remove_temp_file.sh
+etl_applicant_gates.20190608.log                                retired_yli_2018jobs.sh
+etl_applicant_gates.20190609.log                                task_for_applicant.sh
+etl_applicant_gates_accept_counselor.20190607.log               task_for_ev.sh
+etl_applicant_gates_accept_counselor.20190608.log               task_for_gates_accept_counselor.sh
+etl_applicant_gates_accept_counselor.20190609.log               task_for_gates_cohort1.sh
+etl_applicant_gates_interviewer_eva.20190607.log                task_for_gates_confirm_interviewer.sh
+etl_applicant_gates_interviewer_eva.20190608.log                task_for_gates_interviewer_eva.sh
+etl_applicant_gates_interviewer_eva.20190609.log                task_for_gates_interviewer.sh
+etl_applicant_hsf.20190607.log                                  task_for_gates_mentor_volunteer.sh
+etl_applicant_hsf.20190608.log                                  task_for_gates.sh
+etl_applicant_hsf.20190609.log                                  task_for_gates_special_schedule.20190607.log
+etl_applicant_hsf_nlc.20190607.log                              task_for_gates_special_schedule.20190608.log
+etl_applicant_hsf_nlc.20190608.log                              task_for_gates_special_schedule.20190609.log
+etl_applicant_hsf_nlc.20190609.log                              task_for_gates_special_schedule.sh
+etl_applicant_hsf_stem_submit.20190607.log                      task_for_hsf_ent_summit_acce_and_de.20190607.log
+etl_applicant_hsf_stem_submit.20190608.log                      task_for_hsf_ent_summit_acce_and_de.20190608.log
+etl_applicant_hsf_stem_submit.20190609.log                      task_for_hsf_ent_summit_acce_and_de.20190609.log
+etl_applicant_wellsfargo.20190607.log                           task_for_hsf_ent_summit_acce_and_de.sh
+etl_applicant_wellsfargo.20190608.log                           task_for_hsf_ent_summit_presurvey.sh
+etl_applicant_wellsfargo.20190609.log                           task_for_hsf_ent_summit.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log  task_for_hsf_ent_summit_volunteer.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log  task_for_hsf_nlc_mentor_2019.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log  task_for_hsf_nlc.sh
+etl_applicant_yls.20190607.log                                  task_for_hsf_pahse2_and_reader_and_recommender.sh
+etl_applicant_yls.20190608.log                                  task_for_hsf.sh
+etl_applicant_yls.20190609.log                                  task_for_hsf_special_schedule.sh
+etl_gates_confirm_interviewer.20190607.log                      task_for_hsf_stem_submit.sh
+etl_gates_confirm_interviewer.20190608.log                      task_for_hsf_yli_yls.sh
+etl_gates_confirm_interviewer.20190609.log                      task_for_performance_new_etl.sh
+etl_gates_interviewer.20190607.log                              task_for_terrazas_application.sh
+etl_gates_interviewer.20190608.log                              task_for_test.sh
+etl_gates_interviewer.20190609.log                              task_for_tgs_spring_winter_quarter_survey.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190607.log      task_for_toyota_app.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190608.log      task_for_vamos_application.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190609.log      task_for_wellsfargo_2019_winter_spring.sh
+etl_nlc_mentor_hsf.20190607.log                                 task_for_wellsfargo.sh
+etl_nlc_mentor_hsf.20190608.log                                 task_for_ylc.sh
+etl_nlc_mentor_hsf.20190609.log                                 task_for_yli_yls.sh
+etl_yli_yls.20190607.log                                        task_for_yls.sh
+etl_yli_yls.20190608.log                                        test_2019.log
+etl_yli_yls.20190609.log
+[root@ip-172-31-0-65 etl_applicant]# cd etl_applicant_bash/
+[root@ip-172-31-0-65 etl_applicant_bash]# ls
+backupfile.sql                                      doSingleWFALFPSIPreConferenceApplication2018.sh
+config.sh                                           doSingleWFALFPSIReaderApplication2018.sh
+datasource                                          doSingleWFALFPSIReaderEvaluations2018.sh
+doSingleAlbinoApplication2018.sh                    doSingleWFALFPSISemiAnnualSurvey2018.sh
+doSingleAlbinoApplication2019.sh                    doSingleWFALFPSISemiAnnualSurveyQuarter2018.sh
+doSingleAlbinorpinedaEnrollmentVerification2017.sh  doSingleWFALFPSIStoriesApplication2018.sh
+doSingleCincinnatiApplication2018.sh                doSingleYLCStaffAcceptance2018.sh
+doSingleCincinnatiApplication2019.sh                doSingleYLCStaffApplication2018.sh
+doSingleCincinnatiEnrollmentVerification2017.sh     doSingleYLCStaffDocumentVerifications2018.sh
+doSingleCsubApplication2018.sh                      doSingleYLCStudentAcceptance2018.sh
+doSingleCSUBApplication2019.sh                      doSingleYLCStudentApp2019.sh
+doSingleCsubEnrollmentVerification2017.sh           doSingleYLCStudentAppAcceptance2019.sh
+doSingleCSUBEnrollmentVerification2018.sh           doSingleYLCStudentApplication2018.sh
+doSingleFinanceAcceptance2018.sh                    doSingleYLCStudentDocumentVerifications2018.sh
+doSingleFinanceApplication2018.sh                   doSingleYLCYLS19MentorFellowApplicationData.sh
+doSingleFinanceDocumentVerifications2018.sh         doSingleYLIATeamAcceptanceApp2019.sh
+doSingleFrankTerrazasApplication2018.sh             doSingleYLIATeamDocumentVerificationsApp2019.sh
+doSingleHSF2019Application.sh                       doSingleYLIMentorAcceptance2018.sh
+doSingleHSF2019ApplicationTest.sh                   doSingleYLIMentorDocumentVerifications2018.sh
+doSingleHSFAcceptance2017.sh                        doSingleYLIMentorFellowAcceptanceApp2019.sh
+doSingleHSFAcceptanceThankYouLetterVid2018.sh       doSingleYLIMentorFellowApplication2019.sh
+doSingleHSFApplication2018.sh                       doSingleYLIStudentAcceptance2018.sh
+doSingleHSFAppPhase22019.sh                         doSingleYLIStudentApplication2018.sh
+doSingleHSFEnrollmentVerification2017.sh            doSingleYLIStudentApplication2019.sh
+doSingleHSFEnrollmentVerification2018.sh            doSingleYLIStudentApplicationAcceptance2019.sh
+doSingleHSFEntSummit2019Application.sh              doSingleYLIStudentApplicationPerformance2018.sh
+doSingleHSFEntSummitAcceptance2019.sh               doSingleYLIStudentApplicationTravelDetails2019.sh
+doSingleHSFEntSummitDocumentVerfication2019.sh      doSingleYLIStudentDocumentVerifications2018.sh
+doSingleHSFEntSummitMentors.sh                      doSingleYLITeamAcceptance2018.sh
+doSingleHSFEntSummitPostConferenceSurvey.sh         doSingleYLITeamDocumentVerifications2018.sh
+doSingleHSFEntSummitPresurvey2019.sh                doSingleYLS19Application.sh
+doSingleHSFEntSummitVolunteer.sh                    doSingleYLS19ATeamApplicationData.sh
+doSingleHSFNlcMentor2019.sh                         doSingleYLSATeamAcceptanceApp2019.sh
+doSingleHSFNLCParticipantApplication.sh             doSingleYLSATeamDocumentVerificationsApp2019.sh
+doSingleHSFReaderEva2019.sh                         doSingleYLSMentorFellowAcceptanceApp2019.sh
+doSingleHSFRecommenderEva2019.sh                    doSingleYLSMentorFellowDocumentVerificationsApp2019.sh
+doSingleHSFSTEMSummitApplication2019.sh             dumpView.sh
+doSingleHSFYLI19MentorFellowApplicationData.sh      etlNotification.sh
+doSingleHSFYLI19TeamApplicationData.sh              MainDumpForCounselor.jar1
+doSingleMediaAcceptance2018.sh                      MainDumpForCounselor.jar2
+doSingleMediaApplication2018.sh                     MainDumpForReader.jar
+doSingleMediaDocumentVerifications2018.sh           MainDump.jar
+doSingleMyHSFProfile2018.sh                         MainDump.jar1
+doSingleMyHSFProfilePerformance2018.sh              MainDump.jar10
+doSingleNLCAcceptance2018.sh                        MainDump.jar11
+doSingleNLCApplication2018.sh                       MainDump.jar12
+doSingleNLCDocumentVerifications2018.sh             MainDump.jar13
+doSinglePedroApplication2018.sh                     MainDump.jar14
+doSinglePedroApplication2019.sh                     MainDump.jar16
+doSinglePedrourquidiEnrollmentVerification2017.sh   MainDump.jar2
+doSingleRoyalApplication2018.sh                     MainDump.jar20
+doSingleRoyalApplication2019.sh                     MainDump.jar3
+doSingleRoyalPrestigeEnrollmentVerification2017.sh  MainDump.jar4
+doSingleStemAcceptance2018.sh                       MainDump.jar5
+doSingleStemApplication2018.sh                      MainDump.jar6
+doSingleStemApplicationPerformance2018.sh           MainDump.jar7
+doSingleStemDocumentVerifications2018.sh            MainDump.jar8
+doSingleTerrazasApplication2019.sh                  MainDump.jar9
+doSingleTest.sh                                     MainDump.jarError
+doSingleTGS2019ApplicationPhase2.sh                 MainDump.jarError1
+doSingleTGSAcceptance2018.sh                        MainDump.jarError2
+doSingleTGSAcceptance2019.sh                        MainDump.jar.noDDStructure
+doSingleTGSApplication2018.sh                       MainDump.jar.nophase2
+doSingleTGSConfirmInterview2019.sh                  MainDump.jar.noProgramTable
+doSingleTGSCounselor2018.sh                         MainDump.jar.test
+doSingleTGSCounselorStage2019.sh                    MainProcess.jar
+doSingleTGSDocumentUpload2018.sh                    MainProcess.jar1
+doSingleTGSEntranceApplication2018.sh               MainProcess.jar10
+doSingleTGSInterviewerApplication.sh                MainProcess.jar11
+doSingleTGSInterviewEvaluation2018.sh               MainProcess.jar2
+doSingleTGSInterviewEvaluation2019.sh               MainProcess.jar3
+doSingleTGSMentorAcceptance_2019.sh                 MainProcess.jar4
+doSingleTGSPostConferenceApplication2018.sh         MainProcess.jar5
+doSingleTGSPreConferenceApplication2018.sh          MainProcess.jar6
+doSingleTGSReaderEvaluations.sh                     MainProcess.jar7
+doSingleTGSRecommenderEvaluations.sh                MainProcess.jar8
+doSingleTGSReferStudent.sh                          MainProcess.jar9
+doSingleTGSScholarshipCohort1Phase1.sh              MainProcess.jar.noDDStructure
+doSingleTGSSemiAnnualSurvey2018.sh                  MainProcess.jar.nophase2
+doSingleTGSSemiAnnualSurveyQuarter2018.sh           MainProcess.jar.noProgramTable
+doSingleTGSSpringWinterQuarterSurvey.sh             MainProcess.jar.tablename50
+doSingleTGSStoriesApplication2018.sh                new_etl_jar_20180929.tar.gz
+doSingleTGSVolunteerAcceptance_2019.sh              new_etl_jar.tar.gz
+doSingleToyotaApp2019.sh                            remove_temp_file.sh
+doSingleVamosApplication2018.sh                     restoreView.sh
+doSingleVamosApplication2019.sh                     rpt_hsf
+doSingleWellFargoSemiAnnualSurveyWinter.sh          rpt_test
+doSingleWFALFPSIApplication2018.sh                  rpt_tgs
+doSingleWFALFPSICounselor2018.sh                    test_email_old.sh
+doSingleWFALFPSICounselorAcceptance2018.sh          test_emial.sh
+doSingleWFALFPSIEntranceApplication2018.sh          type
+doSingleWFALFPSIPostConferenceApplication2018.sh
+[root@ip-172-31-0-65 etl_applicant_bash]# cd rpt_hsf/
+[root@ip-172-31-0-65 rpt_hsf]# ls
+cinci_scholar_app_2019           et_pineda_app_2018            et_ylc_student_docverif_2018           hsf_nlc_mentor_2019
+csub_app_2018_ev                 et_pineda_enrollverif_2017    et_yli_ateam_accept_2018               hsf_stem_summit_2019
+csub_app_2018_ev_test            et_pineda_enrollverif_2018    et_yli_ateam_docverif_2018             pineda_scholar_app_2019
+csub_scholar_app_2019            et_royal_app_2018             et_yli_mentor_accept_2018              royal_scholar_app_2019
+et_cinci_app_2018                et_royal_enrollverif_2017     et_yli_mentor_docverif_2018            terrazas_scholar_app_2019
+et_cinci_enrollverif_2017        et_royal_enrollverif_2018     et_yli_student_accept_2018             toy_scholar_app_2019
+et_cinci_enrollverif_2018        et_stem_accept_2018           et_yli_student_app_2018                urquidi_scholar_app_2019
+et_csub_app_2018                 et_stem_app_2018              et_yli_student_app_2018_performance    vamos_scholar_app_2019
+et_csub_enrollverif_2017         et_stem_app_2018_performance  et_yli_student_app_2019                view_backup
+et_csub_enrollverif_2018         et_stem_docverif_2018         et_yli_student_app_2019_acceptance     wells_semiannual_survey_2018
+et_finance_accept_2018           et_terrazas_app_2018          et_yli_student_app_2019_traveldetails  wells_semiannual_survey_2018_test
+et_finance_app_2018              et_urquidi_app_2018           et_yli_student_docverif_2018           wells_semiannual_survey2019_WinterSpr
+et_finance_docverif_2018         et_urquidi_enrollverif_2017   et_yls_staff_accept_2018               wells_semiannual_survey_quarter_2018
+et_hsf_accept_2017               et_urquidi_enrollverif_2018   et_yls_staff_docverif_2018             yli_ateam_app_2019
+et_hsf_accept_2018               et_vamos_app_2018             et_yls_student_accept_2018             yli_a_team_app_2019_acceptance
+et_hsf_app_2018                  et_wells_app_2018             et_yls_student_app_2019                yli_a_team_app_2019_additional_detail
+et_hsf_app_2018_accept           et_wells_coun_accept_2018     et_yls_student_docverif_2018           yli_mentor_app_2019
+et_hsf_app_2018_ev               et_wells_coun_app_2018        hsf_app_2019                           yli_mentor_fellow_app_2019_acceptance
+et_hsf_app_2018_ev_20190130      et_wells_post_conf_2018       hsf_app_2019_phase2                    yli_mentor_fellow_app_2019_additional
+et_hsf_enrollverif_2017          et_wells_pre_conf_2018        hsf_app_2019_recom_eva                 yls_ateam_app_2019
+et_hsf_enrollverif_2018          et_wells_pre_program_2018     hsf_app_2019_reder_eva                 yls_a_team_app_2019_acceptance
+et_hsf_profile_2018              et_wells_pre_stories_2018     hsf_entp_summit_2019                   yls_a_team_app_2019_additional_detail
+et_hsf_profile_2018_performance  et_wells_reader_app_2018      hsf_entp_summit_2019_acceptance        yls_mentor_app_2019
+et_media_accept_2018             et_wells_reader_eval_2018     hsf_entp_summit_2019_postsurvey        yls_mentor_fellow_app_2019_acceptance
+et_media_app_2018                et_ylc_staff_accept_2018      hsf_entp_summit_2019_presurvey         yls_mentor_fellow_app_2019_additional
+et_media_docverif_2018           et_ylc_staff_app_2018         hsf_entp_summit_2019_travel_details    yls_student_app_2019_acceptance
+et_nlc_accept_2018               et_ylc_staff_docverif_2018    hsf_entp_summit_mentor_2019            yls_student_app_2019_additional_detai
+et_nlc_app_2018                  et_ylc_student_accept_2018    hsf_entp_summit_Volunteer_2019
+et_nlc_docverif_2018             et_ylc_student_app_2018       hsf_nlc_2019
+[root@ip-172-31-0-65 rpt_hsf]# cd hsf_entp_summit_2019_presurvey
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# ls
+stage_status  structure  structure_field  table  user_information
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# cd table/
+[root@ip-172-31-0-65 table]# ls
+role_.sql  users_roles.sql
+[root@ip-172-31-0-65 table]# cd ../
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# ls
+stage_status  structure  structure_field  table  user_information
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# cd structure
+[root@ip-172-31-0-65 structure]# lss
+bash: lss: command not found
+[root@ip-172-31-0-65 structure]# ls
+2019_ENT_PreConference_Survey_DDL
+[root@ip-172-31-0-65 structure]# cd ../
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# cd structure_field/
+[root@ip-172-31-0-65 structure_field]# ls
+2019_ENT_PreConference_Survey_DD
+[root@ip-172-31-0-65 structure_field]# cd 2019_ENT_PreConference_Survey_DD/
+[root@ip-172-31-0-65 2019_ENT_PreConference_Survey_DD]# ls
+2019_ENT_PreConference_Survey_DD.csv  2019_ENT_PreConference_Survey_DD_options.csv
+[root@ip-172-31-0-65 2019_ENT_PreConference_Survey_DD]# cd ../
+[root@ip-172-31-0-65 structure_field]# cd ../
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# ls
+stage_status  structure  structure_field  table  user_information
+[root@ip-172-31-0-65 hsf_entp_summit_2019_presurvey]# cd ../
+[root@ip-172-31-0-65 rpt_hsf]# ls
+cinci_scholar_app_2019           et_pineda_app_2018            et_ylc_student_docverif_2018           hsf_nlc_mentor_2019
+csub_app_2018_ev                 et_pineda_enrollverif_2017    et_yli_ateam_accept_2018               hsf_stem_summit_2019
+csub_app_2018_ev_test            et_pineda_enrollverif_2018    et_yli_ateam_docverif_2018             pineda_scholar_app_2019
+csub_scholar_app_2019            et_royal_app_2018             et_yli_mentor_accept_2018              royal_scholar_app_2019
+et_cinci_app_2018                et_royal_enrollverif_2017     et_yli_mentor_docverif_2018            terrazas_scholar_app_2019
+et_cinci_enrollverif_2017        et_royal_enrollverif_2018     et_yli_student_accept_2018             toy_scholar_app_2019
+et_cinci_enrollverif_2018        et_stem_accept_2018           et_yli_student_app_2018                urquidi_scholar_app_2019
+et_csub_app_2018                 et_stem_app_2018              et_yli_student_app_2018_performance    vamos_scholar_app_2019
+et_csub_enrollverif_2017         et_stem_app_2018_performance  et_yli_student_app_2019                view_backup
+et_csub_enrollverif_2018         et_stem_docverif_2018         et_yli_student_app_2019_acceptance     wells_semiannual_survey_2018
+et_finance_accept_2018           et_terrazas_app_2018          et_yli_student_app_2019_traveldetails  wells_semiannual_survey_2018_test
+et_finance_app_2018              et_urquidi_app_2018           et_yli_student_docverif_2018           wells_semiannual_survey2019_WinterSpr
+et_finance_docverif_2018         et_urquidi_enrollverif_2017   et_yls_staff_accept_2018               wells_semiannual_survey_quarter_2018
+et_hsf_accept_2017               et_urquidi_enrollverif_2018   et_yls_staff_docverif_2018             yli_ateam_app_2019
+et_hsf_accept_2018               et_vamos_app_2018             et_yls_student_accept_2018             yli_a_team_app_2019_acceptance
+et_hsf_app_2018                  et_wells_app_2018             et_yls_student_app_2019                yli_a_team_app_2019_additional_detail
+et_hsf_app_2018_accept           et_wells_coun_accept_2018     et_yls_student_docverif_2018           yli_mentor_app_2019
+et_hsf_app_2018_ev               et_wells_coun_app_2018        hsf_app_2019                           yli_mentor_fellow_app_2019_acceptance
+et_hsf_app_2018_ev_20190130      et_wells_post_conf_2018       hsf_app_2019_phase2                    yli_mentor_fellow_app_2019_additional
+et_hsf_enrollverif_2017          et_wells_pre_conf_2018        hsf_app_2019_recom_eva                 yls_ateam_app_2019
+et_hsf_enrollverif_2018          et_wells_pre_program_2018     hsf_app_2019_reder_eva                 yls_a_team_app_2019_acceptance
+et_hsf_profile_2018              et_wells_pre_stories_2018     hsf_entp_summit_2019                   yls_a_team_app_2019_additional_detail
+et_hsf_profile_2018_performance  et_wells_reader_app_2018      hsf_entp_summit_2019_acceptance        yls_mentor_app_2019
+et_media_accept_2018             et_wells_reader_eval_2018     hsf_entp_summit_2019_postsurvey        yls_mentor_fellow_app_2019_acceptance
+et_media_app_2018                et_ylc_staff_accept_2018      hsf_entp_summit_2019_presurvey         yls_mentor_fellow_app_2019_additional
+et_media_docverif_2018           et_ylc_staff_app_2018         hsf_entp_summit_2019_travel_details    yls_student_app_2019_acceptance
+et_nlc_accept_2018               et_ylc_staff_docverif_2018    hsf_entp_summit_mentor_2019            yls_student_app_2019_additional_detai
+et_nlc_app_2018                  et_ylc_student_accept_2018    hsf_entp_summit_Volunteer_2019
+et_nlc_docverif_2018             et_ylc_student_app_2018       hsf_nlc_2019
+[root@ip-172-31-0-65 rpt_hsf]# cd ../
+[root@ip-172-31-0-65 etl_applicant_bash]# ls
+backupfile.sql                                      doSingleWFALFPSIPreConferenceApplication2018.sh
+config.sh                                           doSingleWFALFPSIReaderApplication2018.sh
+datasource                                          doSingleWFALFPSIReaderEvaluations2018.sh
+doSingleAlbinoApplication2018.sh                    doSingleWFALFPSISemiAnnualSurvey2018.sh
+doSingleAlbinoApplication2019.sh                    doSingleWFALFPSISemiAnnualSurveyQuarter2018.sh
+doSingleAlbinorpinedaEnrollmentVerification2017.sh  doSingleWFALFPSIStoriesApplication2018.sh
+doSingleCincinnatiApplication2018.sh                doSingleYLCStaffAcceptance2018.sh
+doSingleCincinnatiApplication2019.sh                doSingleYLCStaffApplication2018.sh
+doSingleCincinnatiEnrollmentVerification2017.sh     doSingleYLCStaffDocumentVerifications2018.sh
+doSingleCsubApplication2018.sh                      doSingleYLCStudentAcceptance2018.sh
+doSingleCSUBApplication2019.sh                      doSingleYLCStudentApp2019.sh
+doSingleCsubEnrollmentVerification2017.sh           doSingleYLCStudentAppAcceptance2019.sh
+doSingleCSUBEnrollmentVerification2018.sh           doSingleYLCStudentApplication2018.sh
+doSingleFinanceAcceptance2018.sh                    doSingleYLCStudentDocumentVerifications2018.sh
+doSingleFinanceApplication2018.sh                   doSingleYLCYLS19MentorFellowApplicationData.sh
+doSingleFinanceDocumentVerifications2018.sh         doSingleYLIATeamAcceptanceApp2019.sh
+doSingleFrankTerrazasApplication2018.sh             doSingleYLIATeamDocumentVerificationsApp2019.sh
+doSingleHSF2019Application.sh                       doSingleYLIMentorAcceptance2018.sh
+doSingleHSF2019ApplicationTest.sh                   doSingleYLIMentorDocumentVerifications2018.sh
+doSingleHSFAcceptance2017.sh                        doSingleYLIMentorFellowAcceptanceApp2019.sh
+doSingleHSFAcceptanceThankYouLetterVid2018.sh       doSingleYLIMentorFellowApplication2019.sh
+doSingleHSFApplication2018.sh                       doSingleYLIStudentAcceptance2018.sh
+doSingleHSFAppPhase22019.sh                         doSingleYLIStudentApplication2018.sh
+doSingleHSFEnrollmentVerification2017.sh            doSingleYLIStudentApplication2019.sh
+doSingleHSFEnrollmentVerification2018.sh            doSingleYLIStudentApplicationAcceptance2019.sh
+doSingleHSFEntSummit2019Application.sh              doSingleYLIStudentApplicationPerformance2018.sh
+doSingleHSFEntSummitAcceptance2019.sh               doSingleYLIStudentApplicationTravelDetails2019.sh
+doSingleHSFEntSummitDocumentVerfication2019.sh      doSingleYLIStudentDocumentVerifications2018.sh
+doSingleHSFEntSummitMentors.sh                      doSingleYLITeamAcceptance2018.sh
+doSingleHSFEntSummitPostConferenceSurvey.sh         doSingleYLITeamDocumentVerifications2018.sh
+doSingleHSFEntSummitPresurvey2019.sh                doSingleYLS19Application.sh
+doSingleHSFEntSummitVolunteer.sh                    doSingleYLS19ATeamApplicationData.sh
+doSingleHSFNlcMentor2019.sh                         doSingleYLSATeamAcceptanceApp2019.sh
+doSingleHSFNLCParticipantApplication.sh             doSingleYLSATeamDocumentVerificationsApp2019.sh
+doSingleHSFReaderEva2019.sh                         doSingleYLSMentorFellowAcceptanceApp2019.sh
+doSingleHSFRecommenderEva2019.sh                    doSingleYLSMentorFellowDocumentVerificationsApp2019.sh
+doSingleHSFSTEMSummitApplication2019.sh             dumpView.sh
+doSingleHSFYLI19MentorFellowApplicationData.sh      etlNotification.sh
+doSingleHSFYLI19TeamApplicationData.sh              MainDumpForCounselor.jar1
+doSingleMediaAcceptance2018.sh                      MainDumpForCounselor.jar2
+doSingleMediaApplication2018.sh                     MainDumpForReader.jar
+doSingleMediaDocumentVerifications2018.sh           MainDump.jar
+doSingleMyHSFProfile2018.sh                         MainDump.jar1
+doSingleMyHSFProfilePerformance2018.sh              MainDump.jar10
+doSingleNLCAcceptance2018.sh                        MainDump.jar11
+doSingleNLCApplication2018.sh                       MainDump.jar12
+doSingleNLCDocumentVerifications2018.sh             MainDump.jar13
+doSinglePedroApplication2018.sh                     MainDump.jar14
+doSinglePedroApplication2019.sh                     MainDump.jar16
+doSinglePedrourquidiEnrollmentVerification2017.sh   MainDump.jar2
+doSingleRoyalApplication2018.sh                     MainDump.jar20
+doSingleRoyalApplication2019.sh                     MainDump.jar3
+doSingleRoyalPrestigeEnrollmentVerification2017.sh  MainDump.jar4
+doSingleStemAcceptance2018.sh                       MainDump.jar5
+doSingleStemApplication2018.sh                      MainDump.jar6
+doSingleStemApplicationPerformance2018.sh           MainDump.jar7
+doSingleStemDocumentVerifications2018.sh            MainDump.jar8
+doSingleTerrazasApplication2019.sh                  MainDump.jar9
+doSingleTest.sh                                     MainDump.jarError
+doSingleTGS2019ApplicationPhase2.sh                 MainDump.jarError1
+doSingleTGSAcceptance2018.sh                        MainDump.jarError2
+doSingleTGSAcceptance2019.sh                        MainDump.jar.noDDStructure
+doSingleTGSApplication2018.sh                       MainDump.jar.nophase2
+doSingleTGSConfirmInterview2019.sh                  MainDump.jar.noProgramTable
+doSingleTGSCounselor2018.sh                         MainDump.jar.test
+doSingleTGSCounselorStage2019.sh                    MainProcess.jar
+doSingleTGSDocumentUpload2018.sh                    MainProcess.jar1
+doSingleTGSEntranceApplication2018.sh               MainProcess.jar10
+doSingleTGSInterviewerApplication.sh                MainProcess.jar11
+doSingleTGSInterviewEvaluation2018.sh               MainProcess.jar2
+doSingleTGSInterviewEvaluation2019.sh               MainProcess.jar3
+doSingleTGSMentorAcceptance_2019.sh                 MainProcess.jar4
+doSingleTGSPostConferenceApplication2018.sh         MainProcess.jar5
+doSingleTGSPreConferenceApplication2018.sh          MainProcess.jar6
+doSingleTGSReaderEvaluations.sh                     MainProcess.jar7
+doSingleTGSRecommenderEvaluations.sh                MainProcess.jar8
+doSingleTGSReferStudent.sh                          MainProcess.jar9
+doSingleTGSScholarshipCohort1Phase1.sh              MainProcess.jar.noDDStructure
+doSingleTGSSemiAnnualSurvey2018.sh                  MainProcess.jar.nophase2
+doSingleTGSSemiAnnualSurveyQuarter2018.sh           MainProcess.jar.noProgramTable
+doSingleTGSSpringWinterQuarterSurvey.sh             MainProcess.jar.tablename50
+doSingleTGSStoriesApplication2018.sh                new_etl_jar_20180929.tar.gz
+doSingleTGSVolunteerAcceptance_2019.sh              new_etl_jar.tar.gz
+doSingleToyotaApp2019.sh                            remove_temp_file.sh
+doSingleVamosApplication2018.sh                     restoreView.sh
+doSingleVamosApplication2019.sh                     rpt_hsf
+doSingleWellFargoSemiAnnualSurveyWinter.sh          rpt_test
+doSingleWFALFPSIApplication2018.sh                  rpt_tgs
+doSingleWFALFPSICounselor2018.sh                    test_email_old.sh
+doSingleWFALFPSICounselorAcceptance2018.sh          test_emial.sh
+doSingleWFALFPSIEntranceApplication2018.sh          type
+doSingleWFALFPSIPostConferenceApplication2018.sh
+[root@ip-172-31-0-65 etl_applicant_bash]# vi doSingleTGSCohort2TeambuildingSurvey.sh
+[root@ip-172-31-0-65 etl_applicant_bash]# cd ../
+[root@ip-172-31-0-65 etl_applicant]# ls
+etl_applicant_bash                                              hsf_entp_summit_2019_postsurvey.sh
+etl_applicant_gates.20190607.log                                remove_temp_file.sh
+etl_applicant_gates.20190608.log                                retired_yli_2018jobs.sh
+etl_applicant_gates.20190609.log                                task_for_applicant.sh
+etl_applicant_gates_accept_counselor.20190607.log               task_for_ev.sh
+etl_applicant_gates_accept_counselor.20190608.log               task_for_gates_accept_counselor.sh
+etl_applicant_gates_accept_counselor.20190609.log               task_for_gates_cohort1.sh
+etl_applicant_gates_interviewer_eva.20190607.log                task_for_gates_confirm_interviewer.sh
+etl_applicant_gates_interviewer_eva.20190608.log                task_for_gates_interviewer_eva.sh
+etl_applicant_gates_interviewer_eva.20190609.log                task_for_gates_interviewer.sh
+etl_applicant_hsf.20190607.log                                  task_for_gates_mentor_volunteer.sh
+etl_applicant_hsf.20190608.log                                  task_for_gates.sh
+etl_applicant_hsf.20190609.log                                  task_for_gates_special_schedule.20190607.log
+etl_applicant_hsf_nlc.20190607.log                              task_for_gates_special_schedule.20190608.log
+etl_applicant_hsf_nlc.20190608.log                              task_for_gates_special_schedule.20190609.log
+etl_applicant_hsf_nlc.20190609.log                              task_for_gates_special_schedule.sh
+etl_applicant_hsf_stem_submit.20190607.log                      task_for_hsf_ent_summit_acce_and_de.20190607.log
+etl_applicant_hsf_stem_submit.20190608.log                      task_for_hsf_ent_summit_acce_and_de.20190608.log
+etl_applicant_hsf_stem_submit.20190609.log                      task_for_hsf_ent_summit_acce_and_de.20190609.log
+etl_applicant_wellsfargo.20190607.log                           task_for_hsf_ent_summit_acce_and_de.sh
+etl_applicant_wellsfargo.20190608.log                           task_for_hsf_ent_summit_presurvey.sh
+etl_applicant_wellsfargo.20190609.log                           task_for_hsf_ent_summit.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log  task_for_hsf_ent_summit_volunteer.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log  task_for_hsf_nlc_mentor_2019.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log  task_for_hsf_nlc.sh
+etl_applicant_yls.20190607.log                                  task_for_hsf_pahse2_and_reader_and_recommender.sh
+etl_applicant_yls.20190608.log                                  task_for_hsf.sh
+etl_applicant_yls.20190609.log                                  task_for_hsf_special_schedule.sh
+etl_gates_confirm_interviewer.20190607.log                      task_for_hsf_stem_submit.sh
+etl_gates_confirm_interviewer.20190608.log                      task_for_hsf_yli_yls.sh
+etl_gates_confirm_interviewer.20190609.log                      task_for_performance_new_etl.sh
+etl_gates_interviewer.20190607.log                              task_for_terrazas_application.sh
+etl_gates_interviewer.20190608.log                              task_for_test.sh
+etl_gates_interviewer.20190609.log                              task_for_tgs_spring_winter_quarter_survey.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190607.log      task_for_toyota_app.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190608.log      task_for_vamos_application.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190609.log      task_for_wellsfargo_2019_winter_spring.sh
+etl_nlc_mentor_hsf.20190607.log                                 task_for_wellsfargo.sh
+etl_nlc_mentor_hsf.20190608.log                                 task_for_ylc.sh
+etl_nlc_mentor_hsf.20190609.log                                 task_for_yli_yls.sh
+etl_yli_yls.20190607.log                                        task_for_yls.sh
+etl_yli_yls.20190608.log                                        test_2019.log
+etl_yli_yls.20190609.log
+[root@ip-172-31-0-65 etl_applicant]# cat task_for_gates.sh
+script_path="$(cd "$(dirname "$0")" && pwd)"
+declare -a DATETIME=$(date +'%Y%m%d')
+declare -a OUTPUT_FILE=etl_applicant_gates.$DATETIME.log
+
+touch ${script_path}/$OUTPUT_FILE
+
+startdate=`date +"%Y-%m-%d %H:%M"`
+echo 'Star time : '$startdate >> ${script_path}/$OUTPUT_FILE 2>&1
+
+##gates shell for 2018-2019
+
+###Once
+#sh ${script_path}/etl_applicant_bash/doSingleTGSAcceptance2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+#sh ${script_path}/etl_applicant_bash/doSingleTGSInterviewEvaluation2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+#sh ${script_path}/etl_applicant_bash/doSingleTGSApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+#sh ${script_path}/etl_applicant_bash/doSingleTGSPreConferenceApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+#sh ${script_path}/etl_applicant_bash/doSingleTGSEntranceApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+#sh ${script_path}/etl_applicant_bash/doSingleTGSPostConferenceApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+#sh ${script_path}/etl_applicant_bash/doSingleTGSStoriesApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+
+###Daily
+sh ${script_path}/etl_applicant_bash/doSingleTGSSemiAnnualSurvey2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+sh ${script_path}/etl_applicant_bash/doSingleTGSSemiAnnualSurveyQuarter2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+sh ${script_path}/etl_applicant_bash/doSingleTGSReaderEvaluations.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+sh ${script_path}/etl_applicant_bash/doSingleTGSRecommenderEvaluations.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+
+###need add a schema name, if add we can set this job daily
+#sh ${script_path}/etl_applicant_bash/doSingleTGSReferStudent.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+
+#script_path="$(cd "$(dirname "$0")" && pwd)"
+#current_date="$(date +%Y)"
+#last_date="$(date -d last-year +%Y)"
+#current_day="$(date +%Y%m%d)"
+#before_one_day="$(date -d "-1 day" +%Y%m%d)"
+#before_two_day="$(date -d "-2 day" +%Y%m%d)"
+
+#for file in `cd "$(dirname "$0")" && ls ${!script_path}`
+#do
+#    if [[ (${file} == *"${current_date}"* || ${file} == *"${last_date}"*) && ${file} != *"${current_day}"* && ${file} != *"${before_one_day}"* && ${file} != *"${before_two_day}"* && ${file} != *"2018_2019"* && ${file} != *"2017_2018"* ]]; then
+#         echo "remove folder ${file}"
+#         `cd "$(dirname "$0")" && rm -rf ${file}`
+#    fi
+#done
+
+### Remove log file
+sh ${script_path}/remove_temp_file.sh >> ${script_path}/$OUTPUT_FILE 2>&1
+
+donedate=`date +"%Y-%m-%d %H:%M"`
+echo 'Done time : '$donedate >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# vi task_for_gates_cohort2_teambuilding_survey.sh
+
+[No write since last change]
+/bin/bash: q: command not found
+
+shell returned 127
+
+Press ENTER or type command to continue
+[root@ip-172-31-0-65 etl_applicant]# script_path="$(cd "$(dirname "$0")" && pwd)"
+[root@ip-172-31-0-65 etl_applicant]# declare -a DATETIME=$(date +'%Y%m%d')
+[root@ip-172-31-0-65 etl_applicant]# declare -a OUTPUT_FILE=etl_applicant_gates.$DATETIME.log
+[root@ip-172-31-0-65 etl_applicant]# 
+[root@ip-172-31-0-65 etl_applicant]# touch ${script_path}/$OUTPUT_FILE
+[root@ip-172-31-0-65 etl_applicant]# 
+[root@ip-172-31-0-65 etl_applicant]# startdate=`date +"%Y-%m-%d %H:%M"`
+[root@ip-172-31-0-65 etl_applicant]# echo 'Star time : '$startdate >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# 
+[root@ip-172-31-0-65 etl_applicant]# ##gates shell for 2018-2019
+[root@ip-172-31-0-65 etl_applicant]# 
+[root@ip-172-31-0-65 etl_applicant]# ###Once
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSAcceptance2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSInterviewEvaluation2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSPreConferenceApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSEntranceApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSPostConferenceApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# #sh ${script_path}/etl_applicant_bash/doSingleTGSStoriesApplication2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# 
+[root@ip-172-31-0-65 etl_applicant]# ###Daily
+[root@ip-172-31-0-65 etl_applicant]# sh ${script_path}/etl_applicant_bash/doSingleTGSSemiAnnualSurvey2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+^[^[^[^[^Z
+[1]+  Stopped                 sh ${script_path}/etl_applicant_bash/doSingleTGSSemiAnnualSurvey2018.sh prod gates >> ${script_path}/$OUTPUT_FILE 2>&1
+[root@ip-172-31-0-65 etl_applicant]# ^C
+[root@ip-172-31-0-65 etl_applicant]# vi task_for_gates_cohort2_teambuilding_survey.sh
+[root@ip-172-31-0-65 etl_applicant]# ls
+etl_applicant_bash                                              hsf_entp_summit_2019_postsurvey.sh
+etl_applicant_gates.20190607.log                                remove_temp_file.sh
+etl_applicant_gates.20190608.log                                retired_yli_2018jobs.sh
+etl_applicant_gates.20190609.log                                task_for_applicant.sh
+etl_applicant_gates_accept_counselor.20190607.log               task_for_ev.sh
+etl_applicant_gates_accept_counselor.20190608.log               task_for_gates_accept_counselor.sh
+etl_applicant_gates_accept_counselor.20190609.log               task_for_gates_cohort1.sh
+etl_applicant_gates_interviewer_eva.20190607.log                task_for_gates_cohort2_teambuilding_survey.sh
+etl_applicant_gates_interviewer_eva.20190608.log                task_for_gates_confirm_interviewer.sh
+etl_applicant_gates_interviewer_eva.20190609.log                task_for_gates_interviewer_eva.sh
+etl_applicant_hsf.20190607.log                                  task_for_gates_interviewer.sh
+etl_applicant_hsf.20190608.log                                  task_for_gates_mentor_volunteer.sh
+etl_applicant_hsf.20190609.log                                  task_for_gates.sh
+etl_applicant_hsf_nlc.20190607.log                              task_for_gates_special_schedule.20190607.log
+etl_applicant_hsf_nlc.20190608.log                              task_for_gates_special_schedule.20190608.log
+etl_applicant_hsf_nlc.20190609.log                              task_for_gates_special_schedule.20190609.log
+etl_applicant_hsf_stem_submit.20190607.log                      task_for_gates_special_schedule.sh
+etl_applicant_hsf_stem_submit.20190608.log                      task_for_hsf_ent_summit_acce_and_de.20190607.log
+etl_applicant_hsf_stem_submit.20190609.log                      task_for_hsf_ent_summit_acce_and_de.20190608.log
+etl_applicant_wellsfargo.20190607.log                           task_for_hsf_ent_summit_acce_and_de.20190609.log
+etl_applicant_wellsfargo.20190608.log                           task_for_hsf_ent_summit_acce_and_de.sh
+etl_applicant_wellsfargo.20190609.log                           task_for_hsf_ent_summit_presurvey.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log  task_for_hsf_ent_summit.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log  task_for_hsf_ent_summit_volunteer.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log  task_for_hsf_nlc_mentor_2019.sh
+etl_applicant_yls.20190607.log                                  task_for_hsf_nlc.sh
+etl_applicant_yls.20190608.log                                  task_for_hsf_pahse2_and_reader_and_recommender.sh
+etl_applicant_yls.20190609.log                                  task_for_hsf.sh
+etl_gates_confirm_interviewer.20190607.log                      task_for_hsf_special_schedule.sh
+etl_gates_confirm_interviewer.20190608.log                      task_for_hsf_stem_submit.sh
+etl_gates_confirm_interviewer.20190609.log                      task_for_hsf_yli_yls.sh
+etl_gates_interviewer.20190607.log                              task_for_performance_new_etl.sh
+etl_gates_interviewer.20190608.log                              task_for_terrazas_application.sh
+etl_gates_interviewer.20190609.log                              task_for_test.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190607.log      task_for_tgs_spring_winter_quarter_survey.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190608.log      task_for_toyota_app.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190609.log      task_for_vamos_application.sh
+etl_nlc_mentor_hsf.20190607.log                                 task_for_wellsfargo_2019_winter_spring.sh
+etl_nlc_mentor_hsf.20190608.log                                 task_for_wellsfargo.sh
+etl_nlc_mentor_hsf.20190609.log                                 task_for_ylc.sh
+etl_yli_yls.20190607.log                                        task_for_yli_yls.sh
+etl_yli_yls.20190608.log                                        task_for_yls.sh
+etl_yli_yls.20190609.log                                        test_2019.log
+[root@ip-172-31-0-65 etl_applicant]# cd etl_applicant_bash/
+[root@ip-172-31-0-65 etl_applicant_bash]# ls -l
+total 43588
+-rw-r--r--.   1 root        root      618567 Oct 10  2018 backupfile.sql
+-rw-r--r--.   1 ec2-user    ec2-user     553 Jul 25  2018 config.sh
+drwxr-xr-x.   2 ec2-user    ec2-user      41 Jul  9  2018 datasource
+-rw-rw-r--.   1 ec2-user    ec2-user   10288 Oct 17  2018 doSingleAlbinoApplication2018.sh
+-rw-r--r--.   1 root        root        9616 Mar  5 01:25 doSingleAlbinoApplication2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8647 Oct 17  2018 doSingleAlbinorpinedaEnrollmentVerification2017.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10277 Oct 17  2018 doSingleCincinnatiApplication2018.sh
+-rw-r--r--.   1 root        root        9619 Mar  5 01:25 doSingleCincinnatiApplication2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8641 Oct 17  2018 doSingleCincinnatiEnrollmentVerification2017.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10284 Oct 17  2018 doSingleCsubApplication2018.sh
+-rw-r--r--.   1 root        root        9612 Mar  5 01:25 doSingleCSUBApplication2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8636 Oct 17  2018 doSingleCsubEnrollmentVerification2017.sh
+-rw-r--r--.   1 root        root        8377 Oct 21  2018 doSingleCSUBEnrollmentVerification2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8326 Oct 17  2018 doSingleFinanceAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8726 Oct 17  2018 doSingleFinanceApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8538 Oct 17  2018 doSingleFinanceDocumentVerifications2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10299 Oct 17  2018 doSingleFrankTerrazasApplication2018.sh
+-rw-r--r--.   1 root        root        9507 Feb 11 05:37 doSingleHSF2019Application.sh
+-rw-r--r--.   1 root        root        8765 Feb 14 22:14 doSingleHSF2019ApplicationTest.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8344 Oct 17  2018 doSingleHSFAcceptance2017.sh
+-rw-r--r--.   1 root        root        8794 Jan 23 20:18 doSingleHSFAcceptanceThankYouLetterVid2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10249 Oct 17  2018 doSingleHSFApplication2018.sh
+-rw-r--r--.   1 root        root        8859 Mar 28 01:48 doSingleHSFAppPhase22019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8632 Oct 17  2018 doSingleHSFEnrollmentVerification2017.sh
+-rw-r--r--.   1 root        root        8603 Oct  7  2018 doSingleHSFEnrollmentVerification2018.sh
+-rw-r--r--.   1 root        root        9361 Feb 19 21:12 doSingleHSFEntSummit2019Application.sh
+-rw-r--r--.   1 root        root        8777 Feb 21 20:54 doSingleHSFEntSummitAcceptance2019.sh
+-rw-r--r--.   1 root        root        8986 Mar  5 03:17 doSingleHSFEntSummitDocumentVerfication2019.sh
+-rw-r--r--.   1 root        root        9097 Feb 17 20:50 doSingleHSFEntSummitMentors.sh
+-rw-r--r--.   1 root        root        8543 Apr  9 03:42 doSingleHSFEntSummitPostConferenceSurvey.sh
+-rw-r--r--.   1 root        root        8764 Mar 26 23:06 doSingleHSFEntSummitPresurvey2019.sh
+-rw-r--r--.   1 root        root        9133 Feb 21 20:20 doSingleHSFEntSummitVolunteer.sh
+-rw-r--r--.   1 root        root        8744 May 14 21:20 doSingleHSFNlcMentor2019.sh
+-rw-r--r--.   1 root        root        9012 Apr 14 21:41 doSingleHSFNLCParticipantApplication.sh
+-rw-r--r--.   1 root        root        8859 Mar 28 03:15 doSingleHSFReaderEva2019.sh
+-rw-r--r--.   1 root        root        8927 May  7 21:26 doSingleHSFRecommenderEva2019.sh
+-rw-r--r--.   1 root        root        9035 May  9 22:21 doSingleHSFSTEMSummitApplication2019.sh
+-rw-r--r--.   1 root        root        9096 Jan 23 20:19 doSingleHSFYLI19MentorFellowApplicationData.sh
+-rw-r--r--.   1 root        root        9009 Jan 23 20:18 doSingleHSFYLI19TeamApplicationData.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8317 Oct 17  2018 doSingleMediaAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8668 Oct 17  2018 doSingleMediaApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8504 Oct 17  2018 doSingleMediaDocumentVerifications2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8849 Oct 17  2018 doSingleMyHSFProfile2018.sh
+-rw-r--r--.   1 root        root        8872 Oct 17  2018 doSingleMyHSFProfilePerformance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8315 Oct 17  2018 doSingleNLCAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8648 Oct 17  2018 doSingleNLCApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8506 Oct 17  2018 doSingleNLCDocumentVerifications2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10274 Oct 17  2018 doSinglePedroApplication2018.sh
+-rw-r--r--.   1 root        root        9616 Mar  5 01:26 doSinglePedroApplication2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8647 Oct 17  2018 doSinglePedrourquidiEnrollmentVerification2017.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10287 Oct 17  2018 doSingleRoyalApplication2018.sh
+-rw-r--r--.   1 root        root        9595 Mar  5 01:24 doSingleRoyalApplication2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8645 Oct 17  2018 doSingleRoyalPrestigeEnrollmentVerification2017.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8318 Oct 17  2018 doSingleStemAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8681 Oct 17  2018 doSingleStemApplication2018.sh
+-rw-r--r--.   1 root        root        8704 Oct 17  2018 doSingleStemApplicationPerformance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8507 Oct 17  2018 doSingleStemDocumentVerifications2018.sh
+-rw-r--r--.   1 root        root        9620 Mar  5 01:23 doSingleTerrazasApplication2019.sh
+-rw-r--r--.   1 root        root        8090 Apr  8 02:38 doSingleTest.sh
+-rw-r--r--.   1 root        root        9062 Jan 31 05:48 doSingleTGS2019ApplicationPhase2.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8438 Oct 16  2018 doSingleTGSAcceptance2018.sh
+-rw-r--r--.   1 root        root        8588 Apr 22 02:13 doSingleTGSAcceptance2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    9018 Oct 16  2018 doSingleTGSApplication2018.sh
+-rw-r--r--.   1 root        root        8771 Jun  9 21:46 doSingleTGSCohort2TeambuildingSurvey.sh
+-rw-r--r--.   1 root        root        8760 Feb 25 00:57 doSingleTGSConfirmInterview2019.sh
+-rw-r--r--.   1 root        root        9323 Oct 28  2018 doSingleTGSCounselor2018.sh
+-rw-r--r--.   1 root        root        9389 Apr 22 21:01 doSingleTGSCounselorStage2019.sh
+-rw-r--r--.   1 root        root        8377 Sep 27  2018 doSingleTGSDocumentUpload2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8445 Oct 16  2018 doSingleTGSEntranceApplication2018.sh
+-rw-r--r--.   1 root        root        8906 Feb 22 05:30 doSingleTGSInterviewerApplication.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8325 Apr 15 21:53 doSingleTGSInterviewEvaluation2018.sh
+-rw-r--r--.   1 root        root        8417 Apr  9 03:40 doSingleTGSInterviewEvaluation2019.sh
+-rw-r--r--.   1 root        root        8745 Apr  9 03:38 doSingleTGSMentorAcceptance_2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8388 Oct 16  2018 doSingleTGSPostConferenceApplication2018.sh
+-rw-r--r--.   1 ec2-user    ec2-user    8330 Oct 16  2018 doSingleTGSPreConferenceApplication2018.sh
+-rw-r--r--.   1 root        root        8857 Feb 22 05:49 doSingleTGSReaderEvaluations.sh
+-rw-r--r--.   1 root        root        8852 Feb 21 20:31 doSingleTGSRecommenderEvaluations.sh
+-rw-r--r--.   1 root        root        8279 Oct 17  2018 doSingleTGSReferStudent.sh
+-rw-r--r--.   1 root        root        8992 Apr 11 22:00 doSingleTGSScholarshipCohort1Phase1.sh
+-rw-r--r--.   1 root        root        9087 Jan 23 20:15 doSingleTGSSemiAnnualSurvey2018.sh
+-rw-r--r--.   1 root        root        9126 Jan 23 20:16 doSingleTGSSemiAnnualSurveyQuarter2018.sh
+-rw-r--r--.   1 root        root        9190 Feb 14 21:16 doSingleTGSSpringWinterQuarterSurvey.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8386 Oct 16  2018 doSingleTGSStoriesApplication2018.sh
+-rw-r--r--.   1 root        root        8777 Apr  9 03:39 doSingleTGSVolunteerAcceptance_2019.sh
+-rw-r--r--.   1 root        root        9578 Mar  5 00:41 doSingleToyotaApp2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10286 Oct 17  2018 doSingleVamosApplication2018.sh
+-rw-r--r--.   1 root        root        9614 Mar  5 01:18 doSingleVamosApplication2019.sh
+-rw-r--r--.   1 root        root        8880 May  6 22:57 doSingleWellFargoSemiAnnualSurveyWinter.sh
+-rw-rw-r--.   1 ec2-user    ec2-user   10162 Oct 17  2018 doSingleWFALFPSIApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    9437 Oct 17  2018 doSingleWFALFPSICounselor2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8460 Oct 17  2018 doSingleWFALFPSICounselorAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8450 Oct 17  2018 doSingleWFALFPSIEntranceApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8421 Oct 17  2018 doSingleWFALFPSIPostConferenceApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8333 Oct 17  2018 doSingleWFALFPSIPreConferenceApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    9317 Oct 17  2018 doSingleWFALFPSIReaderApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8719 Oct 16  2018 doSingleWFALFPSIReaderEvaluations2018.sh
+-rw-r--r--.   1 root        root        8741 Oct 10  2018 doSingleWFALFPSISemiAnnualSurvey2018.sh
+-rw-r--r--.   1 root        root        9113 Jan 23 20:17 doSingleWFALFPSISemiAnnualSurveyQuarter2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8394 Oct 16  2018 doSingleWFALFPSIStoriesApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8389 Oct 17  2018 doSingleYLCStaffAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8581 Oct 16  2018 doSingleYLCStaffApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8580 Oct 17  2018 doSingleYLCStaffDocumentVerifications2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8399 Oct 17  2018 doSingleYLCStudentAcceptance2018.sh
+-rw-r--r--.   1 root        root        8713 May 21 21:59 doSingleYLCStudentApp2019.sh
+-rw-r--r--.   1 root        root        8508 Apr  8 03:16 doSingleYLCStudentAppAcceptance2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8723 Oct 16  2018 doSingleYLCStudentApplication2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8593 Oct 17  2018 doSingleYLCStudentDocumentVerifications2018.sh
+-rw-r--r--.   1 root        root        9055 Jan 23 20:21 doSingleYLCYLS19MentorFellowApplicationData.sh
+-rw-r--r--.   1 root        root        8842 Mar  5 03:05 doSingleYLIATeamAcceptanceApp2019.sh
+-rw-r--r--.   1 root        root        9054 Mar  5 03:24 doSingleYLIATeamDocumentVerificationsApp2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8391 Oct 16  2018 doSingleYLIMentorAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8576 Oct 16  2018 doSingleYLIMentorDocumentVerifications2018.sh
+-rw-r--r--.   1 root        root        8880 Mar  5 02:42 doSingleYLIMentorFellowAcceptanceApp2019.sh
+-rw-r--r--.   1 root        root        9111 Mar  5 01:58 doSingleYLIMentorFellowApplication2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8413 Oct 16  2018 doSingleYLIStudentAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8662 Oct 16  2018 doSingleYLIStudentApplication2018.sh
+-rw-r--r--.   1 root        root        9087 Jan 23 20:37 doSingleYLIStudentApplication2019.sh
+-rw-r--r--.   1 root        root        8538 Apr  9 22:20 doSingleYLIStudentApplicationAcceptance2019.sh
+-rw-r--r--.   1 root        root        8685 Oct 16  2018 doSingleYLIStudentApplicationPerformance2018.sh
+-rw-r--r--.   1 root        root        8764 Apr  9 22:21 doSingleYLIStudentApplicationTravelDetails2019.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8624 Oct 16  2018 doSingleYLIStudentDocumentVerifications2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8388 Oct 16  2018 doSingleYLITeamAcceptance2018.sh
+-rw-rw-r--.   1 ec2-user    ec2-user    8575 Oct 16  2018 doSingleYLITeamDocumentVerifications2018.sh
+-rw-r--r--.   1 root        root        9092 Jan 23 20:36 doSingleYLS19Application.sh
+-rw-r--r--.   1 root        root        8958 Jan 23 20:20 doSingleYLS19ATeamApplicationData.sh
+-rw-r--r--.   1 root        root        8845 Mar  5 22:21 doSingleYLSATeamAcceptanceApp2019.sh
+-rw-r--r--.   1 root        root        9061 Mar  5 22:27 doSingleYLSATeamDocumentVerificationsApp2019.sh
+-rw-r--r--.   1 root        root        8880 Mar  5 03:46 doSingleYLSMentorFellowAcceptanceApp2019.sh
+-rw-r--r--.   1 root        root        9129 Mar  5 22:14 doSingleYLSMentorFellowDocumentVerificationsApp2019.sh
+-rwxr-xr-x.   1 root        root        3366 Feb  1 05:15 dumpView.sh
+-rw-r--r--.   1 ec2-user    ec2-user     571 Jul  9  2018 etlNotification.sh
+-rw-r--r--.   1 root        root      870690 Oct 19  2018 MainDumpForCounselor.jar1
+-rw-r--r--.   1 root        root      870680 Oct 19  2018 MainDumpForCounselor.jar2
+-rw-r--r--.   1 root        root      882967 Feb 22 01:59 MainDumpForReader.jar
+-rw-r--r--.   1 augumentdev hsfuser   885758 Mar 28 01:35 MainDump.jar
+-rw-r--r--.   1 augumentdev hsfuser   868610 Jul 26  2018 MainDump.jar1
+-rw-r--r--.   1 root        root      871044 Nov 15  2018 MainDump.jar10
+-rw-r--r--.   1 root        root      872873 Dec 25 05:57 MainDump.jar11
+-rw-r--r--.   1 augumentdev hsfuser   885078 Feb 22 05:20 MainDump.jar12
+-rw-r--r--.   1 root        root      885098 Mar 20 02:13 MainDump.jar13
+-rw-r--r--.   1 root        root      885098 Mar  5 21:53 MainDump.jar14
+-rw-r--r--.   1 root        root      885702 Mar 20 02:07 MainDump.jar16
+-rw-r--r--.   1 ec2-user    ec2-user  868625 Sep  4  2018 MainDump.jar2
+-rw-r--r--.   1 augumentdev hsfuser   882815 Jan 31 05:28 MainDump.jar20
+-rw-r--r--.   1 ec2-user    ec2-user  868076 Sep 29  2018 MainDump.jar3
+-rw-r--r--.   1 root        root      869522 Oct 10  2018 MainDump.jar4
+-rw-r--r--.   1 root        root      869874 Oct 12  2018 MainDump.jar5
+-rw-r--r--.   1 root        root      869910 Oct 12  2018 MainDump.jar6
+-rw-r--r--.   1 root        root      870690 Oct 19  2018 MainDump.jar7
+-rw-r--r--.   1 root        root      869901 Oct 12  2018 MainDump.jar8
+-rw-r--r--.   1 root        root      870867 Oct 19  2018 MainDump.jar9
+-rw-r--r--.   1 root        root     1575758 Dec 24 20:56 MainDump.jarError
+-rw-r--r--.   1 root        root      872501 Dec 24 22:30 MainDump.jarError1
+-rw-r--r--.   1 root        root      872506 Dec 25 01:43 MainDump.jarError2
+-rw-r--r--.   1 root        root      872896 Jan 16 22:04 MainDump.jar.noDDStructure
+-rw-r--r--.   1 augumentdev hsfuser   881251 Jan 23 22:16 MainDump.jar.nophase2
+-rw-r--r--.   1 root        root      868205 Oct  8  2018 MainDump.jar.noProgramTable
+-rw-r--r--.   1 root        root      868192 Oct  8  2018 MainDump.jar.test
+-rw-r--r--.   1 augumentdev hsfuser   885771 Apr 18 22:35 MainProcess.jar
+-rw-r--r--.   1 ec2-user    ec2-user  868614 Jul 27  2018 MainProcess.jar1
+-rw-r--r--.   1 augumentdev hsfuser   885084 Feb 22 05:03 MainProcess.jar10
+-rw-r--r--.   1 augumentdev hsfuser   885768 Apr 18 22:12 MainProcess.jar11
+-rw-r--r--.   1 ec2-user    ec2-user  868628 Sep  4  2018 MainProcess.jar2
+-rw-r--r--.   1 ec2-user    ec2-user  868079 Sep 29  2018 MainProcess.jar3
+-rw-r--r--.   1 root        root      869525 Oct 10  2018 MainProcess.jar4
+-rw-r--r--.   1 root        root      869877 Oct 12  2018 MainProcess.jar5
+-rw-r--r--.   1 root        root      870997 Oct 19  2018 MainProcess.jar6
+-rw-r--r--.   1 root        root      870996 Oct 19  2018 MainProcess.jar7
+-rw-r--r--.   1 root        root      871039 Dec  3  2018 MainProcess.jar8
+-rw-r--r--.   1 augumentdev hsfuser   882818 Feb 11 05:36 MainProcess.jar9
+-rw-r--r--.   1 root        root     1575761 Dec 24 20:56 MainProcess.jar.noDDStructure
+-rw-r--r--.   1 augumentdev hsfuser   881273 Jan 23 22:17 MainProcess.jar.nophase2
+-rw-r--r--.   1 root        root      868065 Sep 29  2018 MainProcess.jar.noProgramTable
+-rw-r--r--.   1 augumentdev hsfuser   886229 Jan 30 19:53 MainProcess.jar.tablename50
+-rw-r--r--.   1 root        root     1645507 Sep 29  2018 new_etl_jar_20180929.tar.gz
+-rw-r--r--.   1 root        root     1646398 Sep  4  2018 new_etl_jar.tar.gz
+-rw-r--r--.   1 ec2-user    ec2-user     648 Apr  2 22:40 remove_temp_file.sh
+-rwxr-xr-x.   1 root        root        2075 Feb  1 05:16 restoreView.sh
+drwxr-xr-x. 116 root        root        8192 Jun  9 21:38 rpt_hsf
+drwxr-xr-x.   3 root        root          21 Apr  8 02:57 rpt_test
+drwxr-xr-x.  27 root        root        4096 Jun  9 21:50 rpt_tgs
+-rwxr--r--.   1 root        root        1887 Sep 24  2018 test_email_old.sh
+-rwxr-xr-x.   1 root        root        2125 Sep 24  2018 test_emial.sh
+drwxr-xr-x.   2 ec2-user    ec2-user      47 Jul 26  2018 type
+[root@ip-172-31-0-65 etl_applicant_bash]# d ../
+bash: d: command not found
+[root@ip-172-31-0-65 etl_applicant_bash]# cd ../
+[root@ip-172-31-0-65 etl_applicant]# ls
+etl_applicant_bash                                              hsf_entp_summit_2019_postsurvey.sh
+etl_applicant_gates.20190607.log                                remove_temp_file.sh
+etl_applicant_gates.20190608.log                                retired_yli_2018jobs.sh
+etl_applicant_gates.20190609.log                                task_for_applicant.sh
+etl_applicant_gates_accept_counselor.20190607.log               task_for_ev.sh
+etl_applicant_gates_accept_counselor.20190608.log               task_for_gates_accept_counselor.sh
+etl_applicant_gates_accept_counselor.20190609.log               task_for_gates_cohort1.sh
+etl_applicant_gates_interviewer_eva.20190607.log                task_for_gates_cohort2_teambuilding_survey.sh
+etl_applicant_gates_interviewer_eva.20190608.log                task_for_gates_confirm_interviewer.sh
+etl_applicant_gates_interviewer_eva.20190609.log                task_for_gates_interviewer_eva.sh
+etl_applicant_hsf.20190607.log                                  task_for_gates_interviewer.sh
+etl_applicant_hsf.20190608.log                                  task_for_gates_mentor_volunteer.sh
+etl_applicant_hsf.20190609.log                                  task_for_gates.sh
+etl_applicant_hsf_nlc.20190607.log                              task_for_gates_special_schedule.20190607.log
+etl_applicant_hsf_nlc.20190608.log                              task_for_gates_special_schedule.20190608.log
+etl_applicant_hsf_nlc.20190609.log                              task_for_gates_special_schedule.20190609.log
+etl_applicant_hsf_stem_submit.20190607.log                      task_for_gates_special_schedule.sh
+etl_applicant_hsf_stem_submit.20190608.log                      task_for_hsf_ent_summit_acce_and_de.20190607.log
+etl_applicant_hsf_stem_submit.20190609.log                      task_for_hsf_ent_summit_acce_and_de.20190608.log
+etl_applicant_wellsfargo.20190607.log                           task_for_hsf_ent_summit_acce_and_de.20190609.log
+etl_applicant_wellsfargo.20190608.log                           task_for_hsf_ent_summit_acce_and_de.sh
+etl_applicant_wellsfargo.20190609.log                           task_for_hsf_ent_summit_presurvey.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log  task_for_hsf_ent_summit.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log  task_for_hsf_ent_summit_volunteer.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log  task_for_hsf_nlc_mentor_2019.sh
+etl_applicant_yls.20190607.log                                  task_for_hsf_nlc.sh
+etl_applicant_yls.20190608.log                                  task_for_hsf_pahse2_and_reader_and_recommender.sh
+etl_applicant_yls.20190609.log                                  task_for_hsf.sh
+etl_gates_confirm_interviewer.20190607.log                      task_for_hsf_special_schedule.sh
+etl_gates_confirm_interviewer.20190608.log                      task_for_hsf_stem_submit.sh
+etl_gates_confirm_interviewer.20190609.log                      task_for_hsf_yli_yls.sh
+etl_gates_interviewer.20190607.log                              task_for_performance_new_etl.sh
+etl_gates_interviewer.20190608.log                              task_for_terrazas_application.sh
+etl_gates_interviewer.20190609.log                              task_for_test.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190607.log      task_for_tgs_spring_winter_quarter_survey.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190608.log      task_for_toyota_app.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190609.log      task_for_vamos_application.sh
+etl_nlc_mentor_hsf.20190607.log                                 task_for_wellsfargo_2019_winter_spring.sh
+etl_nlc_mentor_hsf.20190608.log                                 task_for_wellsfargo.sh
+etl_nlc_mentor_hsf.20190609.log                                 task_for_ylc.sh
+etl_yli_yls.20190607.log                                        task_for_yli_yls.sh
+etl_yli_yls.20190608.log                                        task_for_yls.sh
+etl_yli_yls.20190609.log                                        test_2019.log
+[root@ip-172-31-0-65 etl_applicant]# ls -l
+total 76700
+drwxr-xr-x. 7 ec2-user ec2-user    12288 Jun  9 21:46 etl_applicant_bash
+-rw-r--r--. 1 root     root       339168 Jun  7 02:17 etl_applicant_gates.20190607.log
+-rw-r--r--. 1 root     root       339522 Jun  8 02:17 etl_applicant_gates.20190608.log
+-rw-r--r--. 1 root     root       398017 Jun  9 21:50 etl_applicant_gates.20190609.log
+-rw-r--r--. 1 root     root          555 Jun  7 16:30 etl_applicant_gates_accept_counselor.20190607.log
+-rw-r--r--. 1 root     root          555 Jun  8 16:30 etl_applicant_gates_accept_counselor.20190608.log
+-rw-r--r--. 1 root     root          555 Jun  9 16:30 etl_applicant_gates_accept_counselor.20190609.log
+-rw-r--r--. 1 root     root        33429 Jun  7 19:00 etl_applicant_gates_interviewer_eva.20190607.log
+-rw-r--r--. 1 root     root          333 Jun  8 19:00 etl_applicant_gates_interviewer_eva.20190608.log
+-rw-r--r--. 1 root     root          333 Jun  9 19:00 etl_applicant_gates_interviewer_eva.20190609.log
+-rw-r--r--. 1 root     root      7846765 Jun  8 01:18 etl_applicant_hsf.20190607.log
+-rw-r--r--. 1 root     root      7675648 Jun  8 23:33 etl_applicant_hsf.20190608.log
+-rw-r--r--. 1 root     root      7263589 Jun  9 21:33 etl_applicant_hsf.20190609.log
+-rw-r--r--. 1 root     root          444 Jun  7 16:20 etl_applicant_hsf_nlc.20190607.log
+-rw-r--r--. 1 root     root          444 Jun  8 16:20 etl_applicant_hsf_nlc.20190608.log
+-rw-r--r--. 1 root     root          444 Jun  9 16:20 etl_applicant_hsf_nlc.20190609.log
+-rw-r--r--. 1 root     root          111 Jun  7 03:15 etl_applicant_hsf_stem_submit.20190607.log
+-rw-r--r--. 1 root     root          111 Jun  8 03:15 etl_applicant_hsf_stem_submit.20190608.log
+-rw-r--r--. 1 root     root          111 Jun  9 03:15 etl_applicant_hsf_stem_submit.20190609.log
+-rw-r--r--. 1 root     root        73230 Jun  7 02:00 etl_applicant_wellsfargo.20190607.log
+-rw-r--r--. 1 root     root        83950 Jun  8 02:00 etl_applicant_wellsfargo.20190608.log
+-rw-r--r--. 1 root     root        79843 Jun  9 02:00 etl_applicant_wellsfargo.20190609.log
+-rw-r--r--. 1 root     root          111 Jun  7 02:45 etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log
+-rw-r--r--. 1 root     root          111 Jun  8 02:45 etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log
+-rw-r--r--. 1 root     root          111 Jun  9 02:45 etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log
+-rw-r--r--. 1 root     root          328 Jun  7 12:00 etl_applicant_yls.20190607.log
+-rw-r--r--. 1 root     root          328 Jun  8 12:00 etl_applicant_yls.20190608.log
+-rw-r--r--. 1 root     root          328 Jun  9 12:00 etl_applicant_yls.20190609.log
+-rw-r--r--. 1 root     root       115689 Jun  7 20:43 etl_gates_confirm_interviewer.20190607.log
+-rw-r--r--. 1 root     root       113243 Jun  8 20:42 etl_gates_confirm_interviewer.20190608.log
+-rw-r--r--. 1 root     root       113482 Jun  9 20:42 etl_gates_confirm_interviewer.20190609.log
+-rw-r--r--. 1 root     root       195634 Jun  7 20:53 etl_gates_interviewer.20190607.log
+-rw-r--r--. 1 root     root       191334 Jun  8 20:47 etl_gates_interviewer.20190608.log
+-rw-r--r--. 1 root     root       192012 Jun  9 20:47 etl_gates_interviewer.20190609.log
+-rw-r--r--. 1 root     root      1283789 Jun  7 19:17 etl_hsf_app_phase2_and_reader_and_recommender.20190607.log
+-rw-r--r--. 1 root     root      1206540 Jun  8 19:16 etl_hsf_app_phase2_and_reader_and_recommender.20190608.log
+-rw-r--r--. 1 root     root      1206832 Jun  9 19:16 etl_hsf_app_phase2_and_reader_and_recommender.20190609.log
+-rw-r--r--. 1 root     root          111 Jun  7 03:20 etl_nlc_mentor_hsf.20190607.log
+-rw-r--r--. 1 root     root          111 Jun  8 03:20 etl_nlc_mentor_hsf.20190608.log
+-rw-r--r--. 1 root     root          111 Jun  9 03:20 etl_nlc_mentor_hsf.20190609.log
+-rw-r--r--. 1 root     root     16788904 Jun  8 01:18 etl_yli_yls.20190607.log
+-rw-r--r--. 1 root     root     16461819 Jun  8 23:38 etl_yli_yls.20190608.log
+-rw-r--r--. 1 root     root     15571037 Jun  9 21:38 etl_yli_yls.20190609.log
+-rwxr-xr-x. 1 root     root         1302 Apr  7 22:03 hsf_entp_summit_2019_postsurvey.sh
+-rwxr-xr-x. 1 root     root          649 Apr  2 22:42 remove_temp_file.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2252 May  2 15:59 retired_yli_2018jobs.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2143 Apr  7 22:02 task_for_applicant.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2059 Apr  7 22:03 task_for_ev.sh
+-rwxr-xr-x. 1 root     root         1589 Apr 22 21:05 task_for_gates_accept_counselor.sh
+-rwxr-xr-x. 1 root     root         1472 Apr 11 22:03 task_for_gates_cohort1.sh
+-rw-r--r--. 1 root     root         1312 Jun  9 21:55 task_for_gates_cohort2_teambuilding_survey.sh
+-rwxr-xr-x. 1 root     root         1340 Apr  7 22:04 task_for_gates_confirm_interviewer.sh
+-rwxr-xr-x. 1 root     root         1269 Apr  7 22:04 task_for_gates_interviewer_eva.sh
+-rwxr-xr-x. 1 root     root         1253 Apr  7 22:05 task_for_gates_interviewer.sh
+-rwxr-xr-x. 1 root     root         1388 Apr  7 22:05 task_for_gates_mentor_volunteer.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2677 Apr 15 22:03 task_for_gates.sh
+-rw-r--r--. 1 root     root       185659 Jun  7 15:01 task_for_gates_special_schedule.20190607.log
+-rw-r--r--. 1 root     root       187193 Jun  8 15:01 task_for_gates_special_schedule.20190608.log
+-rw-r--r--. 1 root     root       186996 Jun  9 15:00 task_for_gates_special_schedule.20190609.log
+-rwxr-xr-x. 1 root     root         1510 Apr  7 22:06 task_for_gates_special_schedule.sh
+-rw-r--r--. 1 root     root        76493 Jun  7 03:01 task_for_hsf_ent_summit_acce_and_de.20190607.log
+-rw-r--r--. 1 root     root          164 Jun  8 03:00 task_for_hsf_ent_summit_acce_and_de.20190608.log
+-rw-r--r--. 1 root     root          164 Jun  9 03:00 task_for_hsf_ent_summit_acce_and_de.20190609.log
+-rwxr-xr-x. 1 root     root         1672 Apr  9 22:06 task_for_hsf_ent_summit_acce_and_de.sh
+-rwxr-xr-x. 1 root     root         1282 Apr  7 22:07 task_for_hsf_ent_summit_presurvey.sh
+-rwxr-xr-x. 1 root     root         1377 Apr  7 22:08 task_for_hsf_ent_summit.sh
+-rwxr-xr-x. 1 root     root         1256 Apr  7 22:08 task_for_hsf_ent_summit_volunteer.sh
+-rwxr-xr-x. 1 root     root         1275 May 14 21:26 task_for_hsf_nlc_mentor_2019.sh
+-rwxr-xr-x. 1 root     root         1327 Apr 14 21:50 task_for_hsf_nlc.sh
+-rwxr-xr-x. 1 root     root         1505 May  7 21:41 task_for_hsf_pahse2_and_reader_and_recommender.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     3336 Apr  7 22:09 task_for_hsf.sh
+-rwxr-xr-x. 1 root     root         1269 Apr  7 22:10 task_for_hsf_special_schedule.sh
+-rwxr-xr-x. 1 root     root         1280 May  9 22:26 task_for_hsf_stem_submit.sh
+-rwxr-xr-x. 1 root     root         3473 Apr  7 22:10 task_for_hsf_yli_yls.sh
+-rwxr-xr-x. 1 root     root         1521 Apr  7 22:10 task_for_performance_new_etl.sh
+-rwxr-xr-x. 1 root     root         1259 Apr  7 22:11 task_for_terrazas_application.sh
+-rwxr-xr-x. 1 root     root         1237 Apr  8 02:49 task_for_test.sh
+-rwxr-xr-x. 1 root     root         1274 Apr  7 22:11 task_for_tgs_spring_winter_quarter_survey.sh
+-rwxr-xr-x. 1 root     root         1265 Apr  7 22:12 task_for_toyota_app.sh
+-rwxr-xr-x. 1 root     root         1860 Apr  7 22:12 task_for_vamos_application.sh
+-rwxr-xr-x. 1 root     root         1338 May  6 23:04 task_for_wellsfargo_2019_winter_spring.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2642 Apr  7 22:12 task_for_wellsfargo.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     1890 Apr  7 22:13 task_for_ylc.sh
+-rwxr-xr-x. 1 root     root         2536 May 13 20:57 task_for_yli_yls.sh
+-rwxr-xr-x. 1 root     root         1391 May 22 03:31 task_for_yls.sh
+-rw-r--r--. 1 root     root            0 Apr  3 02:40 test_2019.log
+[root@ip-172-31-0-65 etl_applicant]# chmod 755 task_for_gates_cohort2_teambuilding_survey.sh
+[root@ip-172-31-0-65 etl_applicant]# ls -l
+total 76700
+drwxr-xr-x. 7 ec2-user ec2-user    12288 Jun  9 21:46 etl_applicant_bash
+-rw-r--r--. 1 root     root       339168 Jun  7 02:17 etl_applicant_gates.20190607.log
+-rw-r--r--. 1 root     root       339522 Jun  8 02:17 etl_applicant_gates.20190608.log
+-rw-r--r--. 1 root     root       398017 Jun  9 21:50 etl_applicant_gates.20190609.log
+-rw-r--r--. 1 root     root          555 Jun  7 16:30 etl_applicant_gates_accept_counselor.20190607.log
+-rw-r--r--. 1 root     root          555 Jun  8 16:30 etl_applicant_gates_accept_counselor.20190608.log
+-rw-r--r--. 1 root     root          555 Jun  9 16:30 etl_applicant_gates_accept_counselor.20190609.log
+-rw-r--r--. 1 root     root        33429 Jun  7 19:00 etl_applicant_gates_interviewer_eva.20190607.log
+-rw-r--r--. 1 root     root          333 Jun  8 19:00 etl_applicant_gates_interviewer_eva.20190608.log
+-rw-r--r--. 1 root     root          333 Jun  9 19:00 etl_applicant_gates_interviewer_eva.20190609.log
+-rw-r--r--. 1 root     root      7846765 Jun  8 01:18 etl_applicant_hsf.20190607.log
+-rw-r--r--. 1 root     root      7675648 Jun  8 23:33 etl_applicant_hsf.20190608.log
+-rw-r--r--. 1 root     root      7263589 Jun  9 21:33 etl_applicant_hsf.20190609.log
+-rw-r--r--. 1 root     root          444 Jun  7 16:20 etl_applicant_hsf_nlc.20190607.log
+-rw-r--r--. 1 root     root          444 Jun  8 16:20 etl_applicant_hsf_nlc.20190608.log
+-rw-r--r--. 1 root     root          444 Jun  9 16:20 etl_applicant_hsf_nlc.20190609.log
+-rw-r--r--. 1 root     root          111 Jun  7 03:15 etl_applicant_hsf_stem_submit.20190607.log
+-rw-r--r--. 1 root     root          111 Jun  8 03:15 etl_applicant_hsf_stem_submit.20190608.log
+-rw-r--r--. 1 root     root          111 Jun  9 03:15 etl_applicant_hsf_stem_submit.20190609.log
+-rw-r--r--. 1 root     root        73230 Jun  7 02:00 etl_applicant_wellsfargo.20190607.log
+-rw-r--r--. 1 root     root        83950 Jun  8 02:00 etl_applicant_wellsfargo.20190608.log
+-rw-r--r--. 1 root     root        79843 Jun  9 02:00 etl_applicant_wellsfargo.20190609.log
+-rw-r--r--. 1 root     root          111 Jun  7 02:45 etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log
+-rw-r--r--. 1 root     root          111 Jun  8 02:45 etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log
+-rw-r--r--. 1 root     root          111 Jun  9 02:45 etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log
+-rw-r--r--. 1 root     root          328 Jun  7 12:00 etl_applicant_yls.20190607.log
+-rw-r--r--. 1 root     root          328 Jun  8 12:00 etl_applicant_yls.20190608.log
+-rw-r--r--. 1 root     root          328 Jun  9 12:00 etl_applicant_yls.20190609.log
+-rw-r--r--. 1 root     root       115689 Jun  7 20:43 etl_gates_confirm_interviewer.20190607.log
+-rw-r--r--. 1 root     root       113243 Jun  8 20:42 etl_gates_confirm_interviewer.20190608.log
+-rw-r--r--. 1 root     root       113482 Jun  9 20:42 etl_gates_confirm_interviewer.20190609.log
+-rw-r--r--. 1 root     root       195634 Jun  7 20:53 etl_gates_interviewer.20190607.log
+-rw-r--r--. 1 root     root       191334 Jun  8 20:47 etl_gates_interviewer.20190608.log
+-rw-r--r--. 1 root     root       192012 Jun  9 20:47 etl_gates_interviewer.20190609.log
+-rw-r--r--. 1 root     root      1283789 Jun  7 19:17 etl_hsf_app_phase2_and_reader_and_recommender.20190607.log
+-rw-r--r--. 1 root     root      1206540 Jun  8 19:16 etl_hsf_app_phase2_and_reader_and_recommender.20190608.log
+-rw-r--r--. 1 root     root      1206832 Jun  9 19:16 etl_hsf_app_phase2_and_reader_and_recommender.20190609.log
+-rw-r--r--. 1 root     root          111 Jun  7 03:20 etl_nlc_mentor_hsf.20190607.log
+-rw-r--r--. 1 root     root          111 Jun  8 03:20 etl_nlc_mentor_hsf.20190608.log
+-rw-r--r--. 1 root     root          111 Jun  9 03:20 etl_nlc_mentor_hsf.20190609.log
+-rw-r--r--. 1 root     root     16788904 Jun  8 01:18 etl_yli_yls.20190607.log
+-rw-r--r--. 1 root     root     16461819 Jun  8 23:38 etl_yli_yls.20190608.log
+-rw-r--r--. 1 root     root     15571037 Jun  9 21:38 etl_yli_yls.20190609.log
+-rwxr-xr-x. 1 root     root         1302 Apr  7 22:03 hsf_entp_summit_2019_postsurvey.sh
+-rwxr-xr-x. 1 root     root          649 Apr  2 22:42 remove_temp_file.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2252 May  2 15:59 retired_yli_2018jobs.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2143 Apr  7 22:02 task_for_applicant.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2059 Apr  7 22:03 task_for_ev.sh
+-rwxr-xr-x. 1 root     root         1589 Apr 22 21:05 task_for_gates_accept_counselor.sh
+-rwxr-xr-x. 1 root     root         1472 Apr 11 22:03 task_for_gates_cohort1.sh
+-rwxr-xr-x. 1 root     root         1312 Jun  9 21:55 task_for_gates_cohort2_teambuilding_survey.sh
+-rwxr-xr-x. 1 root     root         1340 Apr  7 22:04 task_for_gates_confirm_interviewer.sh
+-rwxr-xr-x. 1 root     root         1269 Apr  7 22:04 task_for_gates_interviewer_eva.sh
+-rwxr-xr-x. 1 root     root         1253 Apr  7 22:05 task_for_gates_interviewer.sh
+-rwxr-xr-x. 1 root     root         1388 Apr  7 22:05 task_for_gates_mentor_volunteer.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2677 Apr 15 22:03 task_for_gates.sh
+-rw-r--r--. 1 root     root       185659 Jun  7 15:01 task_for_gates_special_schedule.20190607.log
+-rw-r--r--. 1 root     root       187193 Jun  8 15:01 task_for_gates_special_schedule.20190608.log
+-rw-r--r--. 1 root     root       186996 Jun  9 15:00 task_for_gates_special_schedule.20190609.log
+-rwxr-xr-x. 1 root     root         1510 Apr  7 22:06 task_for_gates_special_schedule.sh
+-rw-r--r--. 1 root     root        76493 Jun  7 03:01 task_for_hsf_ent_summit_acce_and_de.20190607.log
+-rw-r--r--. 1 root     root          164 Jun  8 03:00 task_for_hsf_ent_summit_acce_and_de.20190608.log
+-rw-r--r--. 1 root     root          164 Jun  9 03:00 task_for_hsf_ent_summit_acce_and_de.20190609.log
+-rwxr-xr-x. 1 root     root         1672 Apr  9 22:06 task_for_hsf_ent_summit_acce_and_de.sh
+-rwxr-xr-x. 1 root     root         1282 Apr  7 22:07 task_for_hsf_ent_summit_presurvey.sh
+-rwxr-xr-x. 1 root     root         1377 Apr  7 22:08 task_for_hsf_ent_summit.sh
+-rwxr-xr-x. 1 root     root         1256 Apr  7 22:08 task_for_hsf_ent_summit_volunteer.sh
+-rwxr-xr-x. 1 root     root         1275 May 14 21:26 task_for_hsf_nlc_mentor_2019.sh
+-rwxr-xr-x. 1 root     root         1327 Apr 14 21:50 task_for_hsf_nlc.sh
+-rwxr-xr-x. 1 root     root         1505 May  7 21:41 task_for_hsf_pahse2_and_reader_and_recommender.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     3336 Apr  7 22:09 task_for_hsf.sh
+-rwxr-xr-x. 1 root     root         1269 Apr  7 22:10 task_for_hsf_special_schedule.sh
+-rwxr-xr-x. 1 root     root         1280 May  9 22:26 task_for_hsf_stem_submit.sh
+-rwxr-xr-x. 1 root     root         3473 Apr  7 22:10 task_for_hsf_yli_yls.sh
+-rwxr-xr-x. 1 root     root         1521 Apr  7 22:10 task_for_performance_new_etl.sh
+-rwxr-xr-x. 1 root     root         1259 Apr  7 22:11 task_for_terrazas_application.sh
+-rwxr-xr-x. 1 root     root         1237 Apr  8 02:49 task_for_test.sh
+-rwxr-xr-x. 1 root     root         1274 Apr  7 22:11 task_for_tgs_spring_winter_quarter_survey.sh
+-rwxr-xr-x. 1 root     root         1265 Apr  7 22:12 task_for_toyota_app.sh
+-rwxr-xr-x. 1 root     root         1860 Apr  7 22:12 task_for_vamos_application.sh
+-rwxr-xr-x. 1 root     root         1338 May  6 23:04 task_for_wellsfargo_2019_winter_spring.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     2642 Apr  7 22:12 task_for_wellsfargo.sh
+-rwxr-xr-x. 1 ec2-user ec2-user     1890 Apr  7 22:13 task_for_ylc.sh
+-rwxr-xr-x. 1 root     root         2536 May 13 20:57 task_for_yli_yls.sh
+-rwxr-xr-x. 1 root     root         1391 May 22 03:31 task_for_yls.sh
+-rw-r--r--. 1 root     root            0 Apr  3 02:40 test_2019.log
+[root@ip-172-31-0-65 etl_applicant]# crontab -e
+crontab: installing new crontab
+[root@ip-172-31-0-65 etl_applicant]# date
+Sun Jun  9 22:01:07 EDT 2019
+[root@ip-172-31-0-65 etl_applicant]# crontab -e
+crontab: installing new crontab
+[root@ip-172-31-0-65 etl_applicant]# date
+Sun Jun  9 22:01:50 EDT 2019
+[root@ip-172-31-0-65 etl_applicant]# date
+Sun Jun  9 22:03:20 EDT 2019
+[root@ip-172-31-0-65 etl_applicant]# ls
+etl_applicant_bash                                              hsf_entp_summit_2019_postsurvey.sh
+etl_applicant_gates.20190607.log                                remove_temp_file.sh
+etl_applicant_gates.20190608.log                                retired_yli_2018jobs.sh
+etl_applicant_gates.20190609.log                                task_for_applicant.sh
+etl_applicant_gates_accept_counselor.20190607.log               task_for_ev.sh
+etl_applicant_gates_accept_counselor.20190608.log               task_for_gates_accept_counselor.sh
+etl_applicant_gates_accept_counselor.20190609.log               task_for_gates_cohort1.sh
+etl_applicant_gates_cohort2_teambuilding_survey.20190609.log    task_for_gates_cohort2_teambuilding_survey.sh
+etl_applicant_gates_interviewer_eva.20190607.log                task_for_gates_confirm_interviewer.sh
+etl_applicant_gates_interviewer_eva.20190608.log                task_for_gates_interviewer_eva.sh
+etl_applicant_gates_interviewer_eva.20190609.log                task_for_gates_interviewer.sh
+etl_applicant_hsf.20190607.log                                  task_for_gates_mentor_volunteer.sh
+etl_applicant_hsf.20190608.log                                  task_for_gates.sh
+etl_applicant_hsf.20190609.log                                  task_for_gates_special_schedule.20190607.log
+etl_applicant_hsf_nlc.20190607.log                              task_for_gates_special_schedule.20190608.log
+etl_applicant_hsf_nlc.20190608.log                              task_for_gates_special_schedule.20190609.log
+etl_applicant_hsf_nlc.20190609.log                              task_for_gates_special_schedule.sh
+etl_applicant_hsf_stem_submit.20190607.log                      task_for_hsf_ent_summit_acce_and_de.20190607.log
+etl_applicant_hsf_stem_submit.20190608.log                      task_for_hsf_ent_summit_acce_and_de.20190608.log
+etl_applicant_hsf_stem_submit.20190609.log                      task_for_hsf_ent_summit_acce_and_de.20190609.log
+etl_applicant_wellsfargo.20190607.log                           task_for_hsf_ent_summit_acce_and_de.sh
+etl_applicant_wellsfargo.20190608.log                           task_for_hsf_ent_summit_presurvey.sh
+etl_applicant_wellsfargo.20190609.log                           task_for_hsf_ent_summit.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190607.log  task_for_hsf_ent_summit_volunteer.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190608.log  task_for_hsf_nlc_mentor_2019.sh
+etl_applicant_wellsfargo_semiannual_survey_winter.20190609.log  task_for_hsf_nlc.sh
+etl_applicant_yls.20190607.log                                  task_for_hsf_pahse2_and_reader_and_recommender.sh
+etl_applicant_yls.20190608.log                                  task_for_hsf.sh
+etl_applicant_yls.20190609.log                                  task_for_hsf_special_schedule.sh
+etl_gates_confirm_interviewer.20190607.log                      task_for_hsf_stem_submit.sh
+etl_gates_confirm_interviewer.20190608.log                      task_for_hsf_yli_yls.sh
+etl_gates_confirm_interviewer.20190609.log                      task_for_performance_new_etl.sh
+etl_gates_interviewer.20190607.log                              task_for_terrazas_application.sh
+etl_gates_interviewer.20190608.log                              task_for_test.sh
+etl_gates_interviewer.20190609.log                              task_for_tgs_spring_winter_quarter_survey.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190607.log      task_for_toyota_app.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190608.log      task_for_vamos_application.sh
+etl_hsf_app_phase2_and_reader_and_recommender.20190609.log      task_for_wellsfargo_2019_winter_spring.sh
+etl_nlc_mentor_hsf.20190607.log                                 task_for_wellsfargo.sh
+etl_nlc_mentor_hsf.20190608.log                                 task_for_ylc.sh
+etl_nlc_mentor_hsf.20190609.log                                 task_for_yli_yls.sh
+etl_yli_yls.20190607.log                                        task_for_yls.sh
+etl_yli_yls.20190608.log                                        test_2019.log
+etl_yli_yls.20190609.log
+[root@ip-172-31-0-65 etl_applicant]# crontab -e
+crontab: installing new crontab
+[root@ip-172-31-0-65 etl_applicant]# ^C
+[root@ip-172-31-0-65 etl_applicant]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[user@localhost ~]$ psql -U liferay -h prod-rpt.ce1r2osywogf.us-west-2.rds.amazonaws.com
+Password for user liferay: 
+psql (9.5.15, server 9.5.2)
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+liferay=> \l
+                                                             List of databases
+                              Name                               |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------------------------------------------------------------+----------+----------+-------------+-------------+-----------------------
+ etl_log_rpt                                                     | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ liferay                                                         | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_albinorpineda_20171116_rpt                              | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_albinorpineda_enrollment_verification_20180506_rpt      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_albinorpineda_enrollment_verification_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_albinorpineda_scholarship_application_2018_2019_rpt     | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_cincinnati_20180222_rpt                                 | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_cincinnati_enrollment_verification_20180506_rpt         | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_cincinnati_enrollment_verification_rpt                  | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_cincinnati_scholarship_application_2017_2018_rpt        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_cincinnati_scholarship_application_2018_2019_rpt        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_csub_20171116_rpt                                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_csub_enrollment_verification_20180506_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_csub_enrollment_verification_rpt                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_csub_scholarship_application_2018_2019_rpt              | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_finance_2018_2019_acceptance_rpt                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_finance_2018_2019_document_verifications_rpt            | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_finance_application_2018_2019_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20170929_collegechoices_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20170929_details1_rpt                             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20170929_enrichprogram_rpt                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20170929_standard_rpt                             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20171018_rpt                                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20180122_involvement_rpt                          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_20180122_sports_rpt                               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_counselor_20171211_rpt                            | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_counselor_rpt                                     | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_document_upload_20171116_rpt                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_interview_evaluations_2018_2019_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_phase2_app_rpt                                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_reader_application_rpt                            | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_reader_evaluations_rpt                            | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_recommender_evaluations_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_recommender_evaluations_test_rpt                  | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_scholarship_application_2018_2019_20180212_rpt    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_scholarship_application_2018_2019_acceptance_stag | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_gates_scholarship_application_2018_2019_rpt             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_acceptance_rpt                                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_application_2018_2019_doc_verification_stage_rpt    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_conference_20171116_rpt                             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_enrollment_verification_20180506_rpt                | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_enrollment_verification_rpt                         | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_my_hsf_profile_performance_rpt                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_my_hsf_profile_rpt                                  | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_nlc_20171022_rpt                                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_rpt                                                 | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | liferay=CTc/liferay  +
+                                                                 |          |          |             |             | rpt_user=c/liferay
+ lportal_hsf_scholarship_application_2017_2018_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_scholarship_application_2018_2019_20180212_rpt      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_scholarship_application_2018_2019_doc_verification_ | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_hsf_scholarship_application_2018_2019_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_media_2018_2019_acceptance_rpt                          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_media_2018_2019_document_verifications_rpt              | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_media_application_2018_2019_rpt                         | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_nlc_2018_2019_acceptance_rpt                            | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_nlc_2018_2019_document_verifications_rpt                | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_nlc_application_2018_2019_rpt                           | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_nmalliance_rpt                                          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/liferay          +
+                                                                 |          |          |             |             | liferay=CTc/liferay  +
+                                                                 |          |          |             |             | rpt_user=c/liferay
+ lportal_pedrourquidi_20171116_rpt                               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_pedrourquidi_enrollment_verification_20180506_rpt       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_pedrourquidi_enrollment_verification_rpt                | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_pedrourquidi_rpt                                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/liferay          +
+                                                                 |          |          |             |             | liferay=CTc/liferay  +
+                                                                 |          |          |             |             | rpt_user=c/liferay
+ lportal_pedrourquidi_scholarship_application_2018_2019_rpt      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_royal_20171116_rpt                                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_royal_enrollment_verification_20180506_rpt              | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_royal_enrollment_verification_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_royal_rpt                                               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/liferay          +
+                                                                 |          |          |             |             | liferay=CTc/liferay  +
+                                                                 |          |          |             |             | rpt_user=c/liferay
+ lportal_royal_scholarship_application_2018_2019_rpt             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_stem_2018_2019_acceptance_rpt                           | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_stem_2018_2019_document_verifications_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_stem_application_2018_2019_performance_rpt              | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_stem_application_2018_2019_rpt                          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_terrazas_20171116_rpt                                   | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_terrazas_rpt                                            | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/liferay          +
+                                                                 |          |          |             |             | liferay=CTc/liferay  +
+                                                                 |          |          |             |             | rpt_user=c/liferay
+ lportal_terrazas_scholarship_application_2018_2019_rpt          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_2018_2019_post_conference_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_2018_2019_pre_conference_rpt                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_2018_2019_pre_program_rpt                           | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_2018_2019_tgs_stories_rpt                           | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_referrals_rpt                                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_scholarship_application_2017_2018_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_scholarship_application_2017_2018_rpt_bkp           | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_tgs_scholarship_application_2018_2019_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_vamos_20171116_rpt                                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_vamos_renewal_20171116_rpt                              | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_vamos_rpt                                               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/liferay          +
+                                                                 |          |          |             |             | liferay=CTc/liferay  +
+                                                                 |          |          |             |             | rpt_user=c/liferay
+ lportal_vamos_scholarship_application_2018_2019_rpt             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_2018_2019_post_conference_rpt                | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_2018_2019_pre_conference_rpt                 | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_2018_2019_pre_program_rpt                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_2018_2019_stories_rpt                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_reader_application_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_reader_evaluations_rpt                       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_scholarship_application_2018_2019_rpt        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_scholarship_counselor_2018_2019_acceptance_s | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_scholarship_counselor_2018_2019_rpt          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_wellsfargo_student_acceptance_2018_2019_rpt             | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_ylc_yls_staff_application_2018_2019_rpt                 | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_ylc_yls_student_application_2018_2019_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_mentor_2018_2019_acceptance_stage_rpt               | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_mentor_application_2018_2019_rpt                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_mentor_document_verifications_2018_2019_rpte_rpt    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_student_acceptance_2018_2019_rpt                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_student_application_2018_2019_performance_rpt       | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_student_application_2018_2019_rpt                   | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_student_document_verifications_2018_2019_rpt        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_team_application_2018_2019_acceptance_stage_rpt     | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_team_application_2018_2019_rpt                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yli_team_document_verifications_2018_2019_rpte_rpt      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yls_staff_2018_2019_acceptance_rpt                      | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yls_staff_2018_2019_document_verifications_rpt          | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yls_student_2018_2019_acceptance_rpt                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ lportal_yls_student_2018_2019_document_verifications_rpt        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ portal_tgs_interview_confirmation_rpt                           | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres                                                        | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ rdsadmin                                                        | rdsadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 | rdsadmin=CTc/rdsadmin
+ rpt_etl_test                                                    | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ rpt_hsf                                                         | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ rpt_test                                                        | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ rpt_tgs                                                         | liferay  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0                                                       | rdsadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/rdsadmin          +
+                                                                 |          |          |             |             | rdsadmin=CTc/rdsadmin
+ template1                                                       | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                                                                 |          |          |             |             | postgres=CTc/postgres
+(121 rows)
+
+liferay=> \c rpt_tgs 
+\psql (9.5.15, server 9.5.2)
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+You are now connected to database "rpt_tgs" as user "liferay".
+rpt_tgs=> \dn
+                 List of schemas
+                 Name                  |  Owner   
+---------------------------------------+----------
+ cohort1_phase1                        | liferay
+ cohort1_phase2_counselorstage         | liferay
+ cohort2_teambuilding_survey           | liferay
+ et_gates_accept_2018                  | liferay
+ et_gates_accept_2019                  | liferay
+ et_gates_app_2018                     | liferay
+ et_gates_app_2018_ce                  | liferay
+ et_gates_app_2018_ce_test             | liferay
+ et_gates_app_2018_du                  | liferay
+ et_gates_app_2018_old                 | liferay
+ et_gates_app_2019_confirminterview    | liferay
+ et_gates_app_2019_phase2              | liferay
+ et_gates_int_eval_2018                | liferay
+ et_gates_post_conf_2018               | liferay
+ et_gates_pre_conf_2018                | liferay
+ et_gates_pre_program_2018             | liferay
+ et_gates_pre_stories_2018             | liferay
+ interviewer_app_2019                  | liferay
+ interviewer_eva_2019                  | liferay
+ log_etl                               | liferay
+ public                                | postgres
+ reader_eva_2019                       | liferay
+ recommender_eva_2019                  | liferay
+ rpt                                   | liferay
+ semiannual_survey_2018                | liferay
+ semiannual_survey_quarter_2018        | liferay
+ semiannual_survey_spring_quarter_2019 | liferay
+ tgssi_mentor_acceptance_2019          | liferay
+ tgssi_volunteer_acceptance_2019       | liferay
+(29 rows)
+
+rpt_tgs=> select * from log_etl.etl_job order by pkid desc limit 5;
+ pkid |     start_time      |      end_time       | status  | rpt_db_name |             schema_name             |               script_name           
+    
+------+---------------------+---------------------+---------+-------------+-------------------------------------+-------------------------------------
+----
+ 3009 | 2019-06-09 22:03:02 | 2019-06-09 22:03:17 | success | rpt_tgs     | cohort2_teambuilding_survey         | doSingleTGSCohort2TeambuildingSurvey
+.sh
+ 3008 | 2019-06-09 21:50:00 |                     | running | rpt_tgs     | semiannual_survey_2018              | doSingleTGSSemiAnnualSurvey2018.sh
+ 3007 | 2019-06-09 21:03:49 | 2019-06-09 21:03:49 | success | rpt_tgs     | restoreView                         | restoreView.sh
+ 3006 | 2019-06-09 20:45:01 | 2019-06-09 20:47:54 | success | rpt_tgs     | interviewer_app_2019                | doSingleTGSInterviewerApplication.sh
+ 3005 | 2019-06-09 20:40:02 | 2019-06-09 20:42:16 | success | rpt_tgs     | et_gates_app_2019_ConfirmInterview  | doSingleTGSConfirmInterview2019.sh
+(5 rows)
+
+rpt_tgs=> select * from log_etl.job_detail where etlid = 3009;
+ pkid | etlid |   dump_start_time   |    dump_end_time    | dump_status |  insert_start_time  |   insert_end_time   | insert_status 
+------+-------+---------------------+---------------------+-------------+---------------------+---------------------+---------------
+ 2439 |  3009 | 2019-06-09 22:03:02 | 2019-06-09 22:03:03 | success     | 2019-06-09 22:03:03 | 2019-06-09 22:03:13 | success
+(1 row)
+
+rpt_tgs=> select * from log_etl.insert_detail where job_detail_id = 2439;
+ pkid  | job_detail_id |         schema_name         |              table_name               | table_record_count 
+-------+---------------+-----------------------------+---------------------------------------+--------------------
+ 55676 |          2439 | cohort2_teambuilding_survey | country                               |                249
+ 55677 |          2439 | cohort2_teambuilding_survey | region                                |                366
+ 55678 |          2439 | cohort2_teambuilding_survey | program_info_metadata                 |                 33
+ 55679 |          2439 | cohort2_teambuilding_survey | tgssi_teambuilding_questionnaire_2019 |                130
+ 55680 |          2439 | cohort2_teambuilding_survey | program_info_metadata_options         |                  0
+ 55681 |          2439 | cohort2_teambuilding_survey | hsf_programinformation                |                 17
+ 55682 |          2439 | cohort2_teambuilding_survey | user_information                      |                159
+ 55683 |          2439 | cohort2_teambuilding_survey | users_roles                           |             553232
+ 55684 |          2439 | cohort2_teambuilding_survey | role_                                 |                 38
+(9 rows)
+
+rpt_tgs=> select * from log_etl.dump_detail where job_detail_id = 2439;
+ pkid  | job_detail_id |                 ddl_name                  |     start_time      |      end_time       | ddl_record_count 
+-------+---------------+-------------------------------------------+---------------------+---------------------+------------------
+ 22091 |          2439 | user_information                          | 2019-06-09 22:03:02 | 2019-06-09 22:03:02 |              159
+ 22092 |          2439 | hsf_programinformation                    | 2019-06-09 22:03:02 | 2019-06-09 22:03:02 |               17
+ 22093 |          2439 | TGSSI_TeamBuilding_Questionnaire_2019_DDL | 2019-06-09 22:03:02 | 2019-06-09 22:03:03 |              130
+(3 rows)
+
+rpt_tgs=>

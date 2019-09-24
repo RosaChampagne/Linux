@@ -1,0 +1,38 @@
+在配置DD的时候，有些Field有一个属性是Refer to Field
+    Table是存在表hsf_profile_fieldrelation里面的。
+渲染这个属性的时候  
+    Liferay.Service
+        instance.referencedTableDataSource = /hsf-plugins-shared-portlet.fieldrelation/find-field-relations-by-type
+    Table的option是：JSON.parse(instance.referencedTableDataSource["table"])
+    Table的Filed是：JSON.parse(instance.referencedTableDataSource["field"]) 
+    DDLRecordSet的option是：recordSetList
+    DDLRecordSet的Field是：fieldList
+
+1、修改hsf_profile_fieldrelation表结构：/hsf-plugins-shared-data/src/hsf/sql/profile_configure.sql最后面几行
+    /*Update columns' type*/
+    ALTER TABLE hsf_profile_fieldrelation ALTER COLUMN globalid TYPE text;
+    ALTER TABLE hsf_profile_fieldrelation ALTER COLUMN fieldsource TYPE text;
+    ALTER TABLE hsf_profile_fieldrelation ALTER COLUMN fieldname TYPE text;
+    ALTER TABLE hsf_profile_fieldrelation ALTER COLUMN type_ TYPE text;
+    ALTER TABLE hsf_profile_fieldrelation ALTER COLUMN processor TYPE text;
+
+2、关于counselor的Table：hsf_counselor_counselorfileupload-Transcript，/hsf-plugins-shared-data/src/hsf/sql/insert.sql
+    /* field relation processor */
+    insert into hsf_profile_fieldrelation(pkid, globalid, fieldsource, fieldname, type_, processor, mode_)
+    values(nextval('hsf_fieldrelation_sq'), 'Counselor_Survey-Transcript', 'hsf_counselor_counselorfileupload-Transcript', 'Official_School_Transcript', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableCounselorFileUploadProcessor', 2);
+
+3、关于user、contact、ssn的Table：/hsf-plugins-shared-data/src/hsf/sql/insert.sql
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-firstName', 'user', 'firstName', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableUserProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-middleName', 'user', 'middleName', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableUserProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-lastName', 'user', 'lastName', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableUserProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-emailAddress', 'user', 'emailAddress', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableUserProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-screenName', 'user', 'screenName', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableUserProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-jobTitle', 'user', 'jobTitle', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableUserProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'contact-userName', 'contact', 'userName', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableContactProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'contact-birthday', 'contact', 'birthday', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationTableContactProcessor', 3);
+    INSERT INTO hsf_profile_fieldrelation VALUES (nextval('hsf_fieldrelation_sq'), 'user-ssn', 'hsf_ssn', 'ssn', 'table', 'net.hsf3.plugin.actionprocessor.FieldRelationSSNProcessor', 3);
+
+
+
+ApplicantFillForm.java、MobileProfilePortlet.java、InterviewerApplyRecordLocalServiceImpl.java、InterviewerEvaluationRecordLocalServiceImpl.java、MenteeApplyRecordLocalServiceImpl.java、MentorApplyRecordLocalServiceImpl.java、ReaderApplyRecordLocalServiceImpl.java、RoleProfileLocalServiceImpl.java
+在渲染DD的时候会调用这个方法：FieldRelationServiceUtil.getLatestFields(fields, formId, userId);

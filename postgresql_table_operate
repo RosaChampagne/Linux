@@ -1,0 +1,44 @@
+pg_dump -U postgres -h localhost -p 5432 -t layout -f layout.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutbranch -f layoutbranch.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutfriendlyurl -f layoutfriendlyurl.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutprototype -f layoutprototype.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutrevision -f layoutrevision.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutset -f layoutset.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutsetbranch -f layoutsetbranch.sql hsf3;
+pg_dump -U postgres -h localhost -p 5432 -t layoutsetprototype -f layoutsetprototype.sql hsf3;
+
+
+
+
+
+alter table layout rename to layout_bp;
+alter table layoutbranch rename to layoutbranch_bp;
+alter table layoutfriendlyurl rename to layoutfriendlyurl_bp;
+alter table layoutprototype rename to layoutprototype_bp;
+alter table layoutrevision rename to layoutrevision_bp;
+alter table layoutset rename to layoutset_bp;
+alter table layoutsetbranch rename to layoutsetbranch_bp;
+alter table layoutsetprototype rename to layoutsetprototype_bp;
+
+
+
+
+
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layout.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutbranch.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutfriendlyurl.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutprototype.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutrevision.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutset.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutsetbranch.sql;
+psql -U postgres -h localhost -p 5432 -d hsf3 -f /home/user/Downloads/SQL/layoutsetprototype.sql;
+
+
+
+
+
+psql -h 127.0.0.1 -d hsf3 -U postgres -f /home/user/Desktop/hsf3.sql 导入数据库
+
+psql -h 127.0.0.1 -d hsf3 -U postgres  进入数据库
+
+pg_dump -h localhost -U postgres hsf3>hsf3_cynthia.sql 导出数据库
